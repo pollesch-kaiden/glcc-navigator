@@ -2,7 +2,9 @@ name: Test & Lint
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, dev]
+  push:
+    branches: [dev]
 
 jobs:
   test:
