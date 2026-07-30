@@ -1,5 +1,22 @@
 /**
- * Distance math + snap to nearest node
+ * haversine.ts
+ * ─────────────────────────────────────────────────────────
+ * Geographic distance utility functions.
+ *
+ * Functions:
+ *  - haversineDistance: calculates the straight-line
+ *    distance in meters between two [lon, lat] coordinates
+ *    using the Haversine formula (accounts for Earth's
+ *    curvature — important at campus scale)
+ *
+ *  - findNearestNode: given a user's GPS position, finds
+ *    the closest node in the routing graph that is valid
+ *    for their transport mode and stair preference.
+ *    Used to "snap" the user onto the path network before
+ *    running A*.
+ *
+ * Used by: astar.ts, useRouting.ts
+ * ─────────────────────────────────────────────────────────
  */
 import { Graph, RouteOptions } from '../types/route.types';
 

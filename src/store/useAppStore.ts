@@ -1,3 +1,24 @@
+/**
+ * useAppStore.ts
+ * ─────────────────────────────────────────────────────────
+ * Global Zustand state store for the GLCC Navigator app.
+ * Single source of truth for all shared app state.
+ *
+ * Persisted to device storage (survives app close):
+ *  - transportMode: user's selected travel mode
+ *  - canUseStairs: accessibility preference
+ *  - hasCompletedOnboarding: first launch flag
+ *
+ * Session state (resets on app close):
+ *  - selectedPOI: currently tapped POI
+ *  - activeRoute: current A* calculated route coordinates
+ *  - activeFilters: active POI filter tags
+ *  - isLoadingRoute: route calculation in progress
+ *  - routeError: error message if routing fails
+ *
+ * Used by: all screens and most components
+ * ─────────────────────────────────────────────────────────
+ */
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';

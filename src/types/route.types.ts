@@ -1,3 +1,21 @@
+/**
+ * route.types.ts
+ * ─────────────────────────────────────────────────────────
+ * Core routing type definitions for the GLCC Navigator app.
+ *
+ * Defines:
+ *  - TransportMode: walking | biking | golf_cart | car
+ *  - SurfaceType: paved | gravel | dirt | grass | boardwalk
+ *  - RouteOptions: what the user has selected (mode + stairs)
+ *  - GraphNode: a point on the campus path network
+ *  - GraphEdge: a path segment connecting two nodes
+ *  - Graph: the full campus path network (nodes + edges)
+ *  - PATH_PRESETS: shorthand transport mode combinations
+ *
+ * Used by: astar.ts, haversine.ts, useRouting.ts,
+ *          generateGraph.ts, useAppStore.ts
+ * ─────────────────────────────────────────────────────────
+ */
 export type TransportMode =
     | 'walking'
     | 'biking'

@@ -1,5 +1,24 @@
 /**
- * Actual pathfinding algorithm
+ * astar.ts
+ * ─────────────────────────────────────────────────────────
+ * A* pathfinding algorithm for GLCC campus routing.
+ * Runs entirely on-device — no server or internet needed.
+ *
+ * How it works:
+ *  1. Start at the node nearest to the user's GPS position
+ *  2. Explore connected edges, filtering by:
+ *     - Transport mode (walking/biking/golf_cart/car)
+ *     - Accessibility (skip edges where hasStairs: true)
+ *     - Direction (skip one-way edges going wrong way)
+ *  3. Use haversine distance as the heuristic (h score)
+ *  4. Always expand the most promising node first (f score)
+ *  5. Reconstruct the path once destination is reached
+ *
+ * Returns: ordered array of [lon, lat] coordinates
+ *          or null if no valid route exists
+ *
+ * Used by: useRouting.ts
+ * ─────────────────────────────────────────────────────────
  */
 import { Graph, RouteOptions } from '../types/route.types';
 import { haversineDistance } from '../utils/haversine';

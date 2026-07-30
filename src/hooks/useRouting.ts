@@ -1,7 +1,21 @@
 /**
- * Hook that connects it all together
+ * useRouting.ts
+ * ─────────────────────────────────────────────────────────
+ * React hook that connects the A* routing engine to the
+ * app's UI layer.
+ *
+ * Responsibilities:
+ *  - Takes user GPS coordinates + destination node ID
+ *  - Reads current transport mode + stair preference
+ *    from Zustand store
+ *  - Snaps user position to nearest valid graph node
+ *  - Runs A* pathfinding algorithm
+ *  - Updates Zustand store with the resulting route
+ *    (or an error message if no route found)
+ *
+ * Used by: MapScreen.tsx, POIDetailSheet.tsx
+ * ─────────────────────────────────────────────────────────
  */
-
 import { useCallback, useState } from 'react';
 import { findRoute } from '../routing/astar';
 import { findNearestNode } from '../utils/haversine';

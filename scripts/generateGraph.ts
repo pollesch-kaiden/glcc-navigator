@@ -1,13 +1,26 @@
 /**
- * Graph Generator Script - script to build graph from GeoJSON
- *
- * Converts glcc-paths.geojson into graph.json
- * which is used by the A* routing engine
+ * generateGraph.ts
+ * ─────────────────────────────────────────────────────────
+ * Build script — NOT part of the mobile app.
+ * Run manually from terminal when paths GeoJSON changes.
  *
  * Usage: npx ts-node scripts/generateGraph.ts
- * Run this every time you update glcc-paths.geojson
+ *
+ * What it does:
+ *  1. Reads assets/map/glcc-paths.geojson
+ *  2. Converts each LineString path into a graph edge
+ *  3. Creates nodes at path endpoints, merging any nodes
+ *     within 5 meters of each other (snap threshold)
+ *  4. Calculates real distances using haversine formula
+ *  5. Outputs assets/map/graph.json
+ *
+ * You never edit graph.json directly — always edit
+ * glcc-paths.geojson and re-run this script.
+ *
+ * Input:  assets/map/glcc-paths.geojson
+ * Output: assets/map/graph.json
+ * ─────────────────────────────────────────────────────────
  */
-
 import * as fs from 'fs';
 import * as path from 'path';
 

@@ -1,3 +1,22 @@
+/**
+ * poi.types.ts
+ * ─────────────────────────────────────────────────────────
+ * Type definitions for Points of Interest (POIs) on the
+ * GLCC campus — buildings, landmarks, recreation areas, etc.
+ *
+ * Defines:
+ *  - POICategory: broad classification (accommodation,
+ *                 dining, recreation, chapel, etc.)
+ *  - ActivityTag: what you can DO at a POI (swimming,
+ *                 kayaking, meetings, worship, etc.)
+ *  - POI: full data shape for a single point of interest
+ *         including coordinates, activities, amenities,
+ *         accessibility info, and routing connection
+ *
+ * Used by: useAppStore.ts, usePOIFilter.ts, POICard.tsx,
+ *          POIDetailSheet.tsx, POIMarkers.tsx
+ * ─────────────────────────────────────────────────────────
+ */
 export type POICategory =
     | 'accommodation'
     | 'dining'
