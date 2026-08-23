@@ -16,8 +16,10 @@ import {
     StyleSheet,
     TouchableOpacity,
     Dimensions,
+    Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
@@ -31,9 +33,12 @@ export function WelcomeSlide({ onNext }: WelcomeSlideProps) {
             colors={['#1a4a2e', '#2d7a4f']}
             style={styles.container}
         >
-            {/* Logo placeholder — replace with real GLCC logo later */}
             <View style={styles.logoContainer}>
-                <Text style={styles.logoEmoji}>🌲</Text>
+                <Image
+                    source={require('../../../assets/branding/icon-mark-green.png')}
+                    style={styles.logo}
+                    resizeMode="contain"
+                />
             </View>
 
             <View style={styles.textContainer}>
@@ -50,7 +55,8 @@ export function WelcomeSlide({ onNext }: WelcomeSlideProps) {
             </View>
 
             <TouchableOpacity style={styles.button} onPress={onNext}>
-                <Text style={styles.buttonText}>Get Started →</Text>
+                <Text style={styles.buttonText}>Get Started</Text>
+                <Ionicons name="arrow-forward" size={18} color="#1a4a2e" />
             </TouchableOpacity>
 
             <Text style={styles.footer}>
@@ -69,16 +75,17 @@ const styles = StyleSheet.create({
         paddingVertical: 60,
     },
     logoContainer: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        backgroundColor: 'rgba(255,255,255,0.15)',
+        width: 110,
+        height: 110,
+        borderRadius: 20,
+        backgroundColor: 'rgba(255,255,255,0.1)',
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 32,
     },
-    logoEmoji: {
-        fontSize: 50,
+    logo: {
+        width: 70,
+        height: 70,
     },
     textContainer: {
         alignItems: 'center',
@@ -117,13 +124,16 @@ const styles = StyleSheet.create({
         lineHeight: 24,
     },
     button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
         backgroundColor: '#ffffff',
         paddingVertical: 16,
         paddingHorizontal: 48,
         borderRadius: 32,
         marginBottom: 16,
         width: width - 64,
-        alignItems: 'center',
     },
     buttonText: {
         fontSize: 18,

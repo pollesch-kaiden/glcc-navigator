@@ -19,14 +19,14 @@
 
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useAppStore } from '../store/useAppStore';
 import { OnboardingScreen } from '../screens/OnboardingScreen';
+import { MapScreen } from '../screens/MapScreen';
 
 export function AppNavigator() {
     const { hasCompletedOnboarding } = useAppStore();
 
-    // Local state to handle the transition after onboarding
-    // completes within the same session
     const [onboardingDone, setOnboardingDone] = useState(
         hasCompletedOnboarding
     );
@@ -36,32 +36,10 @@ export function AppNavigator() {
     }
 
     if (!onboardingDone) {
-        return (
-            <OnboardingScreen onComplete={handleOnboardingComplete} />
-        );
+        return <OnboardingScreen onComplete={handleOnboardingComplete} />;
     }
 
-// ── Placeholder — MapScreen goes here next ──────────────
-    return (
-        <View style={styles.placeholder}>
-            <Text style={styles.placeholderEmoji}>🗺️</Text>
-            <Text style={styles.placeholderTitle}>Map Coming Soon</Text>
-            <Text style={styles.placeholderText}>
-                Onboarding complete! The map screen is next.
-            </Text>
-
-            {/* DEV ONLY — remove before demo */}
-            <TouchableOpacity
-                style={styles.resetButton}
-                onPress={() => {
-                    useAppStore.getState().resetOnboarding();
-                    setOnboardingDone(false);
-                }}
-            >
-                <Text style={styles.resetText}>🔄 Reset Onboarding</Text>
-            </TouchableOpacity>
-        </View>
-    );
+    return <MapScreen />;
 }
 
 const styles = StyleSheet.create({
@@ -71,9 +49,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#1a4a2e',
         gap: 16,
-    },
-    placeholderEmoji: {
-        fontSize: 64,
     },
     placeholderTitle: {
         fontSize: 24,
@@ -87,6 +62,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
     },
     resetButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
         marginTop: 24,
         backgroundColor: 'rgba(255,255,255,0.15)',
         paddingVertical: 12,

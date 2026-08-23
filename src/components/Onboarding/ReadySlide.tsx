@@ -20,16 +20,23 @@ import {
     Dimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useAppStore } from '../../store/useAppStore';
 
 const { width } = Dimensions.get('window');
 
-// Human readable labels for each transport mode
-const TRANSPORT_LABELS: Record<string, string> = {
-    walking: '🚶 Walking',
-    biking: '🚴 Biking',
-    golf_cart: '⛳ Golf Cart',
-    car: '🚗 Car',
+const TRANSPORT_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
+    walking: 'walk-outline',
+    biking: 'bicycle-outline',
+    golf_cart: 'golf-outline',
+    car: 'car-outline',
+};
+
+const TRANSPORT_LABEL: Record<string, string> = {
+    walking: 'Walking',
+    biking: 'Biking',
+    golf_cart: 'Golf Cart',
+    car: 'Car',
 };
 
 interface ReadySlideProps {
@@ -37,8 +44,7 @@ interface ReadySlideProps {
 }
 
 export function ReadySlide({ onFinish }: ReadySlideProps) {
-    const { transportMode, canUseStairs, completeOnboarding } =
-        useAppStore();
+    const { transportMode, canUseStairs, completeOnboarding } = useAppStore();
 
     function handleFinish() {
         completeOnboarding();
@@ -46,44 +52,43 @@ export function ReadySlide({ onFinish }: ReadySlideProps) {
     }
 
     return (
-        <LinearGradient
-            colors={['#1a4a2e', '#2d7a4f']}
-            style={styles.container}
-        >
+        <LinearGradient colors={['#1a4a2e', '#2d7a4f']} style={styles.container}>
             <View style={styles.iconContainer}>
-                <Text style={styles.icon}>🗺️</Text>
+                <Ionicons name="checkmark-circle" size={48} color="#ffffff" />
             </View>
 
-            <Text style={styles.title}>You're all set!</Text>
-            <Text style={styles.subtitle}>
-                Here's how we've set up your experience
-            </Text>
+            <Text style={styles.title}>You're all set</Text>
+            <Text style={styles.subtitle}>Here's how we've set up your experience</Text>
 
-            {/* Summary card */}
             <View style={styles.summaryCard}>
                 <View style={styles.summaryRow}>
-                    <Text style={styles.summaryLabel}>Transport</Text>
+                    <View style={styles.summaryLabelRow}>
+                        <Ionicons name={TRANSPORT_ICON[transportMode]} size={18} color="rgba(255,255,255,0.7)" />
+                        <Text style={styles.summaryLabel}>Transport</Text>
+                    </View>
+                    <Text style={styles.summaryValue}>{TRANSPORT_LABEL[transportMode]}</Text>
+                </View>
+
+                <View style={styles.summaryDivider} />
+
+                <View style={styles.summaryRow}>
+                    <View style={styles.summaryLabelRow}>
+                        <MaterialIcons name="accessible" size={18} color="rgba(255,255,255,0.7)" />
+                        <Text style={styles.summaryLabel}>Accessibility</Text>
+                    </View>
                     <Text style={styles.summaryValue}>
-                        {TRANSPORT_LABELS[transportMode]}
+                        {canUseStairs ? 'Stairs OK' : 'Avoiding stairs'}
                     </Text>
                 </View>
 
                 <View style={styles.summaryDivider} />
 
                 <View style={styles.summaryRow}>
-                    <Text style={styles.summaryLabel}>Accessibility</Text>
-                    <Text style={styles.summaryValue}>
-                        {canUseStairs ? '🦵 Stairs OK' : '♿ Avoiding stairs'}
-                    </Text>
-                </View>
-
-                <View style={styles.summaryDivider} />
-
-                <View style={styles.summaryRow}>
-                    <Text style={styles.summaryLabel}>Maps</Text>
-                    <Text style={styles.summaryValue}>
-                        📱 Works offline
-                    </Text>
+                    <View style={styles.summaryLabelRow}>
+                        <Ionicons name="cloud-offline-outline" size={18} color="rgba(255,255,255,0.7)" />
+                        <Text style={styles.summaryLabel}>Maps</Text>
+                    </View>
+                    <Text style={styles.summaryValue}>Works offline</Text>
                 </View>
             </View>
 
@@ -92,95 +97,32 @@ export function ReadySlide({ onFinish }: ReadySlideProps) {
                 for the best offline experience.
             </Text>
 
-            <TouchableOpacity
-                style={styles.button}
-                onPress={handleFinish}
-                activeOpacity={0.9}
-            >
-                <Text style={styles.buttonText}>Explore the Campus 🌲</Text>
+            <TouchableOpacity style={styles.button} onPress={handleFinish} activeOpacity={0.9}>
+                <Text style={styles.buttonText}>Explore the Campus</Text>
+                <Ionicons name="arrow-forward" size={18} color="#1a4a2e" />
             </TouchableOpacity>
         </LinearGradient>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 32,
-        paddingVertical: 60,
-    },
+    container: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, paddingVertical: 60 },
     iconContainer: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        backgroundColor: 'rgba(255,255,255,0.15)',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 24,
+        width: 88, height: 88, borderRadius: 44,
+        backgroundColor: 'rgba(255,255,255,0.15)', alignItems: 'center', justifyContent: 'center', marginBottom: 24,
     },
-    icon: {
-        fontSize: 48,
-    },
-    title: {
-        fontSize: 36,
-        fontWeight: '700',
-        color: '#ffffff',
-        marginBottom: 8,
-    },
-    subtitle: {
-        fontSize: 16,
-        color: 'rgba(255,255,255,0.7)',
-        marginBottom: 32,
-        textAlign: 'center',
-    },
-    summaryCard: {
-        backgroundColor: 'rgba(255,255,255,0.12)',
-        borderRadius: 20,
-        padding: 24,
-        width: '100%',
-        marginBottom: 24,
-    },
-    summaryRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingVertical: 8,
-    },
-    summaryLabel: {
-        fontSize: 15,
-        color: 'rgba(255,255,255,0.6)',
-    },
-    summaryValue: {
-        fontSize: 15,
-        fontWeight: '600',
-        color: '#ffffff',
-    },
-    summaryDivider: {
-        height: 1,
-        backgroundColor: 'rgba(255,255,255,0.15)',
-        marginVertical: 4,
-    },
-    note: {
-        fontSize: 13,
-        color: 'rgba(255,255,255,0.5)',
-        textAlign: 'center',
-        lineHeight: 20,
-        marginBottom: 32,
-        paddingHorizontal: 16,
-    },
+    title: { fontSize: 32, fontWeight: '700', color: '#ffffff', marginBottom: 8 },
+    subtitle: { fontSize: 16, color: 'rgba(255,255,255,0.7)', marginBottom: 32, textAlign: 'center' },
+    summaryCard: { backgroundColor: 'rgba(255,255,255,0.12)', borderRadius: 20, padding: 24, width: '100%', marginBottom: 24 },
+    summaryRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 8 },
+    summaryLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+    summaryLabel: { fontSize: 15, color: 'rgba(255,255,255,0.6)' },
+    summaryValue: { fontSize: 15, fontWeight: '600', color: '#ffffff' },
+    summaryDivider: { height: 1, backgroundColor: 'rgba(255,255,255,0.15)', marginVertical: 4 },
+    note: { fontSize: 13, color: 'rgba(255,255,255,0.5)', textAlign: 'center', lineHeight: 20, marginBottom: 32, paddingHorizontal: 16 },
     button: {
-        backgroundColor: '#ffffff',
-        paddingVertical: 18,
-        paddingHorizontal: 48,
-        borderRadius: 32,
-        alignItems: 'center',
-        width: width - 64,
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+        backgroundColor: '#ffffff', paddingVertical: 18, paddingHorizontal: 48, borderRadius: 32, width: width - 64,
     },
-    buttonText: {
-        fontSize: 18,
-        fontWeight: '700',
-        color: '#1a4a2e',
-    },
+    buttonText: { fontSize: 18, fontWeight: '700', color: '#1a4a2e' },
 });

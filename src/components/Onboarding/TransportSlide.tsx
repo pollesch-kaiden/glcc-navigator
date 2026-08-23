@@ -24,6 +24,7 @@ import {
     Dimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 import { TransportMode } from '../../types/route.types';
 import { useAppStore } from '../../store/useAppStore';
 
@@ -35,36 +36,16 @@ interface TransportSlideProps {
 
 interface TransportOption {
     mode: TransportMode;
-    emoji: string;
+    icon: keyof typeof Ionicons.glyphMap;
     label: string;
     description: string;
 }
 
 const TRANSPORT_OPTIONS: TransportOption[] = [
-    {
-        mode: 'walking',
-        emoji: '🚶',
-        label: 'Walking',
-        description: 'On foot',
-    },
-    {
-        mode: 'biking',
-        emoji: '🚴',
-        label: 'Biking',
-        description: 'Bicycle or e-bike',
-    },
-    {
-        mode: 'golf_cart',
-        emoji: '⛳',
-        label: 'Golf Cart',
-        description: 'Campus golf cart',
-    },
-    {
-        mode: 'car',
-        emoji: '🚗',
-        label: 'Car',
-        description: 'Personal vehicle',
-    },
+    { mode: 'walking', icon: 'walk-outline', label: 'Walking', description: 'On foot/Wheelchair' },
+    { mode: 'biking', icon: 'bicycle-outline', label: 'Biking', description: 'Bicycle or e-bike' },
+    { mode: 'golf_cart', icon: 'golf-outline', label: 'Golf Cart', description: 'Campus golf cart' },
+    { mode: 'car', icon: 'car-outline', label: 'Car', description: 'Personal vehicle' },
 ];
 
 export function TransportSlide({ onNext }: TransportSlideProps) {
@@ -75,10 +56,7 @@ export function TransportSlide({ onNext }: TransportSlideProps) {
     }
 
     return (
-        <LinearGradient
-            colors={['#1a4a2e', '#2d7a4f']}
-            style={styles.container}
-        >
+        <LinearGradient colors={['#1a4a2e', '#2d7a4f']} style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.step}>Step 1 of 2</Text>
                 <Text style={styles.title}>How are you{'\n'}getting around?</Text>
@@ -93,14 +71,18 @@ export function TransportSlide({ onNext }: TransportSlideProps) {
                     return (
                         <TouchableOpacity
                             key={option.mode}
-                            style={[
-                                styles.option,
-                                isSelected && styles.optionSelected,
-                            ]}
+                            style={[styles.option, isSelected && styles.optionSelected]}
                             onPress={() => handleSelect(option.mode)}
                             activeOpacity={0.8}
                         >
-                            <Text style={styles.optionEmoji}>{option.emoji}</Text>
+                            <View style={styles.iconWrapper}>
+                                <Ionicons
+                                    name={option.icon}
+                                    size={26}
+                                    color={isSelected ? '#1a4a2e' : '#ffffff'}
+                                />
+                            </View>
+
                             <View style={styles.optionText}>
                                 <Text
                                     style={[
@@ -119,8 +101,9 @@ export function TransportSlide({ onNext }: TransportSlideProps) {
                                     {option.description}
                                 </Text>
                             </View>
+
                             {isSelected && (
-                                <Text style={styles.checkmark}>✓</Text>
+                                <Ionicons name="checkmark-circle" size={22} color="#1a4a2e" />
                             )}
                         </TouchableOpacity>
                     );
@@ -132,7 +115,8 @@ export function TransportSlide({ onNext }: TransportSlideProps) {
             </Text>
 
             <TouchableOpacity style={styles.button} onPress={onNext}>
-                <Text style={styles.buttonText}>Next →</Text>
+                <Text style={styles.buttonText}>Next</Text>
+                <Ionicons name="arrow-forward" size={18} color="#1a4a2e" />
             </TouchableOpacity>
         </LinearGradient>
     );
@@ -176,17 +160,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(255,255,255,0.1)',
         borderRadius: 16,
-        padding: 20,
+        padding: 18,
         borderWidth: 2,
         borderColor: 'transparent',
     },
     optionSelected: {
-        backgroundColor: 'rgba(255,255,255,0.2)',
+        backgroundColor: 'rgba(255,255,255,0.95)',
         borderColor: '#ffffff',
     },
-    optionEmoji: {
-        fontSize: 32,
-        marginRight: 16,
+    iconWrapper: {
+        width: 44,
+        alignItems: 'center',
+        marginRight: 12,
     },
     optionText: {
         flex: 1,
@@ -198,19 +183,14 @@ const styles = StyleSheet.create({
         marginBottom: 2,
     },
     optionLabelSelected: {
-        color: '#ffffff',
+        color: '#1a2e1a',
     },
     optionDescription: {
         fontSize: 14,
         color: 'rgba(255,255,255,0.55)',
     },
     optionDescriptionSelected: {
-        color: 'rgba(255,255,255,0.75)',
-    },
-    checkmark: {
-        fontSize: 20,
-        color: '#ffffff',
-        fontWeight: '700',
+        color: 'rgba(26,46,26,0.6)',
     },
     changeNote: {
         fontSize: 13,
@@ -219,11 +199,14 @@ const styles = StyleSheet.create({
         marginVertical: 16,
     },
     button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
         backgroundColor: '#ffffff',
         paddingVertical: 16,
         paddingHorizontal: 48,
         borderRadius: 32,
-        alignItems: 'center',
         width: width - 64,
     },
     buttonText: {

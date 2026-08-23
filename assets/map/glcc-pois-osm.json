@@ -1,0 +1,2107 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.9882009,
+          43.8041112
+        ]
+      },
+      "properties": {
+        "id": "osm-relation/3314399",
+        "name": "Green Lake",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "ele",
+          "gnis:feature_id",
+          "landuse",
+          "name",
+          "name:oj",
+          "name:win",
+          "natural",
+          "type",
+          "water",
+          "wikidata",
+          "wikipedia",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0080534,
+          43.8284411
+        ]
+      },
+      "properties": {
+        "id": "osm-relation/4554025",
+        "name": "Golf Courses of Lawsonia",
+        "category": "recreation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "leisure",
+          "name",
+          "operator",
+          "owner",
+          "phone",
+          "type",
+          "website",
+          "@geometry"
+        ],
+        "phone": "+1 920 294 3320",
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0194452,
+          43.816486
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21485673",
+        "name": "Crescent Drive",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.012756,
+          43.8225575
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21486653",
+        "name": "Cliff Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171459,
+          43.8189318
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21486862",
+        "name": "Sunset Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0160298,
+          43.8189379
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21486864",
+        "name": "Sunset Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0207555,
+          43.822001
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21486978",
+        "name": "Stone Fence Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0202105,
+          43.821364
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21486988",
+        "name": "Stone Fence Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0134335,
+          43.8219489
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21487193",
+        "name": "Lawson Drive",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0182167,
+          43.8152735
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21487280",
+        "name": "Hillside Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0154792,
+          43.8243211
+        ]
+      },
+      "properties": {
+        "id": "osm-way/21489911",
+        "name": "Prospect Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.018148,
+          43.8177335
+        ]
+      },
+      "properties": {
+        "id": "osm-way/241382683",
+        "name": "Avenue of Flags Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0174808,
+          43.8156086
+        ]
+      },
+      "properties": {
+        "id": "osm-way/241382686",
+        "name": "Bauer Lodge",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "operator",
+          "rooms",
+          "smoking",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0156542,
+          43.8156091
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262898322",
+        "name": "Roger Williams Inn",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "operator",
+          "rooms",
+          "smoking",
+          "tourism",
+          "website",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0169276,
+          43.8155265
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262898325",
+        "name": "Pillsbury Circle",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0172173,
+          43.8157636
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262898326",
+        "name": "Pillsbury Circle",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "oneway",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0158543,
+          43.8161688
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908385",
+        "name": "Pillsbury Hall",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0159994,
+          43.8159774
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908386",
+        "name": "Worldwide Gifts",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "shop",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017065,
+          43.8162812
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908389",
+        "name": "Kraft Center",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0182293,
+          43.8160216
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908418",
+        "name": "Kern Lodge",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "operator",
+          "rooms",
+          "smoking",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171804,
+          43.8198982
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908432",
+        "name": "Judson Tower",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "man_made",
+          "name",
+          "tower:type",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0199587,
+          43.8153094
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169381",
+        "name": "Hillside Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "oneway",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0267564,
+          43.82155
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169382",
+        "name": "Dawson Prairie",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "grassland",
+          "name",
+          "natural",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0165855,
+          43.8151699
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169390",
+        "name": "Lawson Lodge",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "operator",
+          "rooms",
+          "smoking",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0180155,
+          43.8158455
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169426",
+        "name": "Avenue of The Flags",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0178342,
+          43.816388
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169431",
+        "name": "Rose Garden",
+        "category": "recreation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "leisure",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0158556,
+          43.8168775
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169433",
+        "name": "Friendship Beach",
+        "category": "waterfront",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "name",
+          "natural",
+          "surface",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0166588,
+          43.8152097
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169434",
+        "name": "Memory Lane",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0144097,
+          43.8195428
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169435",
+        "name": "Boat House",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.007609,
+          43.823882
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169436",
+        "name": "Shore Drive",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0213414,
+          43.816497
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263170129",
+        "name": "Brown Door",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0225904,
+          43.8164059
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263170134",
+        "name": "Lone Tree Lodge",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "operator",
+          "rooms",
+          "smoking",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.021352,
+          43.8216041
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263292687",
+        "name": "Robbins South Hall",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0217205,
+          43.822007
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263292688",
+        "name": "Carrol Youth Center",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0226943,
+          43.8178285
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263294159",
+        "name": "Cabin Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0276069,
+          43.8189228
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263294160",
+        "name": "Camp Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0251496,
+          43.8178469
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263299354",
+        "name": "Tower View Circle",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "name",
+          "operator",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0242299,
+          43.8192938
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263299360",
+        "name": "Meadowview Village",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "name",
+          "operator",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0237892,
+          43.8160115
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263299843",
+        "name": "Hillside Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "oneway",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0206855,
+          43.8152453
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263299844",
+        "name": "Hillside Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "bridge",
+          "highway",
+          "name",
+          "oneway",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017969,
+          43.8174894
+        ]
+      },
+      "properties": {
+        "id": "osm-way/264249977",
+        "name": "Missions Meeting Room",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0174434,
+          43.8181845
+        ]
+      },
+      "properties": {
+        "id": "osm-way/264249979",
+        "name": "Rysdon Recreation Center",
+        "category": "recreation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "leisure",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0181,
+          43.8165228
+        ]
+      },
+      "properties": {
+        "id": "osm-way/273844108",
+        "name": "Avenue of The Flags",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "service",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0180458,
+          43.8162055
+        ]
+      },
+      "properties": {
+        "id": "osm-way/273844109",
+        "name": "Avenue of The Flags",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0180216,
+          43.8159952
+        ]
+      },
+      "properties": {
+        "id": "osm-way/273844110",
+        "name": "Avenue of The Flags",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0231913,
+          43.8150866
+        ]
+      },
+      "properties": {
+        "id": "osm-way/308977698",
+        "name": "Winnebago Trail Nature Preserve",
+        "category": "recreation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "leisure",
+          "name",
+          "natural",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.021592,
+          43.8158901
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326175194",
+        "name": "Red Door",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0231701,
+          43.8154804
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178392",
+        "name": "Blue Door",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.023348,
+          43.8151964
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178393",
+        "name": "Warner-Kallman",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0222863,
+          43.8153576
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178394",
+        "name": "White House",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0227604,
+          43.8157237
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178395",
+        "name": "Green/Yellow Door",
+        "category": "accommodation",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0214574,
+          43.8171204
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178396",
+        "name": "Moore",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "tourism",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0148705,
+          43.8257081
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326180517",
+        "name": "Green Lake Conference Center",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "addr:city",
+          "addr:housenumber",
+          "addr:postcode",
+          "addr:state",
+          "addr:street",
+          "area",
+          "name",
+          "phone",
+          "website",
+          "wheelchair",
+          "@geometry"
+        ],
+        "phone": "+1 920 294 3686",
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0223168,
+          43.8171813
+        ]
+      },
+      "properties": {
+        "id": "osm-way/338430577",
+        "name": "Sunset Road",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "oneway",
+          "tiger:cfcc",
+          "tiger:county",
+          "tiger:name_base",
+          "tiger:name_type",
+          "tiger:reviewed",
+          "tiger:zip_left",
+          "tiger:zip_right",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0175155,
+          43.8177592
+        ]
+      },
+      "properties": {
+        "id": "osm-way/338430580",
+        "name": "Troster Art Studios",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "building",
+          "name",
+          "shop",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0153916,
+          43.8158143
+        ]
+      },
+      "properties": {
+        "id": "osm-node/367810491",
+        "name": "Green Lake Conference Center",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "addr:state",
+          "building",
+          "ele",
+          "gnis:feature_id",
+          "name",
+          "source",
+          "website"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.012336,
+          43.8188699
+        ]
+      },
+      "properties": {
+        "id": "osm-node/368884289",
+        "name": "Pigeon Cove",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "addr:state",
+          "ele",
+          "gnis:feature_id",
+          "name",
+          "natural"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0230987,
+          43.8150343
+        ]
+      },
+      "properties": {
+        "id": "osm-way/410953751",
+        "name": "Winnebago Trail",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "highway",
+          "name",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017,
+          43.8211
+        ]
+      },
+      "properties": {
+        "id": "osm-node/585380926",
+        "name": "Barnekow Quarry",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "landuse",
+          "man_made",
+          "name",
+          "note"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0153586,
+          43.8217303
+        ]
+      },
+      "properties": {
+        "id": "osm-way/913710148",
+        "name": "Woodlands 2",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "golf",
+          "name",
+          "par",
+          "ref",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0134542,
+          43.8211721
+        ]
+      },
+      "properties": {
+        "id": "osm-way/913710156",
+        "name": "Woodlands 3",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "golf",
+          "name",
+          "par",
+          "ref",
+          "@geometry"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.01337,
+          43.8157156
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2651320522",
+        "name": "Lone Tree Point",
+        "category": "other",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "name",
+          "place"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171794,
+          43.8162652
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565415",
+        "name": "Bauer Dining Room",
+        "category": "dining",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "amenity",
+          "capacity",
+          "name",
+          "smoking",
+          "takeaway"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0170239,
+          43.8161897
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565416",
+        "name": "Tower Dining Room",
+        "category": "dining",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "amenity",
+          "capacity",
+          "name",
+          "smoking",
+          "takeaway"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0170051,
+          43.8162768
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565417",
+        "name": "Mitchell Dining Room",
+        "category": "dining",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "amenity",
+          "capacity",
+          "name",
+          "smoking",
+          "takeaway"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171446,
+          43.8160601
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565418",
+        "name": "Ollie's Place Internet Cafe",
+        "category": "dining",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "amenity",
+          "name",
+          "smoking",
+          "takeaway"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.015609,
+          43.818754
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2689140486",
+        "name": "No Hurry Boat",
+        "category": "landmark",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "historic",
+          "name"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0168017,
+          43.817564
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2689140487",
+        "name": "Chapel Car Grace",
+        "category": "landmark",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "historic",
+          "name"
+        ],
+        "source": "osm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0154847,
+          43.8154981
+        ]
+      },
+      "properties": {
+        "id": "osm-node/4127002454",
+        "name": "Lone Tree Snackery",
+        "category": "dining",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "",
+        "tags": [
+          "@id",
+          "amenity",
+          "name"
+        ],
+        "source": "osm"
+      }
+    }
+  ]
+}

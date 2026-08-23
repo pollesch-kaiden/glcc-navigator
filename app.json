@@ -1,25 +1,42 @@
 {
   "expo": {
-    "name": "glcc-navigator",
+    "name": "GLCC Navigator",
     "slug": "glcc-navigator",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/branding/icon-mark-green.png",
     "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/branding/icon-mark-green.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a4a2e"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kaidenpollesch.glcc-navigator",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "GLCC Navigator uses your location to show where you are on the campus map and provide turn-by-turn directions.",
+        "NSAppTransportSecurity": {
+          "NSExceptionDomains": {
+            "api.protomaps.com": {
+              "NSExceptionRequiresForwardSecrecy": false,
+              "NSIncludesSubdomains": true,
+              "NSExceptionAllowsInsecureHTTPLoads": false
+            }
+          }
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#1a4a2e",
+        "foregroundImage": "./assets/branding/icon-mark-green.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.kaidenpollesch.glccnavigator"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/branding/icon-mark-green.png"
     },
     "plugins": [
       "@maplibre/maplibre-react-native"

@@ -1,0 +1,1349 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-08-23T04:12:50Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/3314399",
+        "ele": "243",
+        "gnis:feature_id": "1792772",
+        "landuse": "reservoir",
+        "name": "Green Lake",
+        "name:oj": "Ozhaawashko-Zaaga`igan",
+        "name:win": "Teeco",
+        "natural": "water",
+        "type": "multipolygon",
+        "water": "lake",
+        "wikidata": "Q5602756",
+        "wikipedia": "en:Green Lake (Wisconsin)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.9882009,
+          43.8041112
+        ]
+      },
+      "id": "relation/3314399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/4554025",
+        "leisure": "golf_course",
+        "name": "Golf Courses of Lawsonia",
+        "operator": "Oliphant Golf Management",
+        "owner": "Green Lake Conference Center",
+        "phone": "+1 920 294 3320",
+        "type": "multipolygon",
+        "website": "https://www.lawsonia.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0080534,
+          43.8284411
+        ]
+      },
+      "id": "relation/4554025"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21485673",
+        "highway": "residential",
+        "name": "Crescent Drive",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Crescent",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0194452,
+          43.816486
+        ]
+      },
+      "id": "way/21485673"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21486653",
+        "highway": "residential",
+        "name": "Cliff Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Cliff",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.012756,
+          43.8225575
+        ]
+      },
+      "id": "way/21486653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21486862",
+        "highway": "residential",
+        "name": "Sunset Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Sunset",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171459,
+          43.8189318
+        ]
+      },
+      "id": "way/21486862"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21486864",
+        "highway": "residential",
+        "name": "Sunset Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Sunset",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0160298,
+          43.8189379
+        ]
+      },
+      "id": "way/21486864"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21486978",
+        "highway": "residential",
+        "name": "Stone Fence Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Stone Fence",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0207555,
+          43.822001
+        ]
+      },
+      "id": "way/21486978"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21486988",
+        "highway": "residential",
+        "name": "Stone Fence Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Stone Fence",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0202105,
+          43.821364
+        ]
+      },
+      "id": "way/21486988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21487193",
+        "highway": "residential",
+        "name": "Lawson Drive",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Lawson",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0134335,
+          43.8219489
+        ]
+      },
+      "id": "way/21487193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21487280",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0182167,
+          43.8152735
+        ]
+      },
+      "id": "way/21487280"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/21489911",
+        "highway": "residential",
+        "name": "Prospect Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Prospect",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0154792,
+          43.8243211
+        ]
+      },
+      "id": "way/21489911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/241382683",
+        "highway": "residential",
+        "name": "Avenue of Flags Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Avenue of Flags",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.018148,
+          43.8177335
+        ]
+      },
+      "id": "way/241382683"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/241382686",
+        "building": "yes",
+        "name": "Bauer Lodge",
+        "operator": "Green Lake Conference Center",
+        "rooms": "64",
+        "smoking": "no",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0174808,
+          43.8156086
+        ]
+      },
+      "id": "way/241382686"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262898322",
+        "building": "yes",
+        "name": "Roger Williams Inn",
+        "operator": "Green Lake Conference Center",
+        "rooms": "70",
+        "smoking": "no",
+        "tourism": "hotel",
+        "website": "http://rogerwilliamsinn.com",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0156542,
+          43.8156091
+        ]
+      },
+      "id": "way/262898322"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262898325",
+        "highway": "residential",
+        "name": "Pillsbury Circle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0169276,
+          43.8155265
+        ]
+      },
+      "id": "way/262898325"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262898326",
+        "highway": "residential",
+        "name": "Pillsbury Circle",
+        "oneway": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0172173,
+          43.8157636
+        ]
+      },
+      "id": "way/262898326"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262908385",
+        "building": "yes",
+        "name": "Pillsbury Hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0158543,
+          43.8161688
+        ]
+      },
+      "id": "way/262908385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262908386",
+        "building": "yes",
+        "name": "Worldwide Gifts",
+        "shop": "gift",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0159994,
+          43.8159774
+        ]
+      },
+      "id": "way/262908386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262908389",
+        "building": "yes",
+        "name": "Kraft Center",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017065,
+          43.8162812
+        ]
+      },
+      "id": "way/262908389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262908418",
+        "building": "yes",
+        "name": "Kern Lodge",
+        "operator": "Green Lake Conference Center",
+        "rooms": "57",
+        "smoking": "no",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0182293,
+          43.8160216
+        ]
+      },
+      "id": "way/262908418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262908432",
+        "building": "yes",
+        "man_made": "tower",
+        "name": "Judson Tower",
+        "tower:type": "observation",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171804,
+          43.8198982
+        ]
+      },
+      "id": "way/262908432"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169381",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0199587,
+          43.8153094
+        ]
+      },
+      "id": "way/263169381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169382",
+        "grassland": "prairie",
+        "name": "Dawson Prairie",
+        "natural": "grassland",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0267564,
+          43.82155
+        ]
+      },
+      "id": "way/263169382"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169390",
+        "building": "yes",
+        "name": "Lawson Lodge",
+        "operator": "Green Lake Conference Center",
+        "rooms": "10",
+        "smoking": "no",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0165855,
+          43.8151699
+        ]
+      },
+      "id": "way/263169390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169426",
+        "highway": "pedestrian",
+        "name": "Avenue of The Flags",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0180155,
+          43.8158455
+        ]
+      },
+      "id": "way/263169426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169431",
+        "leisure": "garden",
+        "name": "Rose Garden",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0178342,
+          43.816388
+        ]
+      },
+      "id": "way/263169431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169433",
+        "name": "Friendship Beach",
+        "natural": "beach",
+        "surface": "sand",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0158556,
+          43.8168775
+        ]
+      },
+      "id": "way/263169433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169434",
+        "highway": "footway",
+        "name": "Memory Lane",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0166588,
+          43.8152097
+        ]
+      },
+      "id": "way/263169434"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169435",
+        "building": "yes",
+        "name": "Boat House",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0144097,
+          43.8195428
+        ]
+      },
+      "id": "way/263169435"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263169436",
+        "highway": "footway",
+        "name": "Shore Drive",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.007609,
+          43.823882
+        ]
+      },
+      "id": "way/263169436"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263170129",
+        "building": "dormitory",
+        "name": "Brown Door",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0213414,
+          43.816497
+        ]
+      },
+      "id": "way/263170129"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263170134",
+        "building": "yes",
+        "name": "Lone Tree Lodge",
+        "operator": "Green Lake Conference Center",
+        "rooms": "17",
+        "smoking": "no",
+        "tourism": "hotel",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0225904,
+          43.8164059
+        ]
+      },
+      "id": "way/263170134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263292687",
+        "building": "dormitory",
+        "name": "Robbins South Hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.021352,
+          43.8216041
+        ]
+      },
+      "id": "way/263292687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263292688",
+        "building": "yes",
+        "name": "Carrol Youth Center",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0217205,
+          43.822007
+        ]
+      },
+      "id": "way/263292688"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263294159",
+        "highway": "residential",
+        "name": "Cabin Road",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0226943,
+          43.8178285
+        ]
+      },
+      "id": "way/263294159"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263294160",
+        "highway": "residential",
+        "name": "Camp Road",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0276069,
+          43.8189228
+        ]
+      },
+      "id": "way/263294160"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263299354",
+        "name": "Tower View Circle",
+        "operator": "Green Lake Conference Center",
+        "tourism": "camp_site",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0251496,
+          43.8178469
+        ]
+      },
+      "id": "way/263299354"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263299360",
+        "name": "Meadowview Village",
+        "operator": "Green Lake Conference Center",
+        "tourism": "camp_site",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0242299,
+          43.8192938
+        ]
+      },
+      "id": "way/263299360"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263299843",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0237892,
+          43.8160115
+        ]
+      },
+      "id": "way/263299843"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/263299844",
+        "bridge": "yes",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0206855,
+          43.8152453
+        ]
+      },
+      "id": "way/263299844"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/264249977",
+        "building": "yes",
+        "name": "Missions Meeting Room",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017969,
+          43.8174894
+        ]
+      },
+      "id": "way/264249977"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/264249979",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Rysdon Recreation Center",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0174434,
+          43.8181845
+        ]
+      },
+      "id": "way/264249979"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/273844108",
+        "highway": "service",
+        "name": "Avenue of The Flags",
+        "service": "driveway",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0181,
+          43.8165228
+        ]
+      },
+      "id": "way/273844108"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/273844109",
+        "highway": "pedestrian",
+        "name": "Avenue of The Flags",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0180458,
+          43.8162055
+        ]
+      },
+      "id": "way/273844109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/273844110",
+        "highway": "pedestrian",
+        "name": "Avenue of The Flags",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0180216,
+          43.8159952
+        ]
+      },
+      "id": "way/273844110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/308977698",
+        "leisure": "nature_reserve",
+        "name": "Winnebago Trail Nature Preserve",
+        "natural": "wood",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0231913,
+          43.8150866
+        ]
+      },
+      "id": "way/308977698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326175194",
+        "building": "dormitory",
+        "name": "Red Door",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.021592,
+          43.8158901
+        ]
+      },
+      "id": "way/326175194"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326178392",
+        "building": "dormitory",
+        "name": "Blue Door",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0231701,
+          43.8154804
+        ]
+      },
+      "id": "way/326178392"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326178393",
+        "building": "dormitory",
+        "name": "Warner-Kallman",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.023348,
+          43.8151964
+        ]
+      },
+      "id": "way/326178393"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326178394",
+        "building": "house",
+        "name": "White House",
+        "tourism": "guest_house",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0222863,
+          43.8153576
+        ]
+      },
+      "id": "way/326178394"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326178395",
+        "building": "dormitory",
+        "name": "Green/Yellow Door",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0227604,
+          43.8157237
+        ]
+      },
+      "id": "way/326178395"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326178396",
+        "building": "yes",
+        "name": "Moore",
+        "tourism": "guest_house",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0214574,
+          43.8171204
+        ]
+      },
+      "id": "way/326178396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/326180517",
+        "addr:city": "Green Lake",
+        "addr:housenumber": "W2511",
+        "addr:postcode": "54941",
+        "addr:state": "WI",
+        "addr:street": "State Highway 23",
+        "area": "yes",
+        "name": "Green Lake Conference Center",
+        "phone": "+1 920 294 3686",
+        "website": "https://glcc.org/",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0148705,
+          43.8257081
+        ]
+      },
+      "id": "way/326180517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/338430577",
+        "highway": "residential",
+        "name": "Sunset Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Sunset",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0223168,
+          43.8171813
+        ]
+      },
+      "id": "way/338430577"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/338430580",
+        "building": "yes",
+        "name": "Troster Art Studios",
+        "shop": "art",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0175155,
+          43.8177592
+        ]
+      },
+      "id": "way/338430580"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/367810491",
+        "addr:state": "WI",
+        "building": "yes",
+        "ele": "248",
+        "gnis:feature_id": "1843742",
+        "name": "Green Lake Conference Center",
+        "source": "USGS Geonames",
+        "website": "https://glcc.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0153916,
+          43.8158143
+        ]
+      },
+      "id": "node/367810491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/368884289",
+        "addr:state": "WI",
+        "ele": "243",
+        "gnis:feature_id": "1571359",
+        "name": "Pigeon Cove",
+        "natural": "bay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.012336,
+          43.8188699
+        ]
+      },
+      "id": "node/368884289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/410953751",
+        "highway": "footway",
+        "name": "Winnebago Trail",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0230987,
+          43.8150343
+        ]
+      },
+      "id": "way/410953751"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/585380926",
+        "landuse": "quarry",
+        "man_made": "mine",
+        "name": "Barnekow Quarry",
+        "note": "Record <a href=\"http://tin.er.usgs.gov/mineplant/show.php?labno=2757\">2757</a> of the <a href=\"http://tin.er.usgs.gov/mineplant/\">Active mines and mineral plants in the US</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017,
+          43.8211
+        ]
+      },
+      "id": "node/585380926"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/913710148",
+        "golf": "hole",
+        "name": "Woodlands 2",
+        "par": "4",
+        "ref": "2",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0153586,
+          43.8217303
+        ]
+      },
+      "id": "way/913710148"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/913710156",
+        "golf": "hole",
+        "name": "Woodlands 3",
+        "par": "3",
+        "ref": "3",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0134542,
+          43.8211721
+        ]
+      },
+      "id": "way/913710156"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2651320522",
+        "name": "Lone Tree Point",
+        "place": "locality"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.01337,
+          43.8157156
+        ]
+      },
+      "id": "node/2651320522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2685565415",
+        "amenity": "restaurant",
+        "capacity": "540",
+        "name": "Bauer Dining Room",
+        "smoking": "no",
+        "takeaway": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171794,
+          43.8162652
+        ]
+      },
+      "id": "node/2685565415"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2685565416",
+        "amenity": "restaurant",
+        "capacity": "96",
+        "name": "Tower Dining Room",
+        "smoking": "no",
+        "takeaway": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0170239,
+          43.8161897
+        ]
+      },
+      "id": "node/2685565416"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2685565417",
+        "amenity": "restaurant",
+        "capacity": "84",
+        "name": "Mitchell Dining Room",
+        "smoking": "no",
+        "takeaway": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0170051,
+          43.8162768
+        ]
+      },
+      "id": "node/2685565417"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2685565418",
+        "amenity": "restaurant",
+        "name": "Ollie's Place Internet Cafe",
+        "smoking": "no",
+        "takeaway": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171446,
+          43.8160601
+        ]
+      },
+      "id": "node/2685565418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2689140486",
+        "historic": "yes",
+        "name": "No Hurry Boat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.015609,
+          43.818754
+        ]
+      },
+      "id": "node/2689140486"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2689140487",
+        "historic": "yes",
+        "name": "Chapel Car Grace"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0168017,
+          43.817564
+        ]
+      },
+      "id": "node/2689140487"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4127002454",
+        "amenity": "cafe",
+        "name": "Lone Tree Snackery"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0154847,
+          43.8154981
+        ]
+      },
+      "id": "node/4127002454"
+    }
+  ]
+}
