@@ -1,4 +1,15 @@
 {
-  "type": "FeatureCollection",
-  "features": []
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-89.0182293, 43.8160216]
+  },
+  "properties": {
+    "id": "osm-way/262908418",
+    "activities": ["sleeping", "dining"],
+    "amenities": ["wifi", "restrooms"],
+    "accessible": true,
+    "hasStairs": false,
+    "description": "57-room lodge near the Avenue of the Flags."
+  }
 }

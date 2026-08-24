@@ -9,6 +9,7 @@
  *  - shape prop → data prop
  *  - LineLayer → Layer with type="line"
  *  - style prop → paint prop with kebab-case keys
+ *  - source is set explicitly to match GL JS semantics
  *
  * Draws two layers:
  *  1. Wide shadow line underneath for contrast
@@ -45,6 +46,7 @@ export function RouteLayer({ coordinates }: RouteLayerProps) {
             {/* Shadow underneath for contrast */}
             <Layer
                 id="routeShadow"
+                source="routeSource"
                 type="line"
                 layout={{
                     'line-cap': 'round',
@@ -58,6 +60,7 @@ export function RouteLayer({ coordinates }: RouteLayerProps) {
             {/* Main route line */}
             <Layer
                 id="routeLine"
+                source="routeSource"
                 type="line"
                 layout={{
                     'line-cap': 'round',

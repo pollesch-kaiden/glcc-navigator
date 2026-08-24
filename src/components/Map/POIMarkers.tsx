@@ -7,7 +7,10 @@
  * v11 API notes:
  *  - coordinate prop → lngLat prop
  *  - lngLat takes [longitude, latitude] as LngLat type
- *  - onPress takes NativeSyntheticEvent<MarkerEvent>
+ *
+ * Press handling lives on the inner TouchableOpacity only.
+ * Putting onPress on both Marker and the child view fires
+ * the callback twice per tap.
  *
  * Used by: GLCCMap.tsx
  * ─────────────────────────────────────────────────────────
@@ -19,10 +22,8 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    NativeSyntheticEvent,
 } from 'react-native';
 import { Marker } from '@maplibre/maplibre-react-native';
-import type { MarkerEvent } from '@maplibre/maplibre-react-native';
 import { POI, POICategory } from '../../types/poi.types';
 
 interface POIMarkersProps {
@@ -67,9 +68,6 @@ export function POIMarkers({ pois, onPOIPress }: POIMarkersProps) {
                     id={poi.id}
                     lngLat={poi.coordinates}
                     anchor="bottom"
-                    onPress={(_event: NativeSyntheticEvent<MarkerEvent>) => {
-                        onPOIPress(poi);
-                    }}
                 >
                     <TouchableOpacity
                         style={styles.markerWrapper}

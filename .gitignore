@@ -43,3 +43,4 @@ yarn-error.*
 /ios
 /android
 .env
+folder_structure.txt

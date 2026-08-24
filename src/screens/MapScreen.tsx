@@ -53,12 +53,34 @@ const CATEGORY_LABEL: Record<string, string> = {
 };
 
 export function MapScreen() {
-    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs } =
+    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs, setActiveRoute } =
         useAppStore();
 
-    const { hasPermission } = useLocation();
+    const { hasPermission, location } = useLocation();
     const pois = usePOIs();
     const [showPOICard, setShowPOICard] = useState(false);
+
+    // Fallback start point if GPS isn't available — center of GLCC campus
+    const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
+
+    const handleGetDirections = useCallback(() => {
+        if (!selectedPOI) return;
+
+        // const start = location ?? FALLBACK_START;
+
+        // TEMPORARY: hardcoded test location near GLCC since we're
+        // developing remotely and can't use real GPS. Remove this
+        // override once testing on-site, real device location will
+        // then be used automatically via the `location` variable.
+        const start: [number, number] = [-89.0128168, 43.8205914]
+        const end = selectedPOI.coordinates;
+
+        // TEMPORARY: straight-line route until real campus paths are
+        // mapped and the A* graph (graph.json) is populated.
+        // Swap this for useRouting().calculateRoute once that's ready —
+        // the rest of the UI (RouteLayer, activeRoute state) stays the same.
+        setActiveRoute([start, end]);
+    }, [selectedPOI, location, setActiveRoute]);
 
     const handlePOIPress = useCallback(
         (poi: POI) => {
@@ -174,9 +196,7 @@ export function MapScreen() {
                             !canUseStairs &&
                             styles.directionsButtonWarning,
                         ]}
-                        onPress={() => {
-                            console.log('Get directions to:', selectedPOI.name);
-                        }}
+                        onPress={handleGetDirections}
                     >
                         {selectedPOI.hasStairs && !canUseStairs && (
                             <Ionicons

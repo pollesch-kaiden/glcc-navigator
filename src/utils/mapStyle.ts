@@ -1,19 +1,19 @@
 /**
  * mapStyle.ts
  * ─────────────────────────────────────────────────────────
- * Generates the MapLibre style URL for Protomaps tiles.
- * Centralizes the API key and style configuration so it
- * only needs to be changed in one place.
+ * Map configuration and style URL for the GLCC Navigator.
  *
- * Protomaps style options:
- *  - light     → clean light map good for navigation
- *  - dark      → dark mode
- *  - white     → minimal white
- *  - grayscale → muted colors
+ * CONFIRMED: Protomaps tiles load reliably on physical
+ * devices. Occasional timeout errors in the iOS Simulator
+ * are a known CoreSimulator networking bug (-2103/-1001),
+ * unrelated to this code or the Protomaps service itself.
+ * Develop using a physical device for map-related work.
  *
  * Used by: GLCCMap.tsx
  * ─────────────────────────────────────────────────────────
  */
+import { layers,namedFlavor } from '@protomaps/basemaps';
+import {StyleSpecification} from "@maplibre/maplibre-react-native";
 
 const PROTOMAPS_API_KEY = process.env.EXPO_PUBLIC_PROTOMAPS_API_KEY;
 
@@ -24,7 +24,23 @@ if (!PROTOMAPS_API_KEY) {
 // Use demotiles when issues with Protomaps pop up
 // export const MAP_STYLE_URL = 'https://demotiles.maplibre.org/style.json';
 
-export const MAP_STYLE_URL = `https://api.protomaps.com/styles/v5/light/en.json?key=${PROTOMAPS_API_KEY}`;
+export const MAP_STYLE: StyleSpecification = {
+    version: 8,
+    glyphs:
+        'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
+    sprite: 'https://protomaps.github.io/basemaps-assets/sprites/v4/light',
+    sources: {
+        protomaps: {
+            type: 'vector' as const,
+            tiles: [
+                `https://api.protomaps.com/tiles/v4/{z}/{x}/{y}.mvt?key=${PROTOMAPS_API_KEY}`,
+            ],
+            maxzoom: 15,
+            attribution: '<a href="https://openstreetmap.org">© OpenStreetMap</a>',
+        },
+    },
+    layers: layers('protomaps', namedFlavor('light'), { lang: 'en' }),
+};
 
 // ── Edit these four values to change the opening map view ──
 // Format: [west, south, east, north]
@@ -34,6 +50,15 @@ export const GLCC_BOUNDS: [number, number, number, number] = [
     43.808,  // south ← decrease to show more area below
     -89.003, // east  ← decrease to move right edge left
     43.823,  // north ← increase to show more area above
+];
+
+// Slightly wider than GLCC_BOUNDS to give a little breathing
+// room while panning, but prevents scrolling far from campus
+export const MAX_PAN_BOUNDS: [number, number, number, number] = [
+    -89.045, // west
+    43.798,  // south
+    -88.988, // east
+    43.833,  // north
 ];
 
 export const MAP_CONFIG = {
