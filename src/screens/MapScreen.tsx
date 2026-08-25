@@ -18,12 +18,25 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
-import { GLCCMap } from '../components/Map/GLCCMap';
-import { TransportPicker } from '../components/Routing/TransportPicker';
-import { useAppStore } from '../store/useAppStore';
-import { useLocation } from '../hooks/useLocation';
-import { POI, ActivityTag } from '../types/poi.types';
-import { usePOIs } from '../hooks/usePOIs';
+import { GLCCMap } from '@/components/Map/GLCCMap';
+import { GLCC_BOUNDS} from "@/utils/mapStyle";
+import { TransportPicker } from '@/components/Routing/TransportPicker';
+import { useAppStore } from '@/store/useAppStore';
+import { useLocation } from '@/hooks/useLocation';
+import { POI } from '@/types';
+import { usePOIs } from '@/hooks/usePOIs';
+import { useRouting } from '@/hooks/useRouting';
+import graphData from '../../assets/map/graph.json';
+import { Graph } from '@/types/route.types';
+
+// Cast through unknown since JSON imports don't preserve exact tuple types
+const graph = graphData as unknown as Graph;
+
+function isWithinBounds(coords: [number, number], bounds: [number, number, number, number]): boolean {
+    const [lng, lat] = coords;
+    const [west, south, east, north] = bounds;
+    return lng >= west && lng <= east && lat >= south && lat <= north;
+}
 
 // ── Category display config ─────────────────────────────────
 const CATEGORY_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
@@ -53,34 +66,38 @@ const CATEGORY_LABEL: Record<string, string> = {
 };
 
 export function MapScreen() {
-    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs, setActiveRoute } =
+    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs } =
         useAppStore();
 
-    const { hasPermission, location } = useLocation();
+    const { hasPermission } = useLocation();
     const pois = usePOIs();
     const [showPOICard, setShowPOICard] = useState(false);
 
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
 
+    const { calculateRoute } = useRouting(graph);
+
     const handleGetDirections = useCallback(() => {
         if (!selectedPOI) return;
 
+        // Test coordinates near GLCC — replace with real `location`
+        // once testing on-site, change to FALLBACK_START
+        const start: [number, number] = [-89.0128168, 43.8205914];
+
+        // Real GPS location and use FALLBACK_START when not available
         // const start = location ?? FALLBACK_START;
 
-        // TEMPORARY: hardcoded test location near GLCC since we're
-        // developing remotely and can't use real GPS. Remove this
-        // override once testing on-site, real device location will
-        // then be used automatically via the `location` variable.
-        const start: [number, number] = [-89.0128168, 43.8205914]
-        const end = selectedPOI.coordinates;
+        if (
+            !isWithinBounds(start, GLCC_BOUNDS) ||
+            !isWithinBounds(selectedPOI.coordinates, GLCC_BOUNDS)
+        ) {
+            console.warn('⚠️ Start or destination is outside GLCC bounds — routing skipped');
+            return;
+        }
 
-        // TEMPORARY: straight-line route until real campus paths are
-        // mapped and the A* graph (graph.json) is populated.
-        // Swap this for useRouting().calculateRoute once that's ready —
-        // the rest of the UI (RouteLayer, activeRoute state) stays the same.
-        setActiveRoute([start, end]);
-    }, [selectedPOI, location, setActiveRoute]);
+        calculateRoute(start, selectedPOI.nearestNodeId);
+    }, [selectedPOI, calculateRoute]);
 
     const handlePOIPress = useCallback(
         (poi: POI) => {

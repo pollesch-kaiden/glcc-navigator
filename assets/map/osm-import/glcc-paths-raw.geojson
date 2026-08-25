@@ -1,8 +1,18 @@
 {
   "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-08-25T02:51:36Z",
   "features": [
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21484265",
+        "highway": "track",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:reviewed": "no"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -28,22 +38,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21484265",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21484265"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21485267",
+        "highway": "residential",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:reviewed": "no"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -61,23 +67,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21485267",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/21485267"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21485673",
+        "highway": "residential",
+        "name": "Crescent Drive",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Crescent",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -123,23 +128,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21485673",
-        "name": "Crescent Drive",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21485673"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21486653",
+        "highway": "residential",
+        "name": "Cliff Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Cliff",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -181,23 +185,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21486653",
-        "name": "Cliff Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21486653"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21486862",
+        "highway": "residential",
+        "name": "Sunset Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Sunset",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -267,23 +270,20 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21486862",
-        "name": "Sunset Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21486862"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21486864",
+        "highway": "residential",
+        "name": "Sunset Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Sunset",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -309,23 +309,20 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21486864",
-        "name": "Sunset Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21486864"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21486978",
+        "highway": "residential",
+        "name": "Stone Fence Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Stone Fence",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -403,23 +400,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21486978",
-        "name": "Stone Fence Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21486978"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21486988",
+        "highway": "residential",
+        "name": "Stone Fence Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Stone Fence",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -569,23 +565,20 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21486988",
-        "name": "Stone Fence Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21486988"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21487193",
+        "highway": "residential",
+        "name": "Lawson Drive",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Lawson",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -891,23 +884,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21487193",
-        "name": "Lawson Drive",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21487193"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21487280",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -981,23 +973,20 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21487280",
-        "name": "Hillside Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21487280"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21487663",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Ct",
+        "tiger:reviewed": "no"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -1087,23 +1076,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21487663",
-        "name": "Hillside Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21487663"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21489871",
+        "highway": "residential",
+        "name": "Log Cabin Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Log Cabin",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -1441,23 +1429,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21489871",
-        "name": "Log Cabin Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21489871"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21489911",
+        "highway": "residential",
+        "name": "Prospect Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Prospect",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -1719,23 +1706,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21489911",
-        "name": "Prospect Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21489911"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21490300",
+        "highway": "tertiary",
+        "name": "County Road T",
+        "ref": "CTH T",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "County Road T",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2269,23 +2255,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21490300",
-        "name": "County Road T",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21490300"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/21490388",
+        "highway": "residential",
+        "name": "Aisle of Pines Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Aisle of Pines",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2451,23 +2436,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/21490388",
-        "name": "Aisle of Pines Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/21490388"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/241382683",
+        "highway": "residential",
+        "name": "Avenue of Flags Road",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Avenue of Flags",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2521,23 +2505,22 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/241382683",
-        "name": "Avenue of Flags Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/241382683"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/245258879",
+        "highway": "residential",
+        "name": "Shore Drive",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Shore",
+        "tiger:name_type": "Dr",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2691,23 +2674,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/245258879",
-        "name": "Shore Drive",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/245258879"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262898323",
+        "highway": "residential"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2721,23 +2695,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262898323",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262898323"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262898324",
+        "highway": "residential",
+        "oneway": "yes"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2827,23 +2793,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262898324",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/262898324"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262898325",
+        "highway": "residential",
+        "name": "Pillsbury Circle"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2865,23 +2823,16 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262898325",
-        "name": "Pillsbury Circle",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262898325"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262898326",
+        "highway": "residential",
+        "name": "Pillsbury Circle",
+        "oneway": "yes"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -2959,23 +2910,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262898326",
-        "name": "Pillsbury Circle",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/262898326"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908394",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3041,23 +2984,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908394",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908394"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908400",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3099,23 +3034,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908400",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908400"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908405",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3153,23 +3080,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908405",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908405"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908420",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3187,23 +3106,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908420",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908420"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908422",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3245,23 +3156,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908422",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908422"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908435",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3327,22 +3229,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908435",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908435"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908436",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3380,22 +3274,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908436",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908436"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908439",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3421,22 +3307,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908439",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908439"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908441",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3470,22 +3348,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908441",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908441"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908444",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3539,22 +3409,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908444",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908444"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908445",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3568,22 +3430,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908445",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908445"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/262908447",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3597,22 +3451,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/262908447",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/262908447"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169379",
+        "highway": "residential"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3670,23 +3516,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169379",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169379"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169380",
+        "highway": "residential"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3720,23 +3557,23 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169380",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169380"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169381",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3762,23 +3599,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169381",
-        "name": "Hillside Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/263169381"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169383",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3880,20 +3708,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169383",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169383"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169384",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3927,20 +3749,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169384",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169384"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169385",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -3986,20 +3802,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169385",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169385"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169386",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4033,20 +3843,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169386",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169386"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169387",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4092,20 +3896,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169387",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169387"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169388",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4123,20 +3921,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169388",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169388"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169389",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4166,20 +3958,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169389",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169389"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169391",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4201,20 +3987,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169391",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169391"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169392",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4232,20 +4012,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169392",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169392"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169393",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4259,20 +4033,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169393",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169393"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169394",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4286,20 +4054,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169394",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169394"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169395",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4329,20 +4091,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169395",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169395"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169396",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4428,20 +4184,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169396",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169396"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169397",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4463,20 +4213,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169397",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169397"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169398",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4494,20 +4238,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169398",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169398"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169399",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4521,20 +4259,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169399",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169399"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169400",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4556,20 +4288,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169400",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169400"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169401",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4583,20 +4309,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169401",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169401"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169402",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4614,20 +4334,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169402",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169402"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169403",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4641,20 +4355,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169403",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169403"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169404",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4668,20 +4376,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169404",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169404"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169405",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4695,20 +4397,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169405",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169405"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169406",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4770,20 +4466,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169406",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169406"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169407",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4813,20 +4503,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169407",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169407"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169408",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4840,20 +4524,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169408",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169408"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169409",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4903,20 +4581,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169409",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169409"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169410",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -4970,20 +4642,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169410",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169410"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169411",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5001,20 +4667,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169411",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169411"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169412",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5040,20 +4700,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169412",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169412"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169413",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5147,20 +4801,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169413",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169413"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169414",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5178,20 +4826,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169414",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169414"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169415",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5225,20 +4867,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169415",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169415"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169416",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5252,20 +4888,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169416",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169416"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169417",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5283,20 +4913,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169417",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169417"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169418",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5322,20 +4946,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169418",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169418"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169419",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5353,23 +4972,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169419",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169419"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169420",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5455,23 +5066,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169420",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169420"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169421",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5489,20 +5091,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169421",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169421"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169422",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5536,20 +5132,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169422",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169422"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169424",
+        "bridge": "yes",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5563,20 +5154,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169424",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169424"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169426",
+        "highway": "pedestrian",
+        "name": "Avenue of The Flags"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5590,20 +5176,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169426",
-        "name": "Avenue of The Flags",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169426"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169427",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5629,20 +5209,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169427",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169427"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169428",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5668,20 +5242,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169428",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169428"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169429",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5719,20 +5287,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169429",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169429"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169430",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5750,20 +5312,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169430",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169430"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169434",
+        "highway": "footway",
+        "name": "Memory Lane"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5805,20 +5362,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169434",
-        "name": "Memory Lane",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169434"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169436",
+        "highway": "footway",
+        "name": "Shore Drive"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5916,20 +5468,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169436",
-        "name": "Shore Drive",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169436"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263169545",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5947,20 +5493,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263169545",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263169545"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170119",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -5998,20 +5538,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170119",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170119"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170120",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6029,20 +5563,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170120",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170120"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170121",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6060,20 +5588,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170121",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170121"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170122",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6087,20 +5609,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170122",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170122"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170123",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6114,20 +5630,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170123",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170123"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170124",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6141,20 +5651,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170124",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170124"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170125",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6168,20 +5672,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170125",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170125"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170126",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6207,20 +5705,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170126",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170126"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170127",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6254,20 +5746,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170127",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170127"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170130",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6293,23 +5780,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170130",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170130"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170132",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6347,23 +5826,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170132",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170132"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263170135",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6385,23 +5856,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263170135",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263170135"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263292689",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6415,20 +5877,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263292689",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263292689"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263292690",
+        "highway": "residential",
+        "name": "Hillside Court"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6462,23 +5919,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263292690",
-        "name": "Hillside Court",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263292690"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263292693",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6508,22 +5956,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263292693",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263292693"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293441",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6561,22 +6001,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293441",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293441"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293442",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6602,20 +6034,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293442",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293442"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293443",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6713,20 +6139,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293443",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293443"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293444",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6748,23 +6169,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293444",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293444"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293445",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6786,23 +6199,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293445",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293445"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293446",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6820,23 +6225,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293446",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293446"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293447",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6874,20 +6270,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293447",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293447"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263293448",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6901,20 +6291,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263293448",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263293448"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294157",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6956,22 +6340,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294157",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294157"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294158",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -6985,22 +6361,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294158",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294158"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294159",
+        "highway": "residential",
+        "name": "Cabin Road"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7074,23 +6443,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294159",
-        "name": "Cabin Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294159"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294160",
+        "highway": "residential",
+        "name": "Camp Road"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7264,23 +6625,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294160",
-        "name": "Camp Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294160"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294161",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7354,22 +6706,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294161",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294161"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294162",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7391,23 +6736,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294162",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294162"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294163",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7469,22 +6805,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294163",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294163"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294165",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7542,22 +6870,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294165",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294165"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294166",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7579,22 +6899,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294166",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294166"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294167",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7608,22 +6920,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294167",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294167"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294168",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7645,22 +6949,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294168",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294168"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294169",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7714,22 +7010,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294169",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294169"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294170",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7811,22 +7099,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294170",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294170"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263294171",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7848,22 +7128,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263294171",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263294171"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263299738",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -7957,20 +7229,23 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263299738",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263299738"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263299843",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -8136,23 +7411,24 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263299843",
-        "name": "Hillside Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/263299843"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263299844",
+        "bridge": "yes",
+        "highway": "residential",
+        "name": "Hillside Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Hillside",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -8166,23 +7442,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263299844",
-        "name": "Hillside Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/263299844"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263299846",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -8448,20 +7719,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263299846",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263299846"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/263299847",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -8703,20 +7972,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/263299847",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/263299847"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249230",
+        "golf": "cartpath",
+        "golf_cart": "designated",
+        "highway": "service",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -8910,23 +8177,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249230",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249230"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249231",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9108,20 +8370,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249231",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249231"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249232",
+        "golf": "cartpath",
+        "golf_cart": "designated",
+        "highway": "service",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9227,23 +8487,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249232",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249232"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249234",
+        "golf": "cartpath",
+        "golf_cart": "designated",
+        "highway": "service",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9433,23 +8688,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249234",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249234"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249238",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9475,22 +8721,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249238",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249238"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249239",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9572,22 +8810,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249239",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249239"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249240",
+        "highway": "residential"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9613,23 +8843,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249240",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249240"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/264249978",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9687,22 +8908,16 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/264249978",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/264249978"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/273844108",
+        "highway": "service",
+        "name": "Avenue of The Flags",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9720,23 +8935,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/273844108",
-        "name": "Avenue of The Flags",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/273844108"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/273844109",
+        "highway": "pedestrian",
+        "name": "Avenue of The Flags"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9750,20 +8957,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/273844109",
-        "name": "Avenue of The Flags",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/273844109"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/273844110",
+        "highway": "pedestrian",
+        "name": "Avenue of The Flags"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9777,20 +8979,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/273844110",
-        "name": "Avenue of The Flags",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/273844110"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/273844111",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9804,20 +9000,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/273844111",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/273844111"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/273844113",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9855,23 +9046,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/273844113",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/273844113"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/326175196",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9885,20 +9067,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/326175196",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/326175196"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/326176498",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9916,20 +9092,17 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/326176498",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/326176498"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/326177092",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -9995,20 +9168,23 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/326177092",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/326177092"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/338430577",
+        "highway": "residential",
+        "name": "Sunset Road",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Green Lake, WI",
+        "tiger:name_base": "Sunset",
+        "tiger:name_type": "Rd",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "54941",
+        "tiger:zip_right": "54941"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10130,23 +9306,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/338430577",
-        "name": "Sunset Road",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/338430577"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/338430579",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10164,20 +9331,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/338430579",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/338430579"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/338430581",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10203,23 +9365,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/338430581",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/338430581"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/339344477",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10273,20 +9426,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/339344477",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/339344477"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/339344479",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10308,20 +9455,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/339344479",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/339344479"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/406256234",
+        "highway": "service",
+        "service": "parking_aisle"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10351,23 +9493,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/406256234",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/406256234"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/406256788",
+        "highway": "service",
+        "service": "parking_aisle"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10393,23 +9527,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/406256788",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/406256788"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/406257431",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10423,20 +9548,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/406257431",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/406257431"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/406257433",
+        "highway": "service",
+        "service": "parking_aisle"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10474,23 +9594,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/406257433",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/406257433"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/406257434",
+        "highway": "steps"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10504,20 +9615,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/406257434",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": true,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/406257434"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/406257435",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10539,20 +9644,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/406257435",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/406257435"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410953746",
+        "highway": "residential"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10582,23 +9681,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410953746",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410953746"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410953747",
+        "highway": "residential",
+        "oneway": "yes"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10628,23 +9719,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410953747",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": false,
-        "source": "osm"
-      }
+      "id": "way/410953747"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410953748",
+        "highway": "residential"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10670,23 +9752,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410953748",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410953748"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410953749",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10720,23 +9794,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410953749",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410953749"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410953750",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10782,23 +9848,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410953750",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410953750"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410953751",
+        "highway": "footway",
+        "name": "Winnebago Trail"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10928,20 +9986,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410953751",
-        "name": "Winnebago Trail",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410953751"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410954124",
+        "highway": "footway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -10975,20 +10027,14 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410954124",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410954124"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/410954125",
+        "highway": "track"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11058,22 +10104,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/410954125",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/410954125"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/818494089",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11091,23 +10130,16 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/818494089",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/818494089"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/826298124",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11169,20 +10201,18 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/826298124",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/826298124"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/826307907",
+        "golf": "cartpath",
+        "golf_cart": "designated",
+        "highway": "service",
+        "motor_vehicle": "yes",
+        "surface": "paved"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11280,23 +10310,16 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/826307907",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/826307907"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/913710152",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11346,20 +10369,16 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/913710152",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/913710152"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/913710153",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11389,20 +10408,16 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/913710153",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/913710153"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/913710155",
+        "foot": "designated",
+        "golf": "path",
+        "highway": "path"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11432,20 +10447,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/913710155",
-        "name": "",
-        "transportModes": [
-          "walking"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/913710155"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/960638198",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11463,23 +10473,15 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/960638198",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/960638198"
     },
     {
       "type": "Feature",
+      "properties": {
+        "@id": "way/972826045",
+        "highway": "service",
+        "service": "driveway"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -11497,20 +10499,7 @@
           ]
         ]
       },
-      "properties": {
-        "id": "osm-way/972826045",
-        "name": "",
-        "transportModes": [
-          "walking",
-          "biking",
-          "golf_cart",
-          "car"
-        ],
-        "surface": "paved",
-        "hasStairs": false,
-        "bidirectional": true,
-        "source": "osm"
-      }
+      "id": "way/972826045"
     }
   ]
 }

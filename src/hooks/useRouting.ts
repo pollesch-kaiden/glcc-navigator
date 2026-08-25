@@ -17,10 +17,10 @@
  * ─────────────────────────────────────────────────────────
  */
 import { useCallback, useState } from 'react';
-import { findRoute } from '../routing/astar';
-import { findNearestNode } from '../utils/haversine';
-import { useAppStore } from '../store/useAppStore';
-import { Graph } from '../types/route.types';
+import { findRoute } from '@/routing/astar';
+import { findNearestNode } from '@/utils/haversine';
+import { useAppStore } from '@/store/useAppStore';
+import { Graph } from '@/types';
 
 // We'll swap this for real data once we have GeoJSON
 const EMPTY_GRAPH: Graph = { nodes: {}, edges: {} };

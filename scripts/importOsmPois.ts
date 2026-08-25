@@ -36,6 +36,11 @@ if (!fs.existsSync(inputFile)) {
 
 const raw = JSON.parse(fs.readFileSync(inputFile, 'utf-8'));
 
+// Add this near the top with your other mapping functions
+function isRoadOrPath(tags: Record<string, string>): boolean {
+    return !!tags.highway;
+}
+
 // ── OSM tag → our category mapping ──────────────────────────
 function mapCategory(tags: Record<string, string>): string {
     if (tags.tourism === 'hotel' || tags.building === 'dormitory') return 'accommodation';
@@ -74,6 +79,12 @@ for (const feature of raw.features) {
     const name = tags.name;
 
     if (!name) {
+        skipped++;
+        continue;
+    }
+
+    //Skip Roads & Paths POIs - those blong in glcc-paths.geojson not POIs
+    if (isRoadOrPath(tags)) {
         skipped++;
         continue;
     }

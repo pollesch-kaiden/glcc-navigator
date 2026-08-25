@@ -8,10 +8,13 @@
  *
  * What it does:
  *  1. Reads assets/map/glcc-paths.geojson
- *  2. Converts each LineString path into a graph edge
- *  3. Creates nodes at path endpoints, merging any nodes
- *     within 5 meters of each other (snap threshold)
- *  4. Calculates real distances using haversine formula
+ *  2. Treats EVERY coordinate point along EVERY path as a
+ *     potential node — not just the start/end points.
+ *  3. Creates an edge between each consecutive pair of points
+ *     within a path.
+ *  4. Snaps nearby points (within 5m) to the same node —
+ *     this is what lets crossing paths actually connect,
+ *     since they'll share a node at/near their intersection.
  *  5. Outputs assets/map/graph.json
  *
  * You never edit graph.json directly — always edit
@@ -21,6 +24,7 @@
  * Output: assets/map/graph.json
  * ─────────────────────────────────────────────────────────
  */
+
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -54,7 +58,6 @@ const outputFile = path.resolve(
 
 if (!fs.existsSync(pathsFile)) {
     console.error('❌ glcc-paths.geojson not found in assets/map/');
-    console.error('   Create this file first before running the generator');
     process.exit(1);
 }
 
@@ -65,24 +68,50 @@ const edges: Record<string, any> = {};
 let nodeCount = 1;
 let edgeCount = 1;
 
+// Simple spatial index — group candidate nodes by rounded
+// coordinate to avoid checking every node against every point
+// (this matters more once path counts grow much larger)
+const spatialBuckets = new Map<string, string[]>();
+
+function bucketKey(coords: number[]): string {
+    // ~0.0005 degrees ≈ 55m — coarse enough to catch nearby
+    // points but keeps bucket lookups fast
+    const bx = Math.round(coords[0] / 0.0005);
+    const by = Math.round(coords[1] / 0.0005);
+    return `${bx},${by}`;
+}
+
 function getOrCreateNode(coords: number[]): string {
-    // Check if a node already exists within snap threshold
-    for (const [id, node] of Object.entries(nodes)) {
-        if (haversine(coords, (node as any).coordinates) < SNAP_THRESHOLD_METERS) {
+    const key = bucketKey(coords);
+    const candidates = [
+        ...(spatialBuckets.get(key) ?? []),
+        ...(spatialBuckets.get(`${Number(key.split(',')[0]) - 1},${key.split(',')[1]}`) ?? []),
+        ...(spatialBuckets.get(`${Number(key.split(',')[0]) + 1},${key.split(',')[1]}`) ?? []),
+        ...(spatialBuckets.get(`${key.split(',')[0]},${Number(key.split(',')[1]) - 1}`) ?? []),
+        ...(spatialBuckets.get(`${key.split(',')[0]},${Number(key.split(',')[1]) + 1}`) ?? []),
+    ];
+
+    for (const id of candidates) {
+        if (haversine(coords, nodes[id].coordinates) < SNAP_THRESHOLD_METERS) {
             return id;
         }
     }
-    // Create a new node
+
     const id = pad(nodeCount++, 'node');
     nodes[id] = {
         id,
         coordinates: [coords[0], coords[1]],
         connectedEdges: [],
     };
+
+    if (!spatialBuckets.has(key)) spatialBuckets.set(key, []);
+    spatialBuckets.get(key)!.push(id);
+
     return id;
 }
 
 let skipped = 0;
+let segmentCount = 0;
 
 for (const feature of geojson.features) {
     if (feature.geometry.type !== 'LineString') {
@@ -98,32 +127,36 @@ for (const feature of geojson.features) {
         continue;
     }
 
-    // Create or find nodes at start and end of this path
-    const startId = getOrCreateNode(coords[0]);
-    const endId = getOrCreateNode(coords[coords.length - 1]);
-
-    // Calculate total distance along the path
-    let distance = 0;
+    // Create an edge between EVERY consecutive pair of points
+    // in this path, not just the first and last. This is what
+    // allows paths that cross mid-way (sharing a coordinate)
+    // to actually connect in the graph.
     for (let i = 0; i < coords.length - 1; i++) {
-        distance += haversine(coords[i], coords[i + 1]);
+        const fromId = getOrCreateNode(coords[i]);
+        const toId = getOrCreateNode(coords[i + 1]);
+
+        if (fromId === toId) continue; // skip zero-length segments
+
+        const distance = haversine(coords[i], coords[i + 1]);
+
+        const edgeId = pad(edgeCount++, 'edge');
+
+        edges[edgeId] = {
+            id: edgeId,
+            from: fromId,
+            to: toId,
+            transportModes: props.transportModes ?? ['walking'],
+            hasStairs: props.hasStairs ?? false,
+            distanceMeters: Math.round(distance),
+            bidirectional: props.bidirectional ?? true,
+            surface: props.surface ?? 'paved',
+        };
+
+        nodes[fromId].connectedEdges.push(edgeId);
+        nodes[toId].connectedEdges.push(edgeId);
+
+        segmentCount++;
     }
-
-    const edgeId = pad(edgeCount++, 'edge');
-
-    edges[edgeId] = {
-        id: edgeId,
-        from: startId,
-        to: endId,
-        transportModes: props.transportModes ?? ['walking'],
-        hasStairs: props.hasStairs ?? false,
-        distanceMeters: Math.round(distance),
-        bidirectional: props.bidirectional ?? true,
-        surface: props.surface ?? 'paved',
-    };
-
-    // Connect edge to both nodes
-    nodes[startId].connectedEdges.push(edgeId);
-    nodes[endId].connectedEdges.push(edgeId);
 }
 
 fs.writeFileSync(outputFile, JSON.stringify({ nodes, edges }, null, 2));
@@ -131,6 +164,7 @@ fs.writeFileSync(outputFile, JSON.stringify({ nodes, edges }, null, 2));
 console.log('✅ Graph generated successfully!');
 console.log(`   Nodes: ${Object.keys(nodes).length}`);
 console.log(`   Edges: ${Object.keys(edges).length}`);
+console.log(`   Path segments processed: ${segmentCount}`);
 if (skipped > 0) {
     console.log(`   Skipped: ${skipped} non-LineString features`);
 }

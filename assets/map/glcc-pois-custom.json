@@ -1,15 +1,632 @@
 {
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [-89.0182293, 43.8160216]
-  },
-  "properties": {
-    "id": "osm-way/262908418",
-    "activities": ["sleeping", "dining"],
-    "amenities": ["wifi", "restrooms"],
-    "accessible": true,
-    "hasStairs": false,
-    "description": "57-room lodge near the Avenue of the Flags."
-  }
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.9882009,
+          43.8041112
+        ]
+      },
+      "properties": {
+        "id": "osm-relation/3314399",
+        "nearestNodeId": "node-804"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0080534,
+          43.8284411
+        ]
+      },
+      "properties": {
+        "id": "osm-relation/4554025",
+        "nearestNodeId": "node-1337"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0174808,
+          43.8156086
+        ]
+      },
+      "properties": {
+        "id": "osm-way/241382686",
+        "nearestNodeId": "node-713"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0156542,
+          43.8156091
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262898322",
+        "nearestNodeId": "node-740"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0158543,
+          43.8161688
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908385",
+        "nearestNodeId": "node-1432"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0159994,
+          43.8159774
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908386",
+        "nearestNodeId": "node-826"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017065,
+          43.8162812
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908389",
+        "nearestNodeId": "node-720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0182293,
+          43.8160216
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908418",
+        "nearestNodeId": "node-773",
+        "activities": [
+          "sleeping",
+          "dining"
+        ],
+        "amenities": [
+          "wifi",
+          "restrooms"
+        ],
+        "accessible": true,
+        "hasStairs": false,
+        "description": "57-room lodge near the Avenue of the Flags."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171804,
+          43.8198982
+        ]
+      },
+      "properties": {
+        "id": "osm-way/262908432",
+        "nearestNodeId": "node-1509"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0267564,
+          43.82155
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169382",
+        "nearestNodeId": "node-657"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0165855,
+          43.8151699
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169390",
+        "nearestNodeId": "node-707"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0178342,
+          43.816388
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169431",
+        "nearestNodeId": "node-769"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0158556,
+          43.8168775
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169433",
+        "nearestNodeId": "node-567"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0144097,
+          43.8195428
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263169435",
+        "nearestNodeId": "node-122"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0213414,
+          43.816497
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263170129",
+        "nearestNodeId": "node-1429"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0225904,
+          43.8164059
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263170134",
+        "nearestNodeId": "node-837"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.021352,
+          43.8216041
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263292687",
+        "nearestNodeId": "node-047"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0217205,
+          43.822007
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263292688",
+        "nearestNodeId": "node-845"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0251496,
+          43.8178469
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263299354",
+        "nearestNodeId": "node-986"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0242299,
+          43.8192938
+        ]
+      },
+      "properties": {
+        "id": "osm-way/263299360",
+        "nearestNodeId": "node-965"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017969,
+          43.8174894
+        ]
+      },
+      "properties": {
+        "id": "osm-way/264249977",
+        "nearestNodeId": "node-1384"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0174434,
+          43.8181845
+        ]
+      },
+      "properties": {
+        "id": "osm-way/264249979",
+        "nearestNodeId": "node-1375"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0231913,
+          43.8150866
+        ]
+      },
+      "properties": {
+        "id": "osm-way/308977698",
+        "nearestNodeId": "node-1059"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.021592,
+          43.8158901
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326175194",
+        "nearestNodeId": "node-834"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0231701,
+          43.8154804
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178392",
+        "nearestNodeId": "node-1059"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.023348,
+          43.8151964
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178393",
+        "nearestNodeId": "node-1059"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0222863,
+          43.8153576
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178394",
+        "nearestNodeId": "node-1057"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0227604,
+          43.8157237
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178395",
+        "nearestNodeId": "node-1003"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0214574,
+          43.8171204
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326178396",
+        "nearestNodeId": "node-622"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0148705,
+          43.8257081
+        ]
+      },
+      "properties": {
+        "id": "osm-way/326180517",
+        "nearestNodeId": "node-289"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0175155,
+          43.8177592
+        ]
+      },
+      "properties": {
+        "id": "osm-way/338430580",
+        "nearestNodeId": "node-1379"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0153916,
+          43.8158143
+        ]
+      },
+      "properties": {
+        "id": "osm-node/367810491",
+        "nearestNodeId": "node-1436"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.012336,
+          43.8188699
+        ]
+      },
+      "properties": {
+        "id": "osm-node/368884289",
+        "nearestNodeId": "node-125"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.017,
+          43.8211
+        ]
+      },
+      "properties": {
+        "id": "osm-node/585380926",
+        "nearestNodeId": "node-863"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0153586,
+          43.8217303
+        ]
+      },
+      "properties": {
+        "id": "osm-way/913710148",
+        "nearestNodeId": "node-1282"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0134542,
+          43.8211721
+        ]
+      },
+      "properties": {
+        "id": "osm-way/913710156",
+        "nearestNodeId": "node-1399"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.01337,
+          43.8157156
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2651320522",
+        "nearestNodeId": "node-1436"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171794,
+          43.8162652
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565415",
+        "nearestNodeId": "node-788"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0170239,
+          43.8161897
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565416",
+        "nearestNodeId": "node-720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0170051,
+          43.8162768
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565417",
+        "nearestNodeId": "node-720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171446,
+          43.8160601
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2685565418",
+        "nearestNodeId": "node-1433"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.015609,
+          43.818754
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2689140486",
+        "nearestNodeId": "node-042"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0168017,
+          43.817564
+        ]
+      },
+      "properties": {
+        "id": "osm-node/2689140487",
+        "nearestNodeId": "node-581"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0154847,
+          43.8154981
+        ]
+      },
+      "properties": {
+        "id": "osm-node/4127002454",
+        "nearestNodeId": "node-744"
+      }
+    }
+  ]
 }
