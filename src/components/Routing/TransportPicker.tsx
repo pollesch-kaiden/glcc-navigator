@@ -15,8 +15,9 @@ import {
     ScrollView,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { TransportMode } from '../../types/route.types';
-import { useAppStore } from '../../store/useAppStore';
+import { TransportMode } from '@/types';
+import { useAppStore } from '@/store/useAppStore';
+import {TransportIcon} from "@/components/Routing/TransportIcon";
 
 interface TransportOption {
     mode: TransportMode;
@@ -24,11 +25,11 @@ interface TransportOption {
     label: string;
 }
 
-const TRANSPORT_OPTIONS: TransportOption[] = [
-    { mode: 'walking',   icon: 'walk-outline',    label: 'Walk' },
-    { mode: 'biking',    icon: 'bicycle-outline', label: 'Bike' },
-    { mode: 'golf_cart', icon: 'golf-outline',    label: 'Cart' },
-    { mode: 'car',       icon: 'car-outline',     label: 'Car' },
+const TRANSPORT_OPTIONS: { mode: TransportMode; label: string }[] = [
+    { mode: 'walking', label: 'Walk' },
+    { mode: 'biking', label: 'Bike' },
+    { mode: 'golf_cart', label: 'Cart' },
+    { mode: 'car', label: 'Car' },
 ];
 
 export function TransportPicker() {
@@ -56,8 +57,8 @@ export function TransportPicker() {
                             onPress={() => handleSelect(option.mode)}
                             activeOpacity={0.8}
                         >
-                            <Ionicons
-                                name={option.icon}
+                            <TransportIcon
+                                mode={option.mode}
                                 size={16}
                                 color={isSelected ? '#ffffff' : '#1a2e1a'}
                             />

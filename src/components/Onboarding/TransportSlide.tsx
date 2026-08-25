@@ -25,8 +25,9 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import { TransportMode } from '../../types/route.types';
-import { useAppStore } from '../../store/useAppStore';
+import { TransportMode } from '@/types';
+import {TransportIcon} from "@/components/Routing/TransportIcon";
+import { useAppStore } from '@/store/useAppStore';
 
 const { width } = Dimensions.get('window');
 
@@ -41,11 +42,11 @@ interface TransportOption {
     description: string;
 }
 
-const TRANSPORT_OPTIONS: TransportOption[] = [
-    { mode: 'walking', icon: 'walk-outline', label: 'Walking', description: 'On foot/Wheelchair' },
-    { mode: 'biking', icon: 'bicycle-outline', label: 'Biking', description: 'Bicycle or e-bike' },
-    { mode: 'golf_cart', icon: 'golf-outline', label: 'Golf Cart', description: 'Campus golf cart' },
-    { mode: 'car', icon: 'car-outline', label: 'Car', description: 'Personal vehicle' },
+const TRANSPORT_OPTIONS: { mode: TransportMode; label: string; description: string }[] = [
+    { mode: 'walking', label: 'Walking', description: 'On foot' },
+    { mode: 'biking', label: 'Biking', description: 'Bicycle or e-bike' },
+    { mode: 'golf_cart', label: 'Golf Cart', description: 'Campus golf cart' },
+    { mode: 'car', label: 'Car', description: 'Personal vehicle' },
 ];
 
 export function TransportSlide({ onNext }: TransportSlideProps) {
@@ -76,8 +77,8 @@ export function TransportSlide({ onNext }: TransportSlideProps) {
                             activeOpacity={0.8}
                         >
                             <View style={styles.iconWrapper}>
-                                <Ionicons
-                                    name={option.icon}
+                                <TransportIcon
+                                    mode={option.mode}
                                     size={26}
                                     color={isSelected ? '#1a4a2e' : '#ffffff'}
                                 />

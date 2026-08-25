@@ -21,7 +21,9 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { useAppStore } from '../../store/useAppStore';
+import {TransportIcon} from "@/components/Routing/TransportIcon";
+import {TransportMode} from "@/types";
+import { useAppStore } from '@/store/useAppStore';
 
 const { width } = Dimensions.get('window');
 
@@ -63,8 +65,11 @@ export function ReadySlide({ onFinish }: ReadySlideProps) {
             <View style={styles.summaryCard}>
                 <View style={styles.summaryRow}>
                     <View style={styles.summaryLabelRow}>
-                        <Ionicons name={TRANSPORT_ICON[transportMode]} size={18} color="rgba(255,255,255,0.7)" />
-                        <Text style={styles.summaryLabel}>Transport</Text>
+                        <TransportIcon
+                            mode={transportMode as TransportMode}
+                            size={18}
+                            color="rgba(255,255,255,0.7)"
+                        />                        <Text style={styles.summaryLabel}>Transport</Text>
                     </View>
                     <Text style={styles.summaryValue}>{TRANSPORT_LABEL[transportMode]}</Text>
                 </View>

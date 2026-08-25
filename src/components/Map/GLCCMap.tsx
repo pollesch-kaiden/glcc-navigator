@@ -27,12 +27,12 @@ import {
     UserLocation,
 } from '@maplibre/maplibre-react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { MAP_STYLE, MAP_CONFIG, GLCC_BOUNDS, MAX_PAN_BOUNDS } from '../../utils/mapStyle';
+import { MAP_STYLE, MAP_CONFIG, GLCC_BOUNDS, MAX_PAN_BOUNDS } from '@/utils/mapStyle';
 import { RouteLayer } from './RouteLayer';
 import { POIMarkers } from './POIMarkers';
 import { CoordinatePicker } from './CoordinatePicker';
-import { useAppStore } from '../../store/useAppStore';
-import { POI } from '../../types/poi.types';
+import { useAppStore } from '@/store/useAppStore';
+import { POI } from '@/types';
 
 interface GLCCMapProps {
     pois: POI[];
@@ -40,7 +40,7 @@ interface GLCCMapProps {
 }
 
 export function GLCCMap({ pois, onPOIPress }: GLCCMapProps) {
-    const { activeRoute } = useAppStore();
+    const { activeRoute, finalApproachRoute } = useAppStore();
 
     // ── Retry-on-failure state ─────────────────────────────
     const [mapKey, setMapKey] = useState(0);
@@ -104,7 +104,10 @@ export function GLCCMap({ pois, onPOIPress }: GLCCMapProps) {
                 />
 
                 {activeRoute && activeRoute.length >= 2 && (
-                    <RouteLayer coordinates={activeRoute} />
+                    <RouteLayer
+                        coordinates={activeRoute}
+                        approachCoordinates={finalApproachRoute}
+                    />
                 )}
 
                 <POIMarkers pois={pois} onPOIPress={onPOIPress} />

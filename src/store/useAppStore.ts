@@ -11,7 +11,12 @@
  *
  * Session state (resets on app close):
  *  - selectedPOI: currently tapped POI
- *  - activeRoute: current A* calculated route coordinates
+ *  - activeRoute: current route coordinates (main segment —
+ *    either the full route, or the vehicle portion of a
+ *    multi-modal route)
+ *  - finalApproachRoute: the last-mile walking segment when
+ *    a vehicle mode can't reach the destination directly —
+ *    rendered as a dashed/lighter line, null otherwise
  *  - activeFilters: active POI filter tags
  *  - isLoadingRoute: route calculation in progress
  *  - routeError: error message if routing fails
@@ -19,6 +24,7 @@
  * Used by: all screens and most components
  * ─────────────────────────────────────────────────────────
  */
+
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,15 +33,14 @@ import { POI, ActivityTag, POICategory } from '../types/poi.types';
 
 interface AppState {
     // ─── Persisted User Preferences ───────────────────────────
-    // These survive app close and reopen
     transportMode: TransportMode;
     canUseStairs: boolean;
     hasCompletedOnboarding: boolean;
 
     // ─── Session State ─────────────────────────────────────────
-    // These reset when app closes
     selectedPOI: POI | null;
     activeRoute: [number, number][] | null;
+    finalApproachRoute: [number, number][] | null;
     activeFilters: (ActivityTag | POICategory | string)[];
     isLoadingRoute: boolean;
     routeError: string | null;
@@ -49,6 +54,7 @@ interface AppState {
     // ─── Actions: Navigation ───────────────────────────────────
     setSelectedPOI: (poi: POI | null) => void;
     setActiveRoute: (route: [number, number][] | null) => void;
+    setFinalApproachRoute: (route: [number, number][] | null) => void;
     setIsLoadingRoute: (loading: boolean) => void;
     setRouteError: (error: string | null) => void;
     clearRoute: () => void;
@@ -70,6 +76,7 @@ export const useAppStore = create<AppState>()(
             hasCompletedOnboarding: false,
             selectedPOI: null,
             activeRoute: null,
+            finalApproachRoute: null,
             activeFilters: [],
             isLoadingRoute: false,
             routeError: null,
@@ -98,6 +105,8 @@ export const useAppStore = create<AppState>()(
                     routeError: null,
                 }),
 
+            setFinalApproachRoute: (route) => set({ finalApproachRoute: route }),
+
             setIsLoadingRoute: (loading) => set({ isLoadingRoute: loading }),
 
             setRouteError: (error) =>
@@ -105,11 +114,13 @@ export const useAppStore = create<AppState>()(
                     routeError: error,
                     isLoadingRoute: false,
                     activeRoute: null,
+                    finalApproachRoute: null,
                 }),
 
             clearRoute: () =>
                 set({
                     activeRoute: null,
+                    finalApproachRoute: null,
                     routeError: null,
                     isLoadingRoute: false,
                 }),
@@ -133,7 +144,6 @@ export const useAppStore = create<AppState>()(
         {
             name: 'glcc-app-storage',
             storage: createJSONStorage(() => AsyncStorage),
-            // Only persist user preferences — not session state
             partialize: (state) => ({
                 transportMode: state.transportMode,
                 canUseStairs: state.canUseStairs,

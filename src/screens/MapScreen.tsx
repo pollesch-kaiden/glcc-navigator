@@ -8,7 +8,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 import {
     View,
     Text,
@@ -66,10 +66,10 @@ const CATEGORY_LABEL: Record<string, string> = {
 };
 
 export function MapScreen() {
-    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs } =
+    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs, setActiveRoute, finalApproachRoute } =
         useAppStore();
 
-    const { hasPermission } = useLocation();
+    const { hasPermission, location } = useLocation();
     const pois = usePOIs();
     const [showPOICard, setShowPOICard] = useState(false);
 
@@ -77,6 +77,11 @@ export function MapScreen() {
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
 
     const { calculateRoute } = useRouting(graph);
+
+    const isUserOutsideBounds = useMemo(() => {
+        if (!location) return false;
+        return !isWithinBounds(location, GLCC_BOUNDS);
+    }, [location]);
 
     const handleGetDirections = useCallback(() => {
         if (!selectedPOI) return;
@@ -93,6 +98,9 @@ export function MapScreen() {
             !isWithinBounds(selectedPOI.coordinates, GLCC_BOUNDS)
         ) {
             console.warn('⚠️ Start or destination is outside GLCC bounds — routing skipped');
+            useAppStore.getState().setRouteError(
+                'Directions are only available while on the GLCC campus.'
+            );
             return;
         }
 
@@ -131,6 +139,16 @@ export function MapScreen() {
                     <Ionicons name="location-outline" size={14} color="#ffffff" />
                     <Text style={styles.noGPSText}>
                         Enable location in Settings for turn-by-turn directions
+                    </Text>
+                </View>
+            )}
+
+            {/* ── Outside GLCC warning ─────────────────────── */}
+            {isUserOutsideBounds && (
+                <View style={styles.outsideBoundsBanner}>
+                    <Ionicons name="location-outline" size={14} color="#ffffff" />
+                    <Text style={styles.outsideBoundsText}>
+                        You appear to be off-campus — directions are not available unless on GLCC Campus
                     </Text>
                 </View>
             )}
@@ -204,6 +222,15 @@ export function MapScreen() {
                                 </View>
                             ))}
                         </ScrollView>
+                    )}
+
+                    {finalApproachRoute && (
+                        <View style={styles.approachNotice}>
+                            <Ionicons name="walk-outline" size={14} color="#6ba888" />
+                            <Text style={styles.approachNoticeText}>
+                                Includes a short walk from parking
+                            </Text>
+                        </View>
                     )}
 
                     <TouchableOpacity
@@ -378,5 +405,35 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 16,
         fontWeight: '700',
+    },
+    approachNotice: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        marginBottom: 12,
+    },
+    approachNoticeText: {
+        fontSize: 12,
+        color: '#6ba888',
+        fontWeight: '600',
+    },
+    outsideBoundsBanner: {
+        position: 'absolute',
+        bottom: 120,
+        left: 16,
+        right: 16,
+        backgroundColor: 'rgba(230, 126, 34, 0.95)', // orange, distinct from the gray no-GPS banner
+        borderRadius: 12,
+        padding: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+    },
+    outsideBoundsText: {
+        color: '#ffffff',
+        fontSize: 13,
+        textAlign: 'center',
+        flexShrink: 1,
     },
 });
