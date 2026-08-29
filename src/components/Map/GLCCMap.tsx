@@ -114,12 +114,13 @@ export function GLCCMap({ pois, onPOIPress }: GLCCMapProps) {
 
                 <UserLocation animated={true} heading={true} />
             </Map>
-
-            <CoordinatePicker
-                isActive={pickerActive}
-                onToggle={() => setPickerActive((prev) => !prev)}
-                centerCoordinate={centerCoord}
-            />
+            {__DEV__ && (
+                <CoordinatePicker
+                    isActive={pickerActive}
+                    onToggle={() => setPickerActive((prev) => !prev)}
+                    centerCoordinate={centerCoord}
+                />
+            )}
 
             {loadFailed && (
                 <View style={styles.errorOverlay}>
