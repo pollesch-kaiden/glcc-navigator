@@ -21,6 +21,13 @@ if (!PROTOMAPS_API_KEY) {
     console.warn('⚠️ EXPO_PUBLIC_PROTOMAPS_API_KEY is not set in .env');
 }
 
+// Hosted style URL — used ONLY by OfflineManager for downloading
+// offline packs, since createPack requires a fetchable URL string
+// rather than an inline style object. The live map continues to
+// use the inlined MAP_STYLE object to avoid the iOS Simulator
+// networking bug described in the README.
+export const PROTOMAPS_STYLE_URL = `https://api.protomaps.com/styles/v5/light/en.json?key=${PROTOMAPS_API_KEY}`;
+
 // Use demotiles when issues with Protomaps pop up
 // export const MAP_STYLE_URL = 'https://demotiles.maplibre.org/style.json';
 

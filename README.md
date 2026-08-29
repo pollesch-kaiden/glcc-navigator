@@ -11,9 +11,11 @@ An offline-first mobile navigation app for the Green Lake Conference Center's 90
 5. [Accessibility and Stairs](#accessibility-and-stairs)
 6. [How Routing Works](#how-routing-works)
 7. [Multi-Modal Routing](#multi-modal-routing)
-8. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
-9. [Known Issues](#known-issues)
-10. [Development Workflow](#development-workflow)
+8. [Offline Map Support](#offline-map-support)
+9. [Map Attribution](#map-attribution)
+10. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
+11. [Known Issues](#known-issues)
+12. [Development Workflow](#development-workflow)
 
 ---
 
@@ -26,6 +28,7 @@ An offline-first mobile navigation app for the Green Lake Conference Center's 90
 - **Zustand** — global state management
 - **OpenStreetMap via Overpass API** — source data for POIs and paths
 - **Custom A\* pathfinding** — on-device routing engine with no external routing API
+- **expo-network** — detects WiFi vs. cellular connectivity before large downloads
 
 ---
 
@@ -53,6 +56,7 @@ src/routing/
 src/hooks/
   usePOIs.ts                — merges OSM and custom POI data at runtime
   useRouting.ts             — connects the A* engine to the UI
+  useOfflinePack.ts         — manages offline map tile download and deletion
 ```
 
 ---
@@ -359,6 +363,71 @@ instead of directing the user to a generic point on the road.
 
 ---
 
+## Offline Map Support
+
+The app supports fully offline use once the campus map has been downloaded. This covers two separate layers.
+
+- **Always offline, no action needed:** POI data, path data, and the routing graph are bundled directly in the app's JavaScript bundle. Routing and POI browsing work with zero internet connection, always.
+- **Requires a one-time download on WiFi:** map tiles (roads, terrain, buildings) are downloaded via MapLibre's `OfflineManager` and cached locally. Until downloaded, the app requires an internet connection to display the visual map background.
+
+### How It Works
+
+`useOfflinePack` (`src/hooks/useOfflinePack.ts`) manages the download lifecycle:
+
+- Checks for an existing offline pack on app launch.
+- Exposes `downloadPack()` to start downloading, shown via `OfflineDownloadBanner` when no pack exists yet.
+- Reports live download progress.
+- Exposes `deletePack()` to remove the cached pack, guarded against being called while `status === 'downloading'` to avoid corrupting the offline database.
+
+Packs are identified via a `metadata.packKey` value rather than a name field, since MapLibre's `OfflinePack` type has no built-in name property.
+
+### Cellular Data Confirmation
+
+Before starting a download, the app checks the current network type using `expo-network`. If connected via WiFi, the download starts immediately. If connected via cellular, a native-style confirmation prompt appears, similar to the App Store's own WiFi/cellular download prompt, letting the user choose **Wait for Wi-Fi** or **Use Cellular**. If there is no connection at all, the user is told to connect to WiFi or cellular first.
+
+> **Note:** The download banner itself is shown regardless of connection type so users understand the map may stop rendering fully if they lose connectivity before downloading.
+
+### Stall Detection and Recovery
+
+If the network connection is lost mid-download, the native download can silently stop sending progress updates without ever firing an explicit error. A stall timer resets every time a progress update is received. If no progress update arrives within 15 seconds, the download is treated as failed:
+
+- The pack status is set to `error` with a user-facing message.
+- The partially-downloaded pack is automatically deleted so it cannot be left in a corrupted, half-downloaded state.
+- The banner shows a Retry button, and tapping it starts a completely clean download rather than attempting to resume.
+
+### Recovering From a Stuck or Corrupted Download
+
+If a download ever appears stuck at 0 percent outside of the stall-detection scenario above (for example, from manually deleting a pack while it was actively downloading), the offline database can be fully wiped and reset with:
+
+```typescript
+import { OfflineManager } from '@maplibre/maplibre-react-native';
+await OfflineManager.resetDatabase();
+```
+
+This clears all offline packs and ambient cache data, allowing a clean fresh download afterward.
+
+### Testing Offline Behavior
+
+Development builds always require a Metro connection to load JavaScript, so airplane mode testing will show a "No script URL provided" error regardless of whether tiles are cached. This is expected and unrelated to tile caching.
+
+To properly test offline behavior, build a Release configuration:
+
+```bash
+npx expo run:ios --device --configuration Release
+```
+
+Only Release builds have JavaScript embedded directly in the app binary, matching what actually ships to users. Only in a Release build will airplane mode correctly test whether cached map tiles render offline.
+
+---
+
+## Map Attribution
+
+The small "(i)" icon and "OpenStreetMap" credit shown in the bottom-right corner of the map are required by the licensing terms of both OpenStreetMap (ODbL license) and MapLibre. This attribution must remain visible directly on the map view itself and cannot be moved to a settings screen or hidden, per those license requirements. This is standard practice followed by essentially all map applications, including Google Maps, Apple Maps, and Uber.
+
+> **Note:** A future Settings screen's gear icon is intentionally planned for the bottom-left corner specifically to avoid visually overlapping with this required attribution icon in the bottom-right.
+
+---
+
 ## MapLibre v11 API Reference
 
 The MapLibre React Native library changed significantly around v11. Named imports replaced default or namespace imports, and several component and property names changed.
@@ -441,6 +510,8 @@ import { layers, namedFlavor } from '@protomaps/basemaps';
 
 > **Version lock:** `@protomaps/basemaps` must remain aligned with the version used by the tile endpoint URL, currently v4. If this package is upgraded, verify whether the tile endpoint must also be updated, such as from v4 to v5.
 
+> **Note:** `OfflineManager.createPack` specifically requires a fetchable URL string for `mapStyle` rather than the inlined style object, since it needs to actually download and cache resources natively. A separate `PROTOMAPS_STYLE_URL` constant is kept in `mapStyle.ts` for this purpose alongside the inlined `MAP_STYLE` object used for live rendering.
+
 ---
 
 ## Known Issues
@@ -482,6 +553,10 @@ Start Expo with LAN mode enabled:
 npx expo start --dev-client --lan
 ```
 
+### Metro Unreachable Over Cellular Data
+
+During development, if the phone switches from WiFi to cellular data, it can no longer reach the Metro dev server running on the Mac's local network. This produces extensive native networking logs and a "No script URL provided" or "Cannot connect to Expo CLI" error. This is expected and only affects development builds; it does not indicate a problem with the app itself. Reconnect to the same WiFi network the Mac is on to resolve it.
+
 ---
 
 ## Development Workflow
@@ -490,6 +565,7 @@ npx expo start --dev-client --lan
 |---|---|
 | Daily JavaScript/UI development, with app already installed | `npx expo start --dev-client --lan` |
 | First-time install or after installing a new native package | `npx expo run:ios` for Simulator, or `npx expo run:ios --device` for a physical device |
+| Testing true offline behavior (map tiles, no Metro connection) | `npx expo run:ios --device --configuration Release` |
 | Changed `app.json` settings such as icon, splash screen, or permissions | `npx expo prebuild --clean`, then rebuild |
 | Re-imported OSM data | Run import scripts, generate the graph, then re-link POIs |
 | Added or changed paths | `npm run generate-graph`, then `npx ts-node scripts/linkPoisToGraph.ts` |
@@ -532,5 +608,3 @@ npx ts-node scripts/checkGraphConnectivity.ts
 # 4. Re-link every POI to its nearest graph node
 npx ts-node scripts/linkPoisToGraph.ts
 ```
-
-After completing the pipeline, review `glcc-pois-custom.json` and confirm that custom enrichment fields are still present and matched to the correct POI IDs.

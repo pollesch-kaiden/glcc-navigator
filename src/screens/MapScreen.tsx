@@ -28,6 +28,9 @@ import { usePOIs } from '@/hooks/usePOIs';
 import { useRouting } from '@/hooks/useRouting';
 import graphData from '../../assets/map/graph.json';
 import { Graph } from '@/types/route.types';
+import {useOfflinePack} from "@/hooks/useOfflinePack";
+import {OfflineDownloadBanner} from "@/components/Map/OfflineDownloadBanner";
+import {OfflineManager} from "@maplibre/maplibre-react-native";
 
 // Cast through unknown since JSON imports don't preserve exact tuple types
 const graph = graphData as unknown as Graph;
@@ -36,6 +39,11 @@ function isWithinBounds(coords: [number, number], bounds: [number, number, numbe
     const [lng, lat] = coords;
     const [west, south, east, north] = bounds;
     return lng >= west && lng <= east && lat >= south && lat <= north;
+}
+
+async function handleResetDatabase() {
+    await OfflineManager.resetDatabase();
+    console.log('Offline database reset')
 }
 
 // ── Category display config ─────────────────────────────────
@@ -72,6 +80,7 @@ export function MapScreen() {
     const { hasPermission, location } = useLocation();
     const pois = usePOIs();
     const [showPOICard, setShowPOICard] = useState(false);
+    const { status, progress, error, downloadPack, deletePack } = useOfflinePack()
 
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
@@ -142,6 +151,13 @@ export function MapScreen() {
                     </Text>
                 </View>
             )}
+
+            <OfflineDownloadBanner
+                status={status}
+                progress={progress}
+                error={error}
+                onDownload={downloadPack}
+            />
 
             {/* ── Outside GLCC warning ─────────────────────── */}
             {isUserOutsideBounds && (
