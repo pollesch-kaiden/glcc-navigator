@@ -19,39 +19,14 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Network from 'expo-network';
-import { OfflinePackStatus } from '../../hooks/useOfflinePack';
+import { OfflinePackStatus } from '@/hooks/useOfflinePack';
+import { promptAndDownload } from "@/utils/offlineDownloadPrompt";
 
 interface OfflineDownloadBannerProps {
     status: OfflinePackStatus;
     progress: number;
     error: string | null;
     onDownload: () => void;
-}
-
-async function handleDownloadPress(onDownload: () => void) {
-    const state = await Network.getNetworkStateAsync();
-
-    if (state.type === Network.NetworkStateType.WIFI) {
-        onDownload();
-        return;
-    }
-
-    if (state.type === Network.NetworkStateType.CELLULAR) {
-        Alert.alert(
-            'Cellular Data',
-            'Downloading the offline map may use a large amount of cellular data. Wait for Wi-Fi, or continue using cellular?',
-            [
-                { text: 'Wait for Wi-Fi', style: 'cancel' },
-                { text: 'Use Cellular', style: 'default', onPress: onDownload },
-            ]
-        );
-        return;
-    }
-
-    Alert.alert(
-        'No Internet Connection',
-        'Connect to Wi-Fi or cellular data to download the offline map.'
-    );
 }
 
 export function OfflineDownloadBanner({
@@ -75,7 +50,7 @@ export function OfflineDownloadBanner({
                     </View>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => handleDownloadPress(onDownload)}
+                        onPress={() => promptAndDownload(onDownload)}
                     >
                         <Text style={styles.buttonText}>Download</Text>
                     </TouchableOpacity>
@@ -106,7 +81,7 @@ export function OfflineDownloadBanner({
                     </View>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => handleDownloadPress(onDownload)}
+                        onPress={() => promptAndDownload(onDownload)}
                     >
                         <Text style={styles.buttonText}>Retry</Text>
                     </TouchableOpacity>

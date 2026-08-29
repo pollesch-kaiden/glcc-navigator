@@ -8,13 +8,14 @@
  * ─────────────────────────────────────────────────────────
  */
 
-import React, {useState, useCallback, useMemo} from 'react';
+import React, {useState, useCallback, useMemo, useEffect} from 'react';
 import {
     View,
     Text,
     StyleSheet,
     TouchableOpacity,
     ScrollView,
+    Modal,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
@@ -31,6 +32,7 @@ import { Graph } from '@/types/route.types';
 import {useOfflinePack} from "@/hooks/useOfflinePack";
 import {OfflineDownloadBanner} from "@/components/Map/OfflineDownloadBanner";
 import {OfflineManager} from "@maplibre/maplibre-react-native";
+import { SettingsScreen} from "@/screens/SettingsScreen";
 
 // Cast through unknown since JSON imports don't preserve exact tuple types
 const graph = graphData as unknown as Graph;
@@ -74,13 +76,23 @@ const CATEGORY_LABEL: Record<string, string> = {
 };
 
 export function MapScreen() {
-    const { selectedPOI, setSelectedPOI, clearRoute, canUseStairs, setActiveRoute, finalApproachRoute } =
-        useAppStore();
+    const {
+        selectedPOI,
+        setSelectedPOI,
+        clearRoute,
+        canUseStairs,
+        setCanUseStairs,
+        setActiveRoute,
+        finalApproachRoute,
+        transportMode,
+        setTransportMode,
+    } = useAppStore();
 
     const { hasPermission, location } = useLocation();
     const pois = usePOIs();
     const [showPOICard, setShowPOICard] = useState(false);
     const { status, progress, error, downloadPack, deletePack } = useOfflinePack()
+    const [showSettings, setShowSettings] = useState(false);
 
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
@@ -116,6 +128,17 @@ export function MapScreen() {
         calculateRoute(start, selectedPOI.nearestNodeId);
     }, [selectedPOI, calculateRoute]);
 
+    // Automatically recalculate the active route whenever the
+    // transport mode or accessibility preference changes while a
+    // POI is selected — rather than clearing the route, which was
+    // the previous (undesired) behavior.
+    useEffect(() => {
+        if (selectedPOI && showPOICard) {
+            handleGetDirections();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [transportMode, canUseStairs]);
+
     const handlePOIPress = useCallback(
         (poi: POI) => {
             setSelectedPOI(poi);
@@ -141,6 +164,13 @@ export function MapScreen() {
                     <TransportPicker />
                 </SafeAreaView>
             </View>
+
+            <TouchableOpacity
+                style={styles.settingsButton}
+                onPress={() => setShowSettings(true)}
+            >
+                <Ionicons name="settings-outline" size={22} color="#1a4a2e" />
+            </TouchableOpacity>
 
             {/* ── No GPS warning ───────────────────────────  */}
             {hasPermission === false && (
@@ -274,6 +304,24 @@ export function MapScreen() {
                     </TouchableOpacity>
                 </View>
             )}
+            <Modal
+                visible={showSettings}
+                animationType="slide"
+                onRequestClose={() => setShowSettings(false)}
+            >
+                <SettingsScreen
+                    onClose={() => setShowSettings(false)}
+                    canUseStairs={canUseStairs}
+                    setCanUseStairs={setCanUseStairs}
+                    transportMode={transportMode}
+                    setTransportMode={setTransportMode}
+                    offlineStatus={status}
+                    offlineProgress={progress}
+                    offlineError={error}
+                    onDownloadOffline={downloadPack}
+                    onDeleteOffline={deletePack}
+                />
+            </Modal>
         </View>
     );
 }
@@ -287,6 +335,23 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
+    },
+    settingsButton: {
+        position: 'absolute',
+        bottom: 20,
+        left: 16,
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 4,
+        zIndex: 200,
     },
     noGPSBanner: {
         position: 'absolute',

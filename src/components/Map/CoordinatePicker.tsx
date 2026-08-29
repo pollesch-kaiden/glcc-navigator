@@ -105,8 +105,8 @@ export function CoordinatePicker({
 const styles = StyleSheet.create({
     toggleButton: {
         position: 'absolute',
-        bottom: 100,
-        right: 16,
+        bottom: 20,
+        left: 75,
         width: 44,
         height: 44,
         borderRadius: 22,

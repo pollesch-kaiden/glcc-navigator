@@ -33,11 +33,10 @@ const TRANSPORT_OPTIONS: { mode: TransportMode; label: string }[] = [
 ];
 
 export function TransportPicker() {
-    const { transportMode, setTransportMode, clearRoute } = useAppStore();
+    const { transportMode, setTransportMode } = useAppStore();
 
     function handleSelect(mode: TransportMode) {
         setTransportMode(mode);
-        clearRoute();
     }
 
     return (
