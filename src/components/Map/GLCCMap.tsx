@@ -19,7 +19,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useImperativeHandle, useRef } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
     Map,
@@ -34,12 +34,16 @@ import { CoordinatePicker } from './CoordinatePicker';
 import { useAppStore } from '@/store/useAppStore';
 import { POI } from '@/types';
 
+export interface GLCCMapRef {
+    flyToPOI: (coordinates: [number, number]) => void;
+}
+
 interface GLCCMapProps {
     pois: POI[];
     onPOIPress: (poi: POI) => void;
 }
 
-export function GLCCMap({ pois, onPOIPress }: GLCCMapProps) {
+export function GLCCMap({ pois, onPOIPress, ref }: GLCCMapProps & {ref?: React.Ref<any>}) {
     const { activeRoute, finalApproachRoute } = useAppStore();
 
     // ── Retry-on-failure state ─────────────────────────────
@@ -60,6 +64,13 @@ export function GLCCMap({ pois, onPOIPress }: GLCCMapProps) {
     const [centerCoord, setCenterCoord] = useState<[number, number] | null>(
         null
     );
+    const cameraRef = useRef<any>(null);
+
+    useImperativeHandle(ref, () => ({
+        flyToPOI: (coordinates: [number, number]) => {
+            cameraRef.current?.flyTo({ center: coordinates, zoom: 17, duration: 1000 });
+        },
+    }));
 
     const handleRegionChange = useCallback((event: any) => {
         // v11 moved payloads under nativeEvent; shape varies, so probe both.
@@ -94,6 +105,7 @@ export function GLCCMap({ pois, onPOIPress }: GLCCMapProps) {
                 onDidFailLoadingMap={handleFailLoading}
             >
                 <Camera
+                    ref={cameraRef}
                     initialViewState={{
                         bounds: GLCC_BOUNDS,
                         padding: { top: 40, bottom: 40, left: 20, right: 20 },

@@ -8,7 +8,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-import React, {useState, useCallback, useMemo, useEffect} from 'react';
+import React, {useState, useCallback, useMemo, useEffect, useRef} from 'react';
 import {
     View,
     Text,
@@ -19,7 +19,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
-import { GLCCMap } from '@/components/Map/GLCCMap';
+import { GLCCMap, GLCCMapRef } from '@/components/Map/GLCCMap';
 import { GLCC_BOUNDS} from "@/utils/mapStyle";
 import { TransportPicker } from '@/components/Routing/TransportPicker';
 import { useAppStore } from '@/store/useAppStore';
@@ -33,6 +33,7 @@ import {useOfflinePack} from "@/hooks/useOfflinePack";
 import {OfflineDownloadBanner} from "@/components/Map/OfflineDownloadBanner";
 import {OfflineManager} from "@maplibre/maplibre-react-native";
 import { SettingsScreen} from "@/screens/SettingsScreen";
+import { FilterDrawer} from "@/components/POI/FilterDrawer";
 
 // Cast through unknown since JSON imports don't preserve exact tuple types
 const graph = graphData as unknown as Graph;
@@ -86,13 +87,28 @@ export function MapScreen() {
         finalApproachRoute,
         transportMode,
         setTransportMode,
+        activeFilters,
+        toggleFilter,
+        clearFilters,
     } = useAppStore();
 
     const { hasPermission, location } = useLocation();
     const pois = usePOIs();
+
+    const filteredPOIs = useMemo(() => {
+        if (activeFilters.length === 0) return pois;
+        return pois.filter((poi) =>
+            activeFilters.some(
+                (filter) => poi.activities.includes(filter as any) || poi.category === filter
+            )
+        );
+    }, [pois, activeFilters]);
+
     const [showPOICard, setShowPOICard] = useState(false);
     const { status, progress, error, downloadPack, deletePack } = useOfflinePack()
     const [showSettings, setShowSettings] = useState(false);
+    const [showFilterDrawer, setShowFilterDrawer] = useState(false);
+    const mapRef = useRef<GLCCMapRef>(null);
 
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
@@ -147,6 +163,12 @@ export function MapScreen() {
         [setSelectedPOI]
     );
 
+    function handleSelectPOIFromSearch(poi: POI) {
+        setShowFilterDrawer(false);
+        mapRef.current?.flyToPOI(poi.coordinates);
+        handlePOIPress(poi);
+    }
+
     const handleCloseCard = useCallback(() => {
         setShowPOICard(false);
         setSelectedPOI(null);
@@ -156,15 +178,22 @@ export function MapScreen() {
     return (
         <View style={styles.container}>
             {/* ── Full screen map ─────────────────────────── */}
-            <GLCCMap pois={pois} onPOIPress={handlePOIPress} />
+            <GLCCMap ref={mapRef} pois={filteredPOIs} onPOIPress={handlePOIPress} />
 
-            {/* ── Transport mode picker (floating top bar) ── */}
+            {/* ── Transport mode picker (floating top bar) w/ Filter Menu ── */}
             <View style={styles.topBar}>
                 <SafeAreaView edges={['top']}>
-                    <TransportPicker />
+                    <View style={styles.topBarRow}>
+                        <TouchableOpacity
+                            style={styles.hamburgerButton}
+                            onPress={() => setShowFilterDrawer(true)}
+                        >
+                            <Ionicons name="menu-outline" size={20} color="#1a2e1a" />
+                        </TouchableOpacity>
+                        <TransportPicker />
+                    </View>
                 </SafeAreaView>
             </View>
-
             <TouchableOpacity
                 style={styles.settingsButton}
                 onPress={() => setShowSettings(true)}
@@ -322,6 +351,15 @@ export function MapScreen() {
                     onDeleteOffline={deletePack}
                 />
             </Modal>
+            <FilterDrawer
+                visible={showFilterDrawer}
+                onClose={() => setShowFilterDrawer(false)}
+                pois={pois}
+                activeFilters={activeFilters}
+                onToggleFilter={toggleFilter}
+                onClearFilters={clearFilters}
+                onSelectPOI={handleSelectPOIFromSearch}
+            />
         </View>
     );
 }
@@ -335,6 +373,26 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
+    },
+    topBarRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginHorizontal: 16,
+        marginTop: 8,
+    },
+    hamburgerButton: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: 'rgba(255,255,255,0.95)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 8,
+        elevation: 4,
     },
     settingsButton: {
         position: 'absolute',

@@ -74,22 +74,39 @@ export function TransportPicker() {
 
 const styles = StyleSheet.create({
     wrapper: {
+        flex: 1,
         backgroundColor: 'rgba(255,255,255,0.95)',
         borderRadius: 24,
-        marginHorizontal: 16,
-        marginTop: 8,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.15,
         shadowRadius: 8,
         elevation: 4,
     },
-    scrollContent: { paddingHorizontal: 8, paddingVertical: 6, gap: 4 },
-    option: {
-        flexDirection: 'row', alignItems: 'center',
-        paddingVertical: 8, paddingHorizontal: 14, borderRadius: 18, gap: 6,
+    scrollContent: {
+        paddingHorizontal: 6,
+        paddingVertical: 6,
+        gap: 4,
+        flexGrow: 1,
+        justifyContent: 'space-between',
     },
-    optionSelected: { backgroundColor: '#1a4a2e' },
-    label: { fontSize: 14, fontWeight: '600', color: '#1a2e1a' },
-    labelSelected: { color: '#ffffff' },
+    option: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 18,
+        gap: 4,
+    },
+    optionSelected: {
+        backgroundColor: '#1a4a2e',
+    },
+    label: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: '#1a2e1a',
+    },
+    labelSelected: {
+        color: '#ffffff',
+    },
 });
