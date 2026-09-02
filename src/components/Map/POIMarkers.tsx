@@ -22,9 +22,10 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
+    NativeSyntheticEvent,
 } from 'react-native';
-import { Marker } from '@maplibre/maplibre-react-native';
-import { POI, POICategory } from '../../types/poi.types';
+import { Marker, MarkerEvent } from '@maplibre/maplibre-react-native';
+import { POI, POICategory } from '@/types';
 
 interface POIMarkersProps {
     pois: POI[];
@@ -67,27 +68,25 @@ export function POIMarkers({ pois, onPOIPress }: POIMarkersProps) {
                     key={poi.id}
                     id={poi.id}
                     lngLat={poi.coordinates}
-                    anchor="bottom"
+                    anchor="center"
+                    onPress={(_event: NativeSyntheticEvent<MarkerEvent>) => {
+                        onPOIPress(poi);
+                    }}
                 >
                     <TouchableOpacity
                         style={styles.markerWrapper}
                         onPress={() => onPOIPress(poi)}
                         activeOpacity={0.8}
                     >
-                        {/* Simple colored dot */}
                         <View
                             style={[
                                 styles.markerCircle,
-                                {
-                                    backgroundColor:
-                                        CATEGORY_COLORS[poi.category] ?? '#2d7a4f',
-                                },
+                                { backgroundColor: CATEGORY_COLORS[poi.category] ?? '#2d7a4f' },
                             ]}
                         />
 
-                        {/* Name label */}
                         <View style={styles.labelContainer}>
-                            <Text style={styles.labelText} numberOfLines={1}>
+                            <Text style={styles.labelText} numberOfLines={2}>
                                 {poi.name}
                             </Text>
                         </View>
@@ -115,17 +114,19 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     labelContainer: {
+        top: 5,
         backgroundColor: 'rgba(255,255,255,0.92)',
-        paddingHorizontal: 5,
-        paddingVertical: 2,
+        paddingHorizontal: 6,
+        paddingVertical: 3,
         borderRadius: 6,
-        marginTop: 3,
         maxWidth: 90,
+        alignItems: 'center',
     },
     labelText: {
         fontSize: 10,
         fontWeight: '600',
         color: '#1a2e1a',
         textAlign: 'center',
+        flexWrap: 'wrap',
     },
 });
