@@ -85,6 +85,7 @@ export function MapScreen() {
         setCanUseStairs,
         setActiveRoute,
         finalApproachRoute,
+        parkingLotName,
         transportMode,
         setTransportMode,
         activeFilters,
@@ -113,7 +114,7 @@ export function MapScreen() {
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
 
-    const { calculateRoute } = useRouting(graph);
+    const { calculateRoute } = useRouting(graph, pois);
 
     const isUserOutsideBounds = useMemo(() => {
         if (!location) return false;
@@ -303,7 +304,9 @@ export function MapScreen() {
                         <View style={styles.approachNotice}>
                             <Ionicons name="walk-outline" size={14} color="#6ba888" />
                             <Text style={styles.approachNoticeText}>
-                                Includes a short walk from parking
+                                {parkingLotName
+                                    ? `Park at ${parkingLotName}, then walk to the destination`
+                                    : 'Includes a short walk from parking'}
                             </Text>
                         </View>
                     )}

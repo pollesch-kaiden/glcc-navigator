@@ -5,97 +5,144 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-88.9882009, 43.8041112]
+        "coordinates": [
+          -88.9882009,
+          43.8041112
+        ]
       },
       "properties": {
         "id": "osm-relation/3314399",
         "nearestNodeId": "node-804",
-        "activities": ["swimming", "fishing", "kayaking", "nature"]
+        "activities": [
+          "swimming",
+          "fishing",
+          "kayaking",
+          "nature"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0080534, 43.8284411]
+        "coordinates": [
+          -89.0080534,
+          43.8284411
+        ]
       },
       "properties": {
         "id": "osm-relation/4554025",
         "nearestNodeId": "node-1337",
-        "activities": ["sports"]
+        "activities": [
+          "sports"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0174808, 43.8156086]
+        "coordinates": [
+          -89.0174808,
+          43.8156086
+        ]
       },
       "properties": {
         "id": "osm-way/241382686",
         "nearestNodeId": "node-713",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0156542, 43.8156091]
+        "coordinates": [
+          -89.0156542,
+          43.8156091
+        ]
       },
       "properties": {
         "id": "osm-way/262898322",
         "nearestNodeId": "node-740",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0158543, 43.8161688]
+        "coordinates": [
+          -89.0158543,
+          43.8161688
+        ]
       },
       "properties": {
         "id": "osm-way/262908385",
         "nearestNodeId": "node-1432",
-        "activities": ["meetings"]
+        "activities": [
+          "meetings"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0159994, 43.8159774]
+        "coordinates": [
+          -89.0159994,
+          43.8159774
+        ]
       },
       "properties": {
         "id": "osm-way/262908386",
         "nearestNodeId": "node-826",
-        "activities": ["games"]
+        "activities": [
+          "games"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.017065, 43.8162812]
+        "coordinates": [
+          -89.017065,
+          43.8162812
+        ]
       },
       "properties": {
         "id": "osm-way/262908389",
         "nearestNodeId": "node-720",
-        "activities": ["meetings"]
+        "activities": [
+          "meetings"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0182293, 43.8160216]
+        "coordinates": [
+          -89.0182293,
+          43.8160216
+        ]
       },
       "properties": {
         "id": "osm-way/262908418",
         "nearestNodeId": "node-773",
-        "activities": ["sleeping", "dining"],
-        "amenities": ["wifi", "restrooms"],
+        "activities": [
+          "sleeping",
+          "dining"
+        ],
+        "amenities": [
+          "wifi",
+          "restrooms"
+        ],
         "accessible": true,
         "hasStairs": false,
         "description": "57-room lodge near the Avenue of the Flags."
@@ -105,432 +152,871 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0171804, 43.8198982]
+        "coordinates": [
+          -89.0171804,
+          43.8198982
+        ]
       },
       "properties": {
         "id": "osm-way/262908432",
         "nearestNodeId": "node-1509",
-        "activities": ["history", "nature"]
+        "activities": [
+          "history",
+          "nature"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0267564, 43.82155]
+        "coordinates": [
+          -89.0267564,
+          43.82155
+        ]
       },
       "properties": {
         "id": "osm-way/263169382",
         "nearestNodeId": "node-657",
-        "activities": ["nature", "hiking"]
+        "activities": [
+          "nature",
+          "hiking"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0165855, 43.8151699]
+        "coordinates": [
+          -89.0165855,
+          43.8151699
+        ]
       },
       "properties": {
         "id": "osm-way/263169390",
         "nearestNodeId": "node-707",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0178342, 43.816388]
+        "coordinates": [
+          -89.0178342,
+          43.816388
+        ]
       },
       "properties": {
         "id": "osm-way/263169431",
         "nearestNodeId": "node-769",
-        "activities": ["nature"]
+        "activities": [
+          "nature"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0158556, 43.8168775]
+        "coordinates": [
+          -89.0158556,
+          43.8168775
+        ]
       },
       "properties": {
         "id": "osm-way/263169433",
         "nearestNodeId": "node-567",
-        "activities": ["swimming", "beach"]
+        "activities": [
+          "swimming",
+          "beach"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0144097, 43.8195428]
+        "coordinates": [
+          -89.0144097,
+          43.8195428
+        ]
       },
       "properties": {
         "id": "osm-way/263169435",
         "nearestNodeId": "node-122",
-        "activities": ["kayaking", "fishing"]
+        "activities": [
+          "kayaking",
+          "fishing"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0213414, 43.816497]
+        "coordinates": [
+          -89.0213414,
+          43.816497
+        ]
       },
       "properties": {
         "id": "osm-way/263170129",
         "nearestNodeId": "node-1429",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0225904, 43.8164059]
+        "coordinates": [
+          -89.0225904,
+          43.8164059
+        ]
       },
       "properties": {
         "id": "osm-way/263170134",
         "nearestNodeId": "node-837",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.021352, 43.8216041]
+        "coordinates": [
+          -89.021352,
+          43.8216041
+        ]
       },
       "properties": {
         "id": "osm-way/263292687",
         "nearestNodeId": "node-047",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0217205, 43.822007]
+        "coordinates": [
+          -89.0217205,
+          43.822007
+        ]
       },
       "properties": {
         "id": "osm-way/263292688",
         "nearestNodeId": "node-845",
-        "activities": ["games", "sports"]
+        "activities": [
+          "games",
+          "sports"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0251496, 43.8178469]
+        "coordinates": [
+          -89.0251496,
+          43.8178469
+        ]
       },
       "properties": {
         "id": "osm-way/263299354",
         "nearestNodeId": "node-986",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0242299, 43.8192938]
+        "coordinates": [
+          -89.0242299,
+          43.8192938
+        ]
       },
       "properties": {
         "id": "osm-way/263299360",
         "nearestNodeId": "node-965",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.017969, 43.8174894]
+        "coordinates": [
+          -89.017969,
+          43.8174894
+        ]
       },
       "properties": {
         "id": "osm-way/264249977",
         "nearestNodeId": "node-1384",
-        "activities": ["meetings"]
+        "activities": [
+          "meetings"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0174434, 43.8181845]
+        "coordinates": [
+          -89.0174434,
+          43.8181845
+        ]
       },
       "properties": {
         "id": "osm-way/264249979",
         "nearestNodeId": "node-1375",
-        "activities": ["sports", "games"]
+        "activities": [
+          "sports",
+          "games"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0231913, 43.8150866]
+        "coordinates": [
+          -89.0231913,
+          43.8150866
+        ]
       },
       "properties": {
         "id": "osm-way/308977698",
         "nearestNodeId": "node-1059",
-        "activities": ["hiking", "nature"]
+        "activities": [
+          "hiking",
+          "nature"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.021592, 43.8158901]
+        "coordinates": [
+          -89.021592,
+          43.8158901
+        ]
       },
       "properties": {
         "id": "osm-way/326175194",
         "nearestNodeId": "node-834",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0231701, 43.8154804]
+        "coordinates": [
+          -89.0231701,
+          43.8154804
+        ]
       },
       "properties": {
         "id": "osm-way/326178392",
         "nearestNodeId": "node-1059",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.023348, 43.8151964]
+        "coordinates": [
+          -89.023348,
+          43.8151964
+        ]
       },
       "properties": {
         "id": "osm-way/326178393",
         "nearestNodeId": "node-1059",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0222863, 43.8153576]
+        "coordinates": [
+          -89.0222863,
+          43.8153576
+        ]
       },
       "properties": {
         "id": "osm-way/326178394",
         "nearestNodeId": "node-1057",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0227604, 43.8157237]
+        "coordinates": [
+          -89.0227604,
+          43.8157237
+        ]
       },
       "properties": {
         "id": "osm-way/326178395",
         "nearestNodeId": "node-1003",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0214574, 43.8171204]
+        "coordinates": [
+          -89.0214574,
+          43.8171204
+        ]
       },
       "properties": {
         "id": "osm-way/326178396",
         "nearestNodeId": "node-622",
-        "activities": ["sleeping"]
+        "activities": [
+          "sleeping"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0148705, 43.8257081]
+        "coordinates": [
+          -89.0148705,
+          43.8257081
+        ]
       },
       "properties": {
         "id": "osm-way/326180517",
         "nearestNodeId": "node-289",
-        "activities": ["meetings"]
+        "activities": [
+          "meetings"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0175155, 43.8177592]
+        "coordinates": [
+          -89.0175155,
+          43.8177592
+        ]
       },
       "properties": {
         "id": "osm-way/338430580",
         "nearestNodeId": "node-1379",
-        "activities": ["art"]
+        "activities": [
+          "art"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0153916, 43.8158143]
+        "coordinates": [
+          -89.0153916,
+          43.8158143
+        ]
       },
       "properties": {
         "id": "osm-node/367810491",
         "nearestNodeId": "node-1436",
-        "activities": ["meetings"]
+        "activities": [
+          "meetings"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.012336, 43.8188699]
+        "coordinates": [
+          -89.012336,
+          43.8188699
+        ]
       },
       "properties": {
         "id": "osm-node/368884289",
         "nearestNodeId": "node-125",
-        "activities": ["nature", "fishing"]
+        "activities": [
+          "nature",
+          "fishing"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.017, 43.8211]
+        "coordinates": [
+          -89.017,
+          43.8211
+        ]
       },
       "properties": {
         "id": "osm-node/585380926",
         "nearestNodeId": "node-863",
-        "activities": ["history"]
+        "activities": [
+          "history"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0153586, 43.8217303]
+        "coordinates": [
+          -89.0153586,
+          43.8217303
+        ]
       },
       "properties": {
         "id": "osm-way/913710148",
         "nearestNodeId": "node-1282",
-        "activities": ["sports"]
+        "activities": [
+          "sports"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0134542, 43.8211721]
+        "coordinates": [
+          -89.0134542,
+          43.8211721
+        ]
       },
       "properties": {
         "id": "osm-way/913710156",
         "nearestNodeId": "node-1399",
-        "activities": ["sports"]
+        "activities": [
+          "sports"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.01337, 43.8157156]
+        "coordinates": [
+          -89.01337,
+          43.8157156
+        ]
       },
       "properties": {
         "id": "osm-node/2651320522",
         "nearestNodeId": "node-1436",
-        "activities": ["nature"]
+        "activities": [
+          "nature"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0171794, 43.8162652]
+        "coordinates": [
+          -89.0171794,
+          43.8162652
+        ]
       },
       "properties": {
         "id": "osm-node/2685565415",
         "nearestNodeId": "node-788",
-        "activities": ["dining"]
+        "activities": [
+          "dining"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0170239, 43.8161897]
+        "coordinates": [
+          -89.0170239,
+          43.8161897
+        ]
       },
       "properties": {
         "id": "osm-node/2685565416",
         "nearestNodeId": "node-720",
-        "activities": ["dining"]
+        "activities": [
+          "dining"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0170051, 43.8162768]
+        "coordinates": [
+          -89.0170051,
+          43.8162768
+        ]
       },
       "properties": {
         "id": "osm-node/2685565417",
         "nearestNodeId": "node-720",
-        "activities": ["dining"]
+        "activities": [
+          "dining"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0171446, 43.8160601]
+        "coordinates": [
+          -89.0171446,
+          43.8160601
+        ]
       },
       "properties": {
         "id": "osm-node/2685565418",
         "nearestNodeId": "node-1433",
-        "activities": ["dining"]
+        "activities": [
+          "dining"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.015609, 43.818754]
+        "coordinates": [
+          -89.015609,
+          43.818754
+        ]
       },
       "properties": {
         "id": "osm-node/2689140486",
         "nearestNodeId": "node-042",
-        "activities": ["history"]
+        "activities": [
+          "history"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0168017, 43.817564]
+        "coordinates": [
+          -89.0168017,
+          43.817564
+        ]
       },
       "properties": {
         "id": "osm-node/2689140487",
         "nearestNodeId": "node-581",
-        "activities": ["history", "worship"]
+        "activities": [
+          "history",
+          "worship"
+        ]
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-89.0154847, 43.8154981]
+        "coordinates": [
+          -89.0154847,
+          43.8154981
+        ]
       },
       "properties": {
         "id": "osm-node/4127002454",
         "nearestNodeId": "node-744",
-        "activities": ["dining"]
+        "activities": [
+          "dining"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0169789,
+          43.8153526
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-01",
+        "name": "Parking Lot 1",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-751",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0163928,
+          43.8165397
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-02",
+        "name": "Parking Lot 2",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-106",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0171879,
+          43.8169896
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-03",
+        "name": "Parking Lot 3",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-1440",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0178987,
+          43.8170259
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-04",
+        "name": "Parking Lot 4",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-498",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0173308,
+          43.8174916
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-05",
+        "name": "Parking Lot 5",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-584",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0177932,
+          43.8186565
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-06",
+        "name": "Parking Lot 6",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-505",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0186876,
+          43.8159178
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-07",
+        "name": "Parking Lot 7",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-587",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0192095,
+          43.8158073
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-08",
+        "name": "Parking Lot 8",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-589",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0211082,
+          43.8160837
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-09",
+        "name": "Parking Lot 9",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-834",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.0224164,
+          43.8167036
+        ]
+      },
+      "properties": {
+        "id": "custom-parking-10",
+        "name": "Parking Lot 10",
+        "category": "parking",
+        "description": "",
+        "activities": [],
+        "amenities": [],
+        "accessible": false,
+        "hasStairs": false,
+        "nearestNodeId": "node-835",
+        "tags": [
+          "parking"
+        ],
+        "source": "custom"
       }
     }
   ]

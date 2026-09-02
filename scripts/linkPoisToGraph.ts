@@ -5,8 +5,17 @@
  * and writes the result as a nearestNodeId override into
  * glcc-pois-custom.json.
  *
+ * Handles two cases:
+ *  1. POIs imported from OSM (glcc-pois-osm.json) — linked
+ *     and merged into a matching custom entry, or a new stub
+ *     entry is created if none exists yet.
+ *  2. Brand-new custom-only POIs that don't exist in OSM at
+ *     all (e.g. manually added parking lots) — these already
+ *     live only in glcc-pois-custom.json, so they are linked
+ *     directly in place.
+ *
  * This must be re-run any time:
- *  - New POIs are added
+ *  - New POIs are added (OSM or custom)
  *  - The path network changes (graph.json regenerated)
  *
  * Usage:
@@ -22,6 +31,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const EARTH_RADIUS = 6_371_000;
+const FAR_THRESHOLD_METERS = 100; // flag POIs unusually far from any path
 
 function haversine(a: number[], b: number[]): number {
     const toRad = (d: number) => (d * Math.PI) / 180;
@@ -46,12 +56,13 @@ const customPoisFile = path.resolve(
 );
 
 if (!fs.existsSync(graphFile)) {
-    console.error('❌ graph.json not found. Run `npm run generate-graph` first.');
+    console.error('Error: graph.json not found. Run `npm run generate-graph` first.');
     process.exit(1);
 }
 
 const graph = JSON.parse(fs.readFileSync(graphFile, 'utf-8'));
 const osmPois = JSON.parse(fs.readFileSync(osmPoisFile, 'utf-8'));
+
 let customData: { type: string; features: any[] };
 
 if (fs.existsSync(customPoisFile)) {
@@ -62,7 +73,7 @@ if (fs.existsSync(customPoisFile)) {
             features: Array.isArray(parsed.features) ? parsed.features : [],
         };
     } catch (err) {
-        console.warn('⚠️  Could not parse glcc-pois-custom.json, starting fresh');
+        console.warn('Warning: could not parse glcc-pois-custom.json, starting fresh');
         customData = { type: 'FeatureCollection', features: [] };
     }
 } else {
@@ -78,7 +89,7 @@ for (const feature of customData.features) {
 const nodeEntries = Object.entries(graph.nodes) as [string, any][];
 
 if (nodeEntries.length === 0) {
-    console.error('❌ Graph has no nodes. Check glcc-paths.geojson has data.');
+    console.error('Error: graph has no nodes. Check glcc-paths.geojson has data.');
     process.exit(1);
 }
 
@@ -99,8 +110,8 @@ function findNearestNode(coords: number[]): { id: string; distance: number } {
 
 let linked = 0;
 let farWarnings = 0;
-const FAR_THRESHOLD_METERS = 100; // flag POIs unusually far from any path
 
+// ── Step 1: Link every OSM-imported POI ──────────────────────
 for (const poiFeature of osmPois.features) {
     const poiId = poiFeature.properties.id;
     const coords = poiFeature.geometry.coordinates;
@@ -110,11 +121,10 @@ for (const poiFeature of osmPois.features) {
     if (distance > FAR_THRESHOLD_METERS) {
         farWarnings++;
         console.warn(
-            `⚠️  "${poiFeature.properties.name}" is ${Math.round(distance)}m from nearest path (node ${nearestNodeId})`
+            `Warning: "${poiFeature.properties.name}" is ${Math.round(distance)}m from nearest path (node ${nearestNodeId})`
         );
     }
 
-    // Merge into existing custom entry if one exists, otherwise create one
     const existing = customById.get(poiId);
 
     if (existing) {
@@ -133,6 +143,30 @@ for (const poiFeature of osmPois.features) {
     linked++;
 }
 
+// ── Step 2: Link brand-new custom-only POIs (not from OSM) ──
+// These already live only in glcc-pois-custom.json and were
+// never touched by the loop above, since that loop only
+// iterates osmPois.features.
+for (const [poiId, feature] of customById.entries()) {
+    const alreadyProcessed = osmPois.features.some(
+        (f: any) => f.properties.id === poiId
+    );
+    if (alreadyProcessed) continue;
+
+    const coords = feature.geometry.coordinates;
+    const { id: nearestNodeId, distance } = findNearestNode(coords);
+
+    if (distance > FAR_THRESHOLD_METERS) {
+        farWarnings++;
+        console.warn(
+            `Warning: "${feature.properties.name ?? poiId}" is ${Math.round(distance)}m from nearest path (node ${nearestNodeId})`
+        );
+    }
+
+    feature.properties.nearestNodeId = nearestNodeId;
+    linked++;
+}
+
 const output = {
     type: 'FeatureCollection' as const,
     features: Array.from(customById.values()),
@@ -140,10 +174,10 @@ const output = {
 
 fs.writeFileSync(customPoisFile, JSON.stringify(output, null, 2));
 
-console.log(`✅ Linked ${linked} POIs to nearest graph nodes`);
+console.log(`Linked ${linked} POIs to nearest graph nodes`);
 if (farWarnings > 0) {
     console.log(
-        `⚠️  ${farWarnings} POIs are more than ${FAR_THRESHOLD_METERS}m from any path — consider adding paths near them`
+        `${farWarnings} POIs are more than ${FAR_THRESHOLD_METERS}m from any path — consider adding paths near them`
     );
 }
-console.log(`   Output: ${customPoisFile}`);
+console.log(`Output: ${customPoisFile}`);

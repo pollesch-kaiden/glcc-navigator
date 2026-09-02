@@ -15,12 +15,13 @@
  */
 
 import { Graph, TransportMode } from '../types/route.types';
-
-// Maximum distance (meters) to search for a vehicle-accessible
-// gateway node near a walking-only destination. Increase if
-// legitimate destinations are being marked unreachable by
-// vehicle; decrease if gateway points feel too far away.
-// 400m ≈ a 5 minute walk.
+/**
+ * Maximum distance (meters) to search for a vehicle-accessible
+ * gateway node near a walking-only destination. Increase if
+ * legitimate destinations are being marked unreachable by
+ * vehicle; decrease if gateway points feel too far away.
+ * 400m ≈ a 5 minute walk.
+ */
 export const MAX_GATEWAY_WALK_DISTANCE_METERS = 400;
 
 export interface GatewayResult {
@@ -55,6 +56,63 @@ export function findGatewayNode(
         );
 
         if (hasVehicleAccess) {
+            return { gatewayNodeId: current, walkDistanceMeters: currentDist };
+        }
+
+        for (const edgeId of node.connectedEdges) {
+            const edge = graph.edges[edgeId];
+            if (!edge.transportModes.includes('walking')) continue;
+
+            const neighborId = edge.from === current ? edge.to : edge.from;
+            const newDist = currentDist + edge.distanceMeters;
+
+            if (newDist < (distances.get(neighborId) ?? Infinity)) {
+                distances.set(neighborId, newDist);
+                if (!queue.includes(neighborId)) {
+                    queue.push(neighborId);
+                }
+            }
+        }
+    }
+
+    return null;
+}
+
+/**
+ * Same walking-outward search as findGatewayNode, but only
+ * succeeds at a node that corresponds to a known parking lot
+ * POI, rather than any arbitrary vehicle-accessible node. This
+ * lets routing say "Park at [Lot Name]" instead of directing
+ * users to a random point on a road.
+ */
+export function findParkingGatewayNode(
+    graph: Graph,
+    destinationNodeId: string,
+    vehicleMode: TransportMode,
+    parkingNodeIds: Set<string>,
+    maxWalkDistanceMeters: number = MAX_GATEWAY_WALK_DISTANCE_METERS
+): GatewayResult | null {
+    const distances = new Map<string, number>();
+    distances.set(destinationNodeId, 0);
+
+    const queue: string[] = [destinationNodeId];
+
+    while (queue.length > 0) {
+        queue.sort((a, b) => distances.get(a)! - distances.get(b)!);
+        const current = queue.shift()!;
+        const currentDist = distances.get(current)!;
+
+        if (currentDist > maxWalkDistanceMeters) continue;
+
+        const node = graph.nodes[current];
+        if (!node) continue;
+
+        const isKnownParkingLot = parkingNodeIds.has(current);
+        const hasVehicleAccess = node.connectedEdges.some((edgeId) =>
+            graph.edges[edgeId]?.transportModes.includes(vehicleMode)
+        );
+
+        if (isKnownParkingLot && hasVehicleAccess) {
             return { gatewayNodeId: current, walkDistanceMeters: currentDist };
         }
 

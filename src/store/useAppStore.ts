@@ -17,6 +17,9 @@
  *  - finalApproachRoute: the last-mile walking segment when
  *    a vehicle mode can't reach the destination directly —
  *    rendered as a dashed/lighter line, null otherwise
+ *  - parkingLotName: name of the known parking lot POI used
+ *    as the multi-modal gateway, if one was found — null when
+ *    no multi-modal routing occurred or no named lot was used
  *  - activeFilters: active POI filter tags
  *  - isLoadingRoute: route calculation in progress
  *  - routeError: error message if routing fails
@@ -28,60 +31,63 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { TransportMode, RouteOptions } from '../types/route.types';
-import { POI, ActivityTag, POICategory } from '../types/poi.types';
+import { TransportMode, RouteOptions } from '@/types';
+import { POI, ActivityTag, POICategory } from '@/types';
 
 interface AppState {
-    // ─── Persisted User Preferences ───────────────────────────
+    // ─── Persisted User Preferences
     transportMode: TransportMode;
     canUseStairs: boolean;
     hasCompletedOnboarding: boolean;
 
-    // ─── Session State ─────────────────────────────────────────
+    // ─── Session State
     selectedPOI: POI | null;
     activeRoute: [number, number][] | null;
     finalApproachRoute: [number, number][] | null;
+    parkingLotName: string | null;
     activeFilters: (ActivityTag | POICategory | string)[];
     isLoadingRoute: boolean;
     routeError: string | null;
 
-    // ─── Actions: Preferences ──────────────────────────────────
+    // ─── Actions: Preferences
     setTransportMode: (mode: TransportMode) => void;
     setCanUseStairs: (can: boolean) => void;
     completeOnboarding: () => void;
     resetOnboarding: () => void;
 
-    // ─── Actions: Navigation ───────────────────────────────────
+    // ─── Actions: Navigation
     setSelectedPOI: (poi: POI | null) => void;
     setActiveRoute: (route: [number, number][] | null) => void;
     setFinalApproachRoute: (route: [number, number][] | null) => void;
+    setParkingLotName: (name: string | null) => void;
     setIsLoadingRoute: (loading: boolean) => void;
     setRouteError: (error: string | null) => void;
     clearRoute: () => void;
 
-    // ─── Actions: Filters ──────────────────────────────────────
+    // ─── Actions: Filters
     toggleFilter: (tag: ActivityTag | POICategory | string) => void;
     clearFilters: () => void;
 
-    // ─── Derived ───────────────────────────────────────────────
+    // ─── Derived
     getRouteOptions: () => RouteOptions;
 }
 
 export const useAppStore = create<AppState>()(
     persist(
         (set, get) => ({
-            // ─── Defaults ────────────────────────────────────────
+            // ─── Defaults
             transportMode: 'walking',
             canUseStairs: true,
             hasCompletedOnboarding: false,
             selectedPOI: null,
             activeRoute: null,
             finalApproachRoute: null,
+            parkingLotName: null,
             activeFilters: [],
             isLoadingRoute: false,
             routeError: null,
 
-            // ─── Preference Actions ───────────────────────────────
+            // ─── Preference Actions
             setTransportMode: (mode) => set({ transportMode: mode }),
 
             setCanUseStairs: (can) => set({ canUseStairs: can }),
@@ -95,7 +101,7 @@ export const useAppStore = create<AppState>()(
                     canUseStairs: true,
                 }),
 
-            // ─── Navigation Actions ───────────────────────────────
+            // ─── Navigation Actions
             setSelectedPOI: (poi) => set({ selectedPOI: poi }),
 
             setActiveRoute: (route) =>
@@ -107,6 +113,8 @@ export const useAppStore = create<AppState>()(
 
             setFinalApproachRoute: (route) => set({ finalApproachRoute: route }),
 
+            setParkingLotName: (name) => set({ parkingLotName: name }),
+
             setIsLoadingRoute: (loading) => set({ isLoadingRoute: loading }),
 
             setRouteError: (error) =>
@@ -115,17 +123,19 @@ export const useAppStore = create<AppState>()(
                     isLoadingRoute: false,
                     activeRoute: null,
                     finalApproachRoute: null,
+                    parkingLotName: null,
                 }),
 
             clearRoute: () =>
                 set({
                     activeRoute: null,
                     finalApproachRoute: null,
+                    parkingLotName: null,
                     routeError: null,
                     isLoadingRoute: false,
                 }),
 
-            // ─── Filter Actions ───────────────────────────────────
+            // ─── Filter Actions
             toggleFilter: (tag) =>
                 set((state) => ({
                     activeFilters: state.activeFilters.includes(tag)
@@ -135,7 +145,7 @@ export const useAppStore = create<AppState>()(
 
             clearFilters: () => set({ activeFilters: [] }),
 
-            // ─── Derived ──────────────────────────────────────────
+            // ─── Derived
             getRouteOptions: () => ({
                 transportMode: get().transportMode,
                 noStairs: !get().canUseStairs,

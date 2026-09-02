@@ -22,12 +22,13 @@
  * ─────────────────────────────────────────────────────────
  */
 
-import { useCallback, useState } from 'react';
-import { findRoute } from '../routing/astar';
-import { findGatewayNode } from '../routing/multiModal';
-import { findNearestNode, haversineDistance } from '../utils/haversine';
-import { useAppStore } from '../store/useAppStore';
-import { Graph, TransportMode } from '../types/route.types';
+import { useCallback, useState, useMemo } from 'react';
+import { findRoute } from '@/routing/astar';
+import { findGatewayNode, findParkingGatewayNode } from '@/routing/multiModal';
+import { findNearestNode, haversineDistance } from '@/utils/haversine';
+import { useAppStore } from '@/store/useAppStore';
+import { Graph, TransportMode } from '@/types';
+import { POI } from '../types/poi.types';
 
 const EMPTY_GRAPH: Graph = { nodes: {}, edges: {} };
 
@@ -36,16 +37,29 @@ const EMPTY_GRAPH: Graph = { nodes: {}, edges: {} };
 // silently computing a meaningless route
 const MAX_SNAP_DISTANCE_METERS = 300;
 
-export function useRouting(graph: Graph = EMPTY_GRAPH) {
+export function useRouting(graph: Graph = EMPTY_GRAPH, pois: POI[] = []) {
     const {
         getRouteOptions,
         setActiveRoute,
         setFinalApproachRoute,
+        setParkingLotName,
         setIsLoadingRoute,
         setRouteError,
     } = useAppStore();
 
     const [lastRoute, setLastRoute] = useState<[number, number][] | null>(null);
+
+    // Map of graph nodeId -> parking lot POI name, built once
+    // whenever the POI list changes
+    const parkingNodeMap = useMemo(() => {
+        const map = new Map<string, string>();
+        for (const poi of pois) {
+            if (poi.category === 'parking' && poi.nearestNodeId) {
+                map.set(poi.nearestNodeId, poi.name);
+            }
+        }
+        return map;
+    }, [pois]);
 
     const calculateRoute = useCallback(
         (userCoords: [number, number], destinationNodeId: string): void => {
@@ -86,18 +100,43 @@ export function useRouting(graph: Graph = EMPTY_GRAPH) {
             if (directRoute) {
                 setLastRoute(directRoute);
                 setActiveRoute(directRoute);
+                setParkingLotName(null)
                 return;
             }
 
-            // ── Attempt 2: multi-modal (vehicle + final walk) ──
+            // ── Attempt 2: multi-modal (vehicle + final walk)
             // Only applies to non-walking modes — walking has nowhere
             // further to fall back to
             if (options.transportMode !== 'walking') {
-                const gateway = findGatewayNode(
-                    graph,
-                    destinationNodeId,
-                    options.transportMode
-                );
+                const walkingOptions = {
+                    ...options,
+                    transportMode: 'walking' as TransportMode,
+                };
+
+                // Only Cars are routed through the parking lots; bikes and carts can get closer
+                // Prefer routing to an actual known parking lot over a
+                // generic point on a road, when one exists within range
+                let gateway = null;
+                let lotName: string | null = null;
+
+                if (options.transportMode === 'car' && parkingNodeMap.size > 0) {
+                    gateway = findParkingGatewayNode(
+                        graph,
+                        destinationNodeId,
+                        options.transportMode,
+                        new Set(parkingNodeMap.keys())
+                    );
+                    if (gateway) {
+                        lotName = parkingNodeMap.get(gateway.gatewayNodeId) ?? null;
+                    }
+                }
+
+                // Fall back to any generic vehicle-accessible point if no
+                // known parking lot is close enough
+                if (!gateway) {
+                    gateway = findGatewayNode(graph, destinationNodeId, options.transportMode);
+                    lotName = null;
+                }
 
                 if (gateway) {
                     const vehicleRoute = findRoute(
@@ -106,11 +145,6 @@ export function useRouting(graph: Graph = EMPTY_GRAPH) {
                         gateway.gatewayNodeId,
                         options
                     );
-
-                    const walkingOptions = {
-                        ...options,
-                        transportMode: 'walking' as TransportMode,
-                    };
 
                     const walkingRoute = findRoute(
                         graph,
@@ -123,6 +157,7 @@ export function useRouting(graph: Graph = EMPTY_GRAPH) {
                         setLastRoute(vehicleRoute);
                         setActiveRoute(vehicleRoute);
                         setFinalApproachRoute(walkingRoute);
+                        setParkingLotName(lotName);
                         return;
                     }
                 }
@@ -150,6 +185,7 @@ export function useRouting(graph: Graph = EMPTY_GRAPH) {
                 if (fullWalkingRoute) {
                     setLastRoute(fullWalkingRoute);
                     setActiveRoute(fullWalkingRoute);
+                    setParkingLotName(null);
                     return;
                 }
             }
@@ -160,9 +196,11 @@ export function useRouting(graph: Graph = EMPTY_GRAPH) {
         },
         [
             graph,
+            parkingNodeMap,
             getRouteOptions,
             setActiveRoute,
             setFinalApproachRoute,
+            setParkingLotName,
             setIsLoadingRoute,
             setRouteError,
         ]

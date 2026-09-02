@@ -4,5 +4,7 @@
     "types": ["node"],
     "module": "commonjs",
     "moduleResolution": "node"
-  }
+  },
+  "include": ["**/*.ts"],
+  "exclude": []
 }
