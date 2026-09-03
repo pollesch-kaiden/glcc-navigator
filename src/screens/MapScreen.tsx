@@ -16,8 +16,9 @@ import {
     TouchableOpacity,
     ScrollView,
     Modal,
+    Alert,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import {Ionicons, MaterialIcons} from '@expo/vector-icons';
 import { GLCCMap, GLCCMapRef } from '@/components/Map/GLCCMap';
 import { GLCC_BOUNDS} from "@/utils/mapStyle";
@@ -29,11 +30,15 @@ import { usePOIs } from '@/hooks/usePOIs';
 import { useRouting } from '@/hooks/useRouting';
 import graphData from '../../assets/map/graph.json';
 import { Graph } from '@/types/route.types';
-import {useOfflinePack} from "@/hooks/useOfflinePack";
-import {OfflineDownloadBanner} from "@/components/Map/OfflineDownloadBanner";
-import {OfflineManager} from "@maplibre/maplibre-react-native";
+import { useOfflinePack} from "@/hooks/useOfflinePack";
+import { OfflineDownloadBanner} from "@/components/Map/OfflineDownloadBanner";
+import { OfflineManager} from "@maplibre/maplibre-react-native";
 import { SettingsScreen} from "@/screens/SettingsScreen";
 import { FilterDrawer} from "@/components/POI/FilterDrawer";
+import { AdminPOIListScreen} from "@/screens/AdminPOIListScreen";
+import { AdminPOIFormScreen} from "@/screens/AdminPOIFormScreen";
+import { useAdminStore} from "@/store/useAdminStore";
+import { findNearestNode} from "@/utils/haversine";
 
 // Cast through unknown since JSON imports don't preserve exact tuple types
 const graph = graphData as unknown as Graph;
@@ -49,9 +54,9 @@ async function handleResetDatabase() {
     console.log('Offline database reset')
 }
 
-// ── Category display config ─────────────────────────────────
+// ── Category display config
 const CATEGORY_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
-    accommodation: 'bed-outline',
+    lodging: 'bed-outline',
     dining: 'restaurant-outline',
     recreation: 'bicycle-outline',
     chapel: 'business-outline',
@@ -64,7 +69,7 @@ const CATEGORY_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
 };
 
 const CATEGORY_LABEL: Record<string, string> = {
-    accommodation: 'Lodging',
+    lodging: 'Lodging',
     dining: 'Dining',
     recreation: 'Recreation',
     chapel: 'Chapel',
@@ -111,6 +116,51 @@ export function MapScreen() {
     const [showFilterDrawer, setShowFilterDrawer] = useState(false);
     const mapRef = useRef<GLCCMapRef>(null);
 
+    //Admin useState calls
+    const [showAdminList, setShowAdminList] = useState(false);
+    const [showAdminForm, setShowAdminForm] = useState(false);
+    const [editingAdminPOI, setEditingAdminPOI] = useState<POI | null>(null);
+    const { saveEdit, markDeleted } = useAdminStore();
+    const [pickingLocationForAdmin, setPickingLocationForAdmin] = useState(false);
+    const [pickedCoordinate, setPickedCoordinate] = useState<[number, number] | null>(null);
+    const [pendingModalAction, setPendingModalAction] = useState<(() => void) | null>(null);
+
+    interface POIDraft {
+        id?: string;
+        name: string;
+        category: string;
+        description: string;
+        activities: string[];
+        amenitiesText: string;
+        accessible: boolean;
+        hasStairs: boolean;
+        hours: string;
+        coordinates: [number, number] | null;
+    }
+
+    const EMPTY_DRAFT: POIDraft = {
+        name: '',
+        category: 'other',
+        description: '',
+        activities: [],
+        amenitiesText: '',
+        accessible: false,
+        hasStairs: false,
+        hours: '',
+        coordinates: null,
+    };
+
+    function generatePOIId(name: string): string {
+        const slug = name
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '');
+        const suffix = Math.random().toString(36).slice(2, 6);
+        return `custom-${slug || 'poi'}-${suffix}`;
+    }
+
+    const [poiDraft, setPOIDraft] = useState<POIDraft>(EMPTY_DRAFT);
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
 
@@ -176,10 +226,97 @@ export function MapScreen() {
         clearRoute();
     }, [setSelectedPOI, clearRoute]);
 
+    //Admin Handlers
+    function handleAdminEditPOI(poi: POI) {
+        setPOIDraft({
+            id: poi.id,
+            name: poi.name,
+            category: poi.category,
+            description: poi.description ?? '',
+            activities: poi.activities ?? [],
+            amenitiesText: (poi.amenities ?? []).join(', '),
+            accessible: poi.accessible ?? false,
+            hasStairs: poi.hasStairs ?? false,
+            hours: poi.hours ?? '',
+            coordinates: poi.coordinates,
+        });
+        setEditingAdminPOI(poi);
+        setPendingModalAction(() => () => setShowAdminForm(true));
+        setShowAdminList(false);
+    }
+
+    function handleAdminAddNew() {
+        setPOIDraft(EMPTY_DRAFT);
+        setEditingAdminPOI(null);
+        setPendingModalAction(() => () => setShowAdminForm(true));
+        setShowAdminList(false);
+    }
+
+    function handleAdminDeletePOI(poi: POI) {
+        markDeleted(poi.id);
+    }
+
+    function handleAdminSavePOI(draft: POIDraft) {
+        if (!draft.name.trim()) {
+            Alert.alert('Name required', 'Please enter a name for this POI.');
+            return;
+        }
+        if (!draft.coordinates) {
+            Alert.alert('Location required', 'Set a location before saving.');
+            return;
+        }
+
+        const poi = {
+            id: draft.id ?? generatePOIId(draft.name),
+            name: draft.name.trim(),
+            category: draft.category,
+            coordinates: draft.coordinates,
+            description: draft.description.trim(),
+            activities: draft.activities,
+            amenities: draft.amenitiesText
+                .split(',')
+                .map((a) => a.trim())
+                .filter(Boolean),
+            accessible: draft.accessible,
+            hasStairs: draft.hasStairs,
+            nearestNodeId:
+                findNearestNode(draft.coordinates, graph, {
+                    transportMode: 'walking',
+                    noStairs: false,
+                }) ?? '',
+            tags: editingAdminPOI?.tags ?? [],
+            hours: draft.hours.trim() || undefined,
+            source: 'custom',
+        } as POI;
+
+        saveEdit(poi as any);
+        setShowAdminForm(false);
+        setShowAdminList(true);
+    }
+
+    function handleConfirmPickedLocation(coords: [number, number]) {
+        setPOIDraft((prev) => ({ ...prev, coordinates: coords }));
+        setPickingLocationForAdmin(false);
+        setShowAdminForm(true);
+    }
+
+    function handleStartPickingLocation() {
+        setShowPOICard(false);
+
+        setShowAdminForm(false);
+        setPickingLocationForAdmin(true);
+    }
+
     return (
         <View style={styles.container}>
             {/* ── Full screen map ─────────────────────────── */}
-            <GLCCMap ref={mapRef} pois={filteredPOIs} onPOIPress={handlePOIPress} />
+            <GLCCMap
+                ref={mapRef}
+                pois={filteredPOIs}
+                onPOIPress={handlePOIPress}
+                forcePickerActive={pickingLocationForAdmin}
+                onCenterCordChange={setPickedCoordinate}
+            />
 
             {/* ── Transport mode picker (floating top bar) w/ Filter Menu ── */}
             <View style={styles.topBar}>
@@ -226,6 +363,31 @@ export function MapScreen() {
                     <Text style={styles.outsideBoundsText}>
                         You appear to be off-campus — directions are not available unless on GLCC Campus
                     </Text>
+                </View>
+            )}
+
+            {pickingLocationForAdmin && (
+                <View style={styles.pickLocationBar}>
+                    <Text style={styles.pickLocationText}>
+                        Pan the map to position the crosshair, then confirm
+                    </Text>
+                    <View style={styles.pickLocationButtons}>
+                        <TouchableOpacity
+                            style={styles.pickCancelButton}
+                            onPress={() => {
+                                setPickingLocationForAdmin(false);
+                                setShowAdminForm(true);
+                            }}
+                        >
+                            <Text style={styles.pickCancelText}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.pickConfirmButton}
+                            onPress={() => pickedCoordinate && handleConfirmPickedLocation(pickedCoordinate)}
+                        >
+                            <Text style={styles.pickConfirmText}>Use This Location</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             )}
 
@@ -352,7 +514,44 @@ export function MapScreen() {
                     offlineError={error}
                     onDownloadOffline={downloadPack}
                     onDeleteOffline={deletePack}
+                    onOpenAdminList={() => {
+                        setShowSettings(false);
+                        setShowAdminList(true);
+                    }}
                 />
+            </Modal>
+            <Modal visible={showAdminList}
+                   animationType="slide"
+                   onDismiss={() => {
+                       pendingModalAction?.();
+                       setPendingModalAction(null);
+                   }}
+                   onRequestClose={() => setShowAdminList(false)}
+            >
+                <AdminPOIListScreen
+                    pois={pois}
+                    onClose={() => setShowAdminList(false)}
+                    onEditPOI={handleAdminEditPOI}
+                    onAddNew={handleAdminAddNew}
+                    onDeletePOI={handleAdminDeletePOI}
+                />
+            </Modal>
+
+            <Modal
+                visible={showAdminForm && !pickingLocationForAdmin}
+                animationType="slide"
+                onRequestClose={() => setShowAdminForm(false)}
+            >
+                <SafeAreaProvider>
+                    <AdminPOIFormScreen
+                        draft={poiDraft}
+                        onChange={setPOIDraft}
+                        isNew={editingAdminPOI === null}
+                        onClose={() => setShowAdminForm(false)}
+                        onSave={handleAdminSavePOI}
+                        onPickOnMap={handleStartPickingLocation}
+                    />
+                </SafeAreaProvider>
             </Modal>
             <FilterDrawer
                 visible={showFilterDrawer}
@@ -577,5 +776,54 @@ const styles = StyleSheet.create({
         fontSize: 13,
         textAlign: 'center',
         flexShrink: 1,
+    },
+    pickLocationBar: {
+        position: 'absolute',
+        bottom: 100,
+        left: 16,
+        right: 16,
+        backgroundColor: '#ffffff',
+        borderRadius: 14,
+        padding: 14,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 6,
+        zIndex: 300,
+    },
+    pickLocationText: {
+        fontSize: 13,
+        color: '#444',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+    pickLocationButtons: {
+        flexDirection: 'row',
+        gap: 8,
+    },
+    pickCancelButton: {
+        flex: 1,
+        paddingVertical: 10,
+        borderRadius: 10,
+        backgroundColor: '#f2f2f2',
+        alignItems: 'center',
+    },
+    pickCancelText: {
+        color: '#444',
+        fontWeight: '600',
+        fontSize: 13,
+    },
+    pickConfirmButton: {
+        flex: 1,
+        paddingVertical: 10,
+        borderRadius: 10,
+        backgroundColor: '#1a4a2e',
+        alignItems: 'center',
+    },
+    pickConfirmText: {
+        color: '#ffffff',
+        fontWeight: '700',
+        fontSize: 13,
     },
 });

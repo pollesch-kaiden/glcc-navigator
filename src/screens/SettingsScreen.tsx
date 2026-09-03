@@ -17,7 +17,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
     View,
     Text,
@@ -26,14 +26,16 @@ import {
     ScrollView,
     Alert,
     Linking,
-    SafeAreaView,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { TransportIcon } from '@/components/Routing/TransportIcon';
 import { TransportMode } from '@/types';
 import { OfflinePackStatus } from '@/hooks/useOfflinePack';
 import { promptAndDownload } from '@/utils/offlineDownloadPrompt';
 import { getAppVersion} from "@/utils/appInfo";
+import { useAdminStore} from "@/store/useAdminStore";
+import {exportPOIData} from "@/utils/exportPOIData";
 
 // Easy to update once a real contact address is decided
 const SUPPORT_EMAIL = 'kaidenpollesch@gmail.com';
@@ -56,20 +58,23 @@ interface SettingsScreenProps {
     offlineError: string | null;
     onDownloadOffline: () => void;
     onDeleteOffline: () => void;
+    onOpenAdminList: () => void;
 }
 
 export function SettingsScreen({
-                                   onClose,
-                                   canUseStairs,
-                                   setCanUseStairs,
-                                   transportMode,
-                                   setTransportMode,
-                                   offlineStatus,
-                                   offlineProgress,
-                                   offlineError,
-                                   onDownloadOffline,
-                                   onDeleteOffline,
-                               }: SettingsScreenProps) {
+   onClose,
+   canUseStairs,
+   setCanUseStairs,
+   transportMode,
+   setTransportMode,
+   offlineStatus,
+   offlineProgress,
+   offlineError,
+   onDownloadOffline,
+   onDeleteOffline,
+   onOpenAdminList,
+   }: SettingsScreenProps) {
+    const insets = useSafeAreaInsets();
     const appVersion = getAppVersion();
 
     function handleDeleteOfflinePress() {
@@ -101,8 +106,39 @@ export function SettingsScreen({
         );
     }
 
+    const { isAdminUnlocked, unlockAdmin, lockAdmin } = useAdminStore();
+    const [versionTapCount, setVersionTapCount] = useState(0);
+    const lastTapTime = useRef(0);
+    const TAP_WINDOW_MS = 2000; // taps must happen within 2s of each other
+
+    function handleVersionTap() {
+        const now = Date.now();
+
+        if (now - lastTapTime.current > TAP_WINDOW_MS) {
+            // Too much time passed since the last tap — restart the count
+            setVersionTapCount(1);
+        } else {
+            const next = versionTapCount + 1;
+            setVersionTapCount(next);
+
+            if (next >= 7) {
+                setVersionTapCount(0);
+
+                if (isAdminUnlocked) {
+                    lockAdmin();
+                    Alert.alert('Admin Mode Locked', 'The POI editor is now hidden.');
+                } else {
+                    unlockAdmin();
+                    Alert.alert('Admin Mode Unlocked', 'You now have access to the POI editor.');
+                }
+            }
+        }
+
+        lastTapTime.current = now;
+    }
+
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
             {/* Header */}
             <View style={styles.header}>
                 <TouchableOpacity
@@ -274,7 +310,26 @@ export function SettingsScreen({
                 {/* App Info */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>About</Text>
-                    <Text style={styles.aboutText}>GLCC Navigator v{appVersion}</Text>
+                    <TouchableOpacity onPress={handleVersionTap} activeOpacity={1}>
+                        <Text style={styles.aboutText}>GLCC Navigator v{appVersion}</Text>
+                    </TouchableOpacity>
+                    {isAdminUnlocked && (
+                        <View style={styles.section}>
+                            <Text style={styles.sectionTitle}>Admin</Text>
+
+                            <TouchableOpacity style={styles.linkRow} onPress={onOpenAdminList}>
+                                <Ionicons name="create-outline" size={20} color="#1a4a2e" />
+                                <Text style={styles.linkText}>Manage POIs</Text>
+                                <Ionicons name="chevron-forward" size={18} color="#999" />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.linkRow} onPress={exportPOIData}>
+                                <Ionicons name="share-outline" size={20} color="#1a4a2e" />
+                                <Text style={styles.linkText}>Export POI Data</Text>
+                                <Ionicons name="chevron-forward" size={18} color="#999" />
+                            </TouchableOpacity>
+                        </View>
+                    )}
                     <Text style={styles.attributionText}>
                         Map data from OpenStreetMap contributors, available under the
                         Open Database License. Map rendering by MapLibre. Tiles hosted
@@ -282,7 +337,7 @@ export function SettingsScreen({
                     </Text>
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 }
 
