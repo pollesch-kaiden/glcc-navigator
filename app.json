@@ -39,7 +39,8 @@
       "favicon": "./assets/branding/icon-mark-green.png"
     },
     "plugins": [
-      "@maplibre/maplibre-react-native"
+      "@maplibre/maplibre-react-native",
+      "expo-sharing"
     ],
     "extra": {
       "eas": {
