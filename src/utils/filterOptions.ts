@@ -33,7 +33,7 @@ export const ACTIVITY_OPTIONS: FilterOption[] = [
 ];
 
 export const CATEGORY_OPTIONS: FilterOption[] = [
-    { value: 'accommodation', label: 'Accommodation' },
+    { value: 'lodging', label: 'Lodging' },
     { value: 'dining', label: 'Dining' },
     { value: 'conference', label: 'Conference' },
     { value: 'recreation', label: 'Recreation' },

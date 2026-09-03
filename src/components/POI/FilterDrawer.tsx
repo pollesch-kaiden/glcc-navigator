@@ -6,7 +6,7 @@
  *
  * Three collapsible sections:
  *  - Activities: things you can DO (swimming, dining, etc.)
- *  - Categories: what a POI IS (chapel, accommodation, etc.)
+ *  - Categories: what a POI IS (chapel, lodging, etc.)
  *  - Locations: every named POI, searchable by name
  *
  * When searching, all three sections expand automatically and

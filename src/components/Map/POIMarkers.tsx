@@ -33,7 +33,7 @@ interface POIMarkersProps {
 }
 
 const CATEGORY_COLORS: Record<POICategory, string> = {
-    accommodation: '#4a90e2',
+    lodging: '#4a90e2',
     dining:        '#e74c3c',
     recreation:    '#27ae60',
     chapel:        '#9b59b6',
@@ -46,7 +46,7 @@ const CATEGORY_COLORS: Record<POICategory, string> = {
 };
 
 const CATEGORY_ICONS: Record<POICategory, string> = {
-    accommodation: '🛏️',
+    lodging:       '🛏️',
     dining:        '🍽️',
     recreation:    '🏃',
     chapel:        '⛪',

@@ -43,7 +43,7 @@ function isRoadOrPath(tags: Record<string, string>): boolean {
 
 // ── OSM tag → our category mapping ──────────────────────────
 function mapCategory(tags: Record<string, string>): string {
-    if (tags.tourism === 'hotel' || tags.building === 'dormitory') return 'accommodation';
+    if (tags.tourism === 'hotel' || tags.building === 'dormitory') return 'lodging';
     if (tags.amenity === 'restaurant' || tags.amenity === 'cafe' || tags.amenity === 'fast_food') return 'dining';
     if (tags.amenity === 'place_of_worship' || tags.building === 'chapel') return 'chapel';
     if (tags.amenity === 'conference_centre' || tags.building === 'civic') return 'conference';

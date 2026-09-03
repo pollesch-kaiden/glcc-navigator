@@ -5,7 +5,7 @@
  * GLCC campus — buildings, landmarks, recreation areas, etc.
  *
  * Defines:
- *  - POICategory: broad classification (accommodation,
+ *  - POICategory: broad classification (lodging,
  *                 dining, recreation, chapel, etc.)
  *  - ActivityTag: what you can DO at a POI (swimming,
  *                 kayaking, meetings, worship, etc.)
@@ -18,7 +18,7 @@
  * ─────────────────────────────────────────────────────────
  */
 export type POICategory =
-    | 'accommodation'
+    | 'lodging'
     | 'dining'
     | 'conference'
     | 'recreation'

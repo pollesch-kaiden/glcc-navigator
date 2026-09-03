@@ -84,7 +84,7 @@
       "properties": {
         "id": "osm-way/241382686",
         "name": "Bauer Lodge",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -116,7 +116,7 @@
       "properties": {
         "id": "osm-way/262898322",
         "name": "Roger Williams Inn",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -234,7 +234,7 @@
       "properties": {
         "id": "osm-way/262908418",
         "name": "Kern Lodge",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -325,7 +325,7 @@
       "properties": {
         "id": "osm-way/263169390",
         "name": "Lawson Lodge",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -442,7 +442,7 @@
       "properties": {
         "id": "osm-way/263170129",
         "name": "Brown Door",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -470,7 +470,7 @@
       "properties": {
         "id": "osm-way/263170134",
         "name": "Lone Tree Lodge",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -502,7 +502,7 @@
       "properties": {
         "id": "osm-way/263292687",
         "name": "Robbins South Hall",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -702,7 +702,7 @@
       "properties": {
         "id": "osm-way/326175194",
         "name": "Red Door",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -730,7 +730,7 @@
       "properties": {
         "id": "osm-way/326178392",
         "name": "Blue Door",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -758,7 +758,7 @@
       "properties": {
         "id": "osm-way/326178393",
         "name": "Warner-Kallman",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
@@ -815,7 +815,7 @@
       "properties": {
         "id": "osm-way/326178395",
         "name": "Green/Yellow Door",
-        "category": "accommodation",
+        "category": "lodging",
         "description": "",
         "activities": [],
         "amenities": [],
