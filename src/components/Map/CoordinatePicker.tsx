@@ -28,12 +28,14 @@ interface CoordinatePickerProps {
     isActive: boolean;
     onToggle: () => void;
     centerCoordinate: [number, number] | null;
+    hideToggleButton?: boolean;
 }
 
 export function CoordinatePicker({
                                      isActive,
                                      onToggle,
                                      centerCoordinate,
+                                     hideToggleButton,
                                  }: CoordinatePickerProps) {
     const [copied, setCopied] = useState(false);
 
@@ -50,19 +52,20 @@ export function CoordinatePicker({
 
     return (
         <>
-            {/* Toggle button — always visible */}
-            <TouchableOpacity
-                style={[styles.toggleButton, isActive && styles.toggleButtonActive]}
-                onPress={onToggle}
-                activeOpacity={0.8}
-            >
-                <Ionicons
-                    name="locate-outline"
-                    size={22}
-                    color={isActive ? '#ffffff' : '#1a4a2e'}
-                />
-            </TouchableOpacity>
-
+            {/* Toggle button —  Alaways visible unless using to pick location in admin mode */}
+            {!hideToggleButton && (
+                <TouchableOpacity
+                    style={[styles.toggleButton, isActive && styles.toggleButtonActive]}
+                    onPress={onToggle}
+                    activeOpacity={0.8}
+                >
+                    <Ionicons
+                        name="locate-outline"
+                        size={22}
+                        color={isActive ? '#ffffff' : '#1a4a2e'}
+                    />
+                </TouchableOpacity>
+            )}
             {/* Crosshair overlay — only shown when active */}
             {isActive && (
                 <>

@@ -1,15 +1,18 @@
 /**
  * usePOIs.ts
  * ─────────────────────────────────────────────────────────
- * Loads and merges POIs from two sources:
+ * Loads and merges POIs from three sources, in priority order:
  *
  *  1. glcc-pois-osm.json    → auto-imported from OpenStreetMap
  *  2. glcc-pois-custom.json → your manual enrichments/additions
+ *  3. Admin overlay          → in-app edits made in Admin Mode,
+ *                              stored in AsyncStorage, take
+ *                              effect immediately without a
+ *                              rebuild
  *
- * Custom entries are merged onto matching OSM entries by id —
- * you only need to specify the fields you want to add or
- * override. Any custom entry whose id does NOT match an
- * existing OSM POI is treated as a brand new POI.
+ * A POI marked deleted (either via the admin overlay or baked
+ * into glcc-pois-custom.json after a previous export) is
+ * filtered out of the final result entirely.
  *
  * Used by: MapScreen.tsx
  * ─────────────────────────────────────────────────────────
@@ -18,7 +21,8 @@
 import { useMemo } from 'react';
 import osmData from '../../assets/map/glcc-pois-osm.json';
 import customData from '../../assets/map/glcc-pois-custom.json';
-import { POI } from '../types/poi.types';
+import { useAdminStore } from '@/store/useAdminStore';
+import { POI } from '@/types';
 
 function featureToPOI(feature: any): Partial<POI> & { id: string } {
     return {
@@ -28,24 +32,23 @@ function featureToPOI(feature: any): Partial<POI> & { id: string } {
 }
 
 export function usePOIs(): POI[] {
+    const adminEdits = useAdminStore((state) => state.adminEdits);
+
     return useMemo(() => {
-        // Defensive checks — prevents crashes if a file is
-        // temporarily empty/malformed during editing
         const osmFeatures = (osmData as any)?.features ?? [];
         const customFeatures = (customData as any)?.features ?? [];
 
         const osmPois = osmFeatures.map(featureToPOI);
         const customEntries = customFeatures.map(featureToPOI);
 
-        const merged = new Map<string, POI>();
+        const merged = new Map<string, any>();
 
         for (const poi of osmPois) {
-            merged.set(poi.id, poi as POI);
+            merged.set(poi.id, poi);
         }
 
         for (const custom of customEntries) {
             const existing = merged.get(custom.id);
-
             if (existing) {
                 merged.set(custom.id, {
                     ...existing,
@@ -55,10 +58,24 @@ export function usePOIs(): POI[] {
                     tags: custom.tags ?? existing.tags,
                 });
             } else {
-                merged.set(custom.id, custom as POI);
+                merged.set(custom.id, custom);
             }
         }
 
-        return Array.from(merged.values());
-    }, []);
+        // Admin overlay — highest priority, lets in-app changes
+        // take effect immediately without needing a rebuild
+        for (const edit of Object.values(adminEdits) as any[]) {
+            if (edit.deleted) {
+                merged.delete(edit.id);
+                continue;
+            }
+            const existing = merged.get(edit.id);
+            merged.set(edit.id, existing ? { ...existing, ...edit } : edit);
+        }
+
+        // Final safety filter — also catches deletion tombstones
+        // that were baked directly into glcc-pois-custom.json by a
+        // previous export, even with no admin overlay active
+        return Array.from(merged.values()).filter((p) => !p.deleted) as POI[];
+    }, [adminEdits]);
 }

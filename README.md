@@ -11,11 +11,13 @@ An offline-first mobile navigation app for the Green Lake Conference Center's 90
 5. [Accessibility and Stairs](#accessibility-and-stairs)
 6. [How Routing Works](#how-routing-works)
 7. [Multi-Modal Routing](#multi-modal-routing)
-8. [Offline Map Support](#offline-map-support)
-9. [Map Attribution](#map-attribution)
-10. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
-11. [Known Issues](#known-issues)
-12. [Development Workflow](#development-workflow)
+8. [Search and Filter Drawer](#search-and-filter-drawer)
+9. [Offline Map Support](#offline-map-support)
+10. [In-App Admin Editor](#in-app-admin-editor)
+11. [Map Attribution](#map-attribution)
+12. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
+13. [Known Issues](#known-issues)
+14. [Development Workflow](#development-workflow)
 
 ---
 
@@ -51,12 +53,27 @@ scripts/
 
 src/routing/
   astar.ts                  — core A* pathfinding algorithm
-  multiModal.ts             — park-and-walk gateway-node logic
+  multiModal.ts              — park-and-walk gateway-node logic
 
 src/hooks/
   usePOIs.ts                — merges OSM and custom POI data at runtime
-  useRouting.ts             — connects the A* engine to the UI
-  useOfflinePack.ts         — manages offline map tile download and deletion
+  useRouting.ts              — connects the A* engine to the UI
+  useOfflinePack.ts          — manages offline map tile download and deletion
+
+src/store/
+  useAppStore.ts             — persisted user preferences and session state
+  useAdminStore.ts           — persisted local admin edits, layered on top of bundled POI data
+
+src/components/POI/
+  FilterDrawer.tsx           — search and filter drawer for POIs
+
+src/screens/
+  AdminPOIListScreen.tsx     — admin list of all POIs, with search, add, and delete
+  AdminPOIFormScreen.tsx     — admin add/edit form for a single POI
+
+src/utils/
+  filterOptions.ts           — available activity and category filter values
+  exportPOIData.ts           — merges admin edits into an exportable POI file
 ```
 
 ---
@@ -105,7 +122,7 @@ sports, worship, nature, history, beach, bonfire, games, art, music
 Available `category` values:
 
 ```text
-accommodation, dining, conference, recreation, landmark, restroom,
+lodging, dining, conference, recreation, landmark, restroom,
 parking, waterfront, chapel, other
 ```
 
@@ -156,6 +173,8 @@ Use the built-in coordinate picker on the map screen:
 2. Pan the map until the fixed crosshair is over the desired location.
 3. Copy the displayed `[lng, lat]` coordinates.
 4. Paste the coordinates into the POI's `coordinates` field.
+
+> **Tip:** For quick on-site edits without touching JSON files directly, the [In-App Admin Editor](#in-app-admin-editor) supports adding, editing, and deleting POIs — including picking coordinates on the map — straight from the app.
 
 ---
 
@@ -325,7 +344,13 @@ Destination:                                    Destination
 
 The vehicle portion of the route is drawn as a solid green line.
 
-The final walking approach is drawn as a dashed, lighter green line. The POI card displays a message such as:
+The final walking approach is drawn as a dashed, lighter green line. For `car` mode, the POI card names the parking lot when one was found nearby:
+
+```text
+Park at North Lot, then walk to the destination.
+```
+
+or, when no named lot is found within range:
 
 ```text
 Includes a short walk from parking.
@@ -343,23 +368,47 @@ export const MAX_GATEWAY_WALK_DISTANCE_METERS = 400;
 
 Increase this value if legitimate destinations are being marked unreachable by vehicle. Decrease it if the suggested gateway points require users to walk farther than is reasonable.
 
-### Future Improvement: Named Parking Lots
+### Named Parking Lot Pickup Points
 
-Currently, the gateway search finds the nearest vehicle-accessible point, which may be a random point on a road instead of an actual parking lot.
-
-A future improvement is to prefer gateway nodes near POIs with:
+For the `car` transport mode specifically, the gateway search prefers nodes near POIs with:
 
 ```typescript
 category: "parking"
 ```
 
-This would allow the app to provide directions such as:
+instead of a generic nearest point on a road. Parking lot POIs are added to `glcc-pois-custom.json` like any other custom POI, using `category: "parking"`.
 
-```text
-Park at North Lot, then walk to the Chapel.
+If no named parking lot is found within `MAX_GATEWAY_WALK_DISTANCE_METERS`, the app falls back to the generic nearest-point behavior described above.
+
+> **Note:** This parking-lot preference currently only applies to `car` mode. Bikes and golf carts continue to use the generic nearest-point gateway search, since smaller vehicles can realistically get closer to building entrances.
+
+---
+
+## Search and Filter Drawer
+
+The hamburger menu icon in the top bar opens a left-sliding drawer for searching and filtering points of interest.
+
+### Filtering by Activity or Category
+
+The drawer groups filters into three collapsible sections: Activities, Categories, and Locations. Selecting one or more filters immediately narrows down which POI markers are shown on the map.
+
+Filters use **OR logic** — selecting both "Swimming" and "Dining" shows POIs that match either activity, not only POIs that match both.
+
+### Searching by Name
+
+Typing in the search box filters across all three sections simultaneously and automatically expands any section containing a match. Tapping a location result in the drawer closes the drawer, flies the map to that POI, and opens its POI card.
+
+### Adjusting Filter Options
+
+Available activity and category values are defined in a single place:
+
+```typescript
+// src/utils/filterOptions.ts
+export const ACTIVITY_OPTIONS = [ /* ... */ ];
+export const CATEGORY_OPTIONS = [ /* ... */ ];
 ```
 
-instead of directing the user to a generic point on the road.
+Adding a new activity or category value requires updating this file, plus adding a matching entry to the `POICategory` or `ActivityTag` type in `poi.types.ts` if the value should be type-checked.
 
 ---
 
@@ -417,6 +466,50 @@ npx expo run:ios --device --configuration Release
 ```
 
 Only Release builds have JavaScript embedded directly in the app binary, matching what actually ships to users. Only in a Release build will airplane mode correctly test whether cached map tiles render offline.
+
+---
+
+## In-App Admin Editor
+
+A hidden admin mode allows adding, editing, and deleting POIs directly from the app on a phone, without requiring a rebuild or code change. This is intended for finalizing POI data while physically on-site at GLCC.
+
+### Unlocking Admin Mode
+
+Tap the app version number on the Settings screen seven times, with each tap occurring within two seconds of the previous one. Repeating this locks admin mode back off.
+
+> **Note:** The tap target is intentionally invisible — it looks like plain static text, not a button, so the gesture is not obvious to a regular user browsing Settings.
+
+### How Admin Edits Are Stored
+
+Admin edits are stored locally on the device only, in a separate persisted store (`src/store/useAdminStore.ts`), layered on top of the bundled `glcc-pois-osm.json` and `glcc-pois-custom.json` data at runtime. Deleting a POI does not remove it from the bundled files; it stores a tombstone entry (`{ id, deleted: true }`) that hides the POI everywhere in the app.
+
+Admin edits made on one device are **not** automatically synced to any other device or to the codebase. See [Exporting Admin Edits](#exporting-admin-edits) below.
+
+### Adding, Editing, and Deleting POIs
+
+From the admin POI list screen:
+
+- Tap any row to edit that POI's fields.
+- Tap the "+" button to add a brand-new POI.
+- Tap the trash icon on a row to delete it, after confirming.
+
+The edit form supports name, category, activities, description, amenities, hours, accessibility, stairs, and coordinates.
+
+### Picking a Location on the Map
+
+Instead of typing coordinates by hand, tap "Pick on Map" in the POI form to overlay the coordinate-picker crosshair on the map. Pan the map until the crosshair is over the desired location, then confirm to return to the form with the new coordinates filled in and every other field preserved.
+
+### Exporting Admin Edits
+
+Because admin edits only live on the device that made them, they must be manually merged back into the codebase before they take effect for every user.
+
+Use the export option on the admin list screen to:
+
+1. Merge the bundled `glcc-pois-custom.json` data with every local admin edit into one complete file.
+2. Open the native Share sheet so the merged file can be saved, AirDropped, or emailed.
+3. Manually replace `glcc-pois-custom.json` in the codebase with the exported file, then commit the change.
+
+> **Note:** This manual export/import workflow was chosen deliberately over a cloud backend, since a full backend is unnecessary infrastructure for a single-admin, non-profit project at this stage.
 
 ---
 

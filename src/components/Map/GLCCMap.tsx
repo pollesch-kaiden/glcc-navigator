@@ -41,9 +41,18 @@ export interface GLCCMapRef {
 interface GLCCMapProps {
     pois: POI[];
     onPOIPress: (poi: POI) => void;
+    forcePickerActive?: boolean;
+    onCenterCordChange?: (coords: [number, number]) => void;
 }
 
-export function GLCCMap({ pois, onPOIPress, ref }: GLCCMapProps & {ref?: React.Ref<any>}) {
+export function GLCCMap({
+                            pois,
+                            onPOIPress,
+                            ref,
+                            forcePickerActive = false,
+                            onCenterCordChange
+}: GLCCMapProps & {ref?: React.Ref<GLCCMapRef>}) {
+
     const { activeRoute, finalApproachRoute } = useAppStore();
 
     // ── Retry-on-failure state ─────────────────────────────
@@ -87,8 +96,9 @@ export function GLCCMap({ pois, onPOIPress, ref }: GLCCMapProps & {ref?: React.R
 
         if (Array.isArray(center) && center.length === 2) {
             setCenterCoord(center as [number, number]);
+            onCenterCordChange?.(center as [number, number]);
         }
-    }, []);
+    }, [onCenterCordChange]);
 
     return (
         <View style={styles.container}>
@@ -126,13 +136,12 @@ export function GLCCMap({ pois, onPOIPress, ref }: GLCCMapProps & {ref?: React.R
 
                 <UserLocation animated={true} heading={true} />
             </Map>
-            {__DEV__ && (
-                <CoordinatePicker
-                    isActive={pickerActive}
-                    onToggle={() => setPickerActive((prev) => !prev)}
-                    centerCoordinate={centerCoord}
-                />
-            )}
+            <CoordinatePicker
+                isActive={pickerActive || forcePickerActive}
+                onToggle={() => setPickerActive((prev) => !prev)}
+                centerCoordinate={centerCoord}
+                hideToggleButton={forcePickerActive}
+            />
 
             {loadFailed && (
                 <View style={styles.errorOverlay}>
