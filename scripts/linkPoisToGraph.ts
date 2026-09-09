@@ -89,7 +89,7 @@ for (const feature of customData.features) {
 const nodeEntries = Object.entries(graph.nodes) as [string, any][];
 
 if (nodeEntries.length === 0) {
-    console.error('Error: graph has no nodes. Check glcc-paths.geojson has data.');
+    console.error('Error: graph has no nodes. Check glcc-paths.json has data.');
     process.exit(1);
 }
 

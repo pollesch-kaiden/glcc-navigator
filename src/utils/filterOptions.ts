@@ -42,5 +42,6 @@ export const CATEGORY_OPTIONS: FilterOption[] = [
     { value: 'parking', label: 'Parking' },
     { value: 'waterfront', label: 'Waterfront' },
     { value: 'chapel', label: 'Chapel' },
+    { value: 'has_vending', label: 'Has Vending' },
     { value: 'other', label: 'Other' },
 ];

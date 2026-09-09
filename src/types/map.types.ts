@@ -36,8 +36,8 @@ export const GLCC_BOUNDS: BoundingBox = {
 };
 
 export const GLCC_CENTER: [number, number] = [
-    -89.003694, // longitude
-    43.825987,  // latitude
+    -89.0199749, // longitude
+    43.8163777,  // latitude
 ];
 
-export const GLCC_DEFAULT_ZOOM = 15;
+export const GLCC_DEFAULT_ZOOM = 16;

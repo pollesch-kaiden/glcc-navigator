@@ -35,7 +35,8 @@ import { OfflinePackStatus } from '@/hooks/useOfflinePack';
 import { promptAndDownload } from '@/utils/offlineDownloadPrompt';
 import { getAppVersion} from "@/utils/appInfo";
 import { useAdminStore} from "@/store/useAdminStore";
-import {exportPOIData} from "@/utils/exportPOIData";
+import { exportPOIData } from "@/utils/exportPOIData";
+import { exportPathData } from "@/utils/exportPathData";
 
 // Easy to update once a real contact address is decided
 const SUPPORT_EMAIL = 'kaidenpollesch@gmail.com';
@@ -59,6 +60,7 @@ interface SettingsScreenProps {
     onDownloadOffline: () => void;
     onDeleteOffline: () => void;
     onOpenAdminList: () => void;
+    onOpenPathList: () => void;
 }
 
 export function SettingsScreen({
@@ -73,6 +75,7 @@ export function SettingsScreen({
    onDownloadOffline,
    onDeleteOffline,
    onOpenAdminList,
+   onOpenPathList,
    }: SettingsScreenProps) {
     const insets = useSafeAreaInsets();
     const appVersion = getAppVersion();
@@ -318,14 +321,26 @@ export function SettingsScreen({
                             <Text style={styles.sectionTitle}>Admin</Text>
 
                             <TouchableOpacity style={styles.linkRow} onPress={onOpenAdminList}>
-                                <Ionicons name="create-outline" size={20} color="#1a4a2e" />
+                                <Ionicons name="location-outline" size={20} color="#1a4a2e" />
                                 <Text style={styles.linkText}>Manage POIs</Text>
+                                <Ionicons name="chevron-forward" size={18} color="#999" />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.linkRow} onPress={onOpenPathList}>
+                                <Ionicons name="trail-sign-outline" size={20} color="#1a4a2e" />
+                                <Text style={styles.linkText}>Manage Paths</Text>
                                 <Ionicons name="chevron-forward" size={18} color="#999" />
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.linkRow} onPress={exportPOIData}>
                                 <Ionicons name="share-outline" size={20} color="#1a4a2e" />
                                 <Text style={styles.linkText}>Export POI Data</Text>
+                                <Ionicons name="chevron-forward" size={18} color="#999" />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.linkRow} onPress={exportPathData}>
+                                <Ionicons name="share-outline" size={20} color="#1a4a2e" />
+                                <Text style={styles.linkText}>Export Path Data</Text>
                                 <Ionicons name="chevron-forward" size={18} color="#999" />
                             </TouchableOpacity>
                         </View>

@@ -27,22 +27,33 @@ import {
     UserLocation,
 } from '@maplibre/maplibre-react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { MAP_STYLE, MAP_CONFIG, GLCC_BOUNDS, MAX_PAN_BOUNDS } from '@/utils/mapStyle';
+import { MAP_STYLE, MAP_CONFIG, MAX_PAN_BOUNDS } from '@/utils/mapStyle';
 import { RouteLayer } from './RouteLayer';
 import { POIMarkers } from './POIMarkers';
 import { CoordinatePicker } from './CoordinatePicker';
 import { useAppStore } from '@/store/useAppStore';
-import { POI } from '@/types';
+import { GLCC_CENTER, POI } from '@/types';
+import { TraceOverlayLayer } from '@/components/Map/TraceOverlayLayer';
+import { TraceSegment } from '@/types/pathTrace.types';
+import { GeoJSONSource, Layer } from '@maplibre/maplibre-react-native';
+import { PathFeature } from '@/routing/buildGraph';
 
 export interface GLCCMapRef {
     flyToPOI: (coordinates: [number, number]) => void;
 }
 
-interface GLCCMapProps {
+export interface GLCCMapProps {
     pois: POI[];
     onPOIPress: (poi: POI) => void;
     forcePickerActive?: boolean;
     onCenterCordChange?: (coords: [number, number]) => void;
+    interactivePOIs?: boolean;
+    onMapPress?: (coords: [number, number]) => void;
+    traceSegments?: TraceSegment[];
+    traceRingCenter?: [number, number] | null;
+    hideCoordinatePicker?: boolean;
+    highlightedPath?: PathFeature | null;
+    selectedPathVertexIndexes?: number[];
 }
 
 export function GLCCMap({
@@ -50,7 +61,14 @@ export function GLCCMap({
                             onPOIPress,
                             ref,
                             forcePickerActive = false,
-                            onCenterCordChange
+                            onCenterCordChange,
+                            interactivePOIs = true,
+                            onMapPress,
+                            traceSegments,
+                            traceRingCenter,
+                            hideCoordinatePicker = false,
+                            highlightedPath = null,
+                            selectedPathVertexIndexes = [],
 }: GLCCMapProps & {ref?: React.Ref<GLCCMapRef>}) {
 
     const { activeRoute, finalApproachRoute } = useAppStore();
@@ -70,7 +88,7 @@ export function GLCCMap({
 
     // ── Coordinate picker state ─────────────────────────────
     const [pickerActive, setPickerActive] = useState(false);
-    const [centerCoord, setCenterCoord] = useState<[number, number] | null>(
+    const [centerCord, setCenterCord] = useState<[number, number] | null>(
         null
     );
     const cameraRef = useRef<any>(null);
@@ -95,10 +113,23 @@ export function GLCCMap({
             ne?.properties?.center;
 
         if (Array.isArray(center) && center.length === 2) {
-            setCenterCoord(center as [number, number]);
+            setCenterCord(center as [number, number]);
             onCenterCordChange?.(center as [number, number]);
         }
     }, [onCenterCordChange]);
+
+    const handleMapPress = useCallback(
+        (event: any) => {
+            if (!onMapPress) return;
+
+            const lngLat = event?.nativeEvent?.lngLat;
+
+            if (Array.isArray(lngLat) && lngLat.length === 2) {
+                onMapPress([lngLat[0], lngLat[1]]);
+            }
+        },
+        [onMapPress]
+    );
 
     return (
         <View style={styles.container}>
@@ -113,12 +144,13 @@ export function GLCCMap({
                 attributionPosition={{ bottom: 8, right: 8 }}
                 onRegionDidChange={handleRegionChange}
                 onDidFailLoadingMap={handleFailLoading}
+                onPress={handleMapPress}
             >
                 <Camera
                     ref={cameraRef}
                     initialViewState={{
-                        bounds: GLCC_BOUNDS,
-                        padding: { top: 40, bottom: 40, left: 20, right: 20 },
+                        center: GLCC_CENTER,
+                        zoom: MAP_CONFIG.zoomLevel,
                     }}
                     maxBounds={MAX_PAN_BOUNDS}
                     minZoom={MAP_CONFIG.minZoom}
@@ -132,15 +164,81 @@ export function GLCCMap({
                     />
                 )}
 
-                <POIMarkers pois={pois} onPOIPress={onPOIPress} />
+                <POIMarkers pois={pois} onPOIPress={onPOIPress} interactive={interactivePOIs} />
+
+                {traceSegments && traceSegments.length > 0 && (
+                    <TraceOverlayLayer
+                        segments={traceSegments}
+                        ringCenter={traceRingCenter}
+                    />
+                )}
+
+                {highlightedPath && highlightedPath.geometry.type === 'LineString' && (
+                    <>
+                        <GeoJSONSource id="highlighted-path-source" data={{
+                            type: 'Feature',
+                            geometry: {
+                                type: 'LineString',
+                                coordinates: highlightedPath.geometry.coordinates,
+                            },
+                            properties: {},
+                        }}>
+                            <Layer
+                                id="highlighted-path-glow"
+                                type="line"
+                                layout={{ 'line-cap': 'round', 'line-join': 'round' }}
+                                paint={{
+                                    'line-color': 'rgba(255, 166, 0, 0.35)',
+                                    'line-width': 12,
+                                }}
+                            />
+                            <Layer
+                                id="highlighted-path-line"
+                                type="line"
+                                layout={{ 'line-cap': 'round', 'line-join': 'round' }}
+                                paint={{
+                                    'line-color': '#f39c12',
+                                    'line-width': 5,
+                                }}
+                            />
+                        </GeoJSONSource>
+
+                        {selectedPathVertexIndexes.length > 0 && (
+                            <GeoJSONSource id="selected-path-vertices-source" data={{
+                                type: 'FeatureCollection',
+                                features: selectedPathVertexIndexes
+                                    .filter((index) => index >= 0 && index < highlightedPath.geometry.coordinates.length)
+                                    .map((index) => ({
+                                        type: 'Feature',
+                                        geometry: {
+                                            type: 'Point',
+                                            coordinates: highlightedPath.geometry.coordinates[index],
+                                        },
+                                        properties: { index },
+                                    })),
+                            }}>
+                                <Layer
+                                    id="selected-path-vertices-layer"
+                                    type="circle"
+                                    paint={{
+                                        'circle-radius': 7,
+                                        'circle-color': '#ffffff',
+                                        'circle-stroke-color': '#d35400',
+                                        'circle-stroke-width': 3,
+                                    }}
+                                />
+                            </GeoJSONSource>
+                        )}
+                    </>
+                )}
 
                 <UserLocation animated={true} heading={true} />
             </Map>
             <CoordinatePicker
                 isActive={pickerActive || forcePickerActive}
                 onToggle={() => setPickerActive((prev) => !prev)}
-                centerCoordinate={centerCoord}
-                hideToggleButton={forcePickerActive}
+                centerCoordinate={centerCord}
+                hideToggleButton={hideCoordinatePicker || forcePickerActive || !!highlightedPath}
             />
 
             {loadFailed && (

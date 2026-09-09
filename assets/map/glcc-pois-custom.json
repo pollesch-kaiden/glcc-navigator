@@ -134,6 +134,8 @@
       },
       "properties": {
         "id": "osm-way/262908418",
+        "name": "Kern Lodge",
+        "category": "lodging",
         "nearestNodeId": "node-773",
         "activities": [
           "sleeping",
@@ -142,6 +144,10 @@
         "amenities": [
           "wifi",
           "restrooms"
+        ],
+        "vendingLocations": [
+          "Snack Vendings: third floor by ice machine",
+          "Drink Vending: first floor by elevators"
         ],
         "accessible": true,
         "hasStairs": false,

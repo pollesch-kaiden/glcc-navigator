@@ -38,6 +38,7 @@ export interface POIDraft {
     description: string;
     activities: string[];
     amenitiesText: string;
+    vendingLocationsText: string;
     accessible: boolean;
     hasStairs: boolean;
     hours: string;
@@ -168,6 +169,15 @@ export function AdminPOIFormScreen({
                     value={draft.amenitiesText}
                     onChangeText={(v) => update('amenitiesText', v)}
                     placeholder="wifi, restrooms, air-conditioning"
+                />
+
+                <Text style={styles.label}>Vending Locations (comma separated)</Text>
+                <TextInput
+                    style={[styles.input, styles.multilineInput]}
+                    value={draft.vendingLocationsText}
+                    onChangeText={(v) => update('vendingLocationsText', v)}
+                    placeholder="Snack Vending: third floor by ice machine, Drink Vending: first floor by elevators"
+                    multiline
                 />
 
                 <Text style={styles.label}>Hours</Text>

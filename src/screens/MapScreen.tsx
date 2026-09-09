@@ -25,7 +25,7 @@ import { GLCC_BOUNDS} from "@/utils/mapStyle";
 import { TransportPicker } from '@/components/Routing/TransportPicker';
 import { useAppStore } from '@/store/useAppStore';
 import { useLocation } from '@/hooks/useLocation';
-import { POI } from '@/types';
+import { POI, TransportMode } from '@/types';
 import { usePOIs } from '@/hooks/usePOIs';
 import { useRouting } from '@/hooks/useRouting';
 import graphData from '../../assets/map/graph.json';
@@ -38,7 +38,15 @@ import { FilterDrawer} from "@/components/POI/FilterDrawer";
 import { AdminPOIListScreen} from "@/screens/AdminPOIListScreen";
 import { AdminPOIFormScreen} from "@/screens/AdminPOIFormScreen";
 import { useAdminStore} from "@/store/useAdminStore";
-import { findNearestNode} from "@/utils/haversine";
+import { findNearestNode, haversineDistance } from "@/utils/haversine";
+import { usePaths } from "@/hooks/usePaths";
+import { useLiveGraph } from "@/hooks/useLiveGraph";
+import { usePathTracer } from "@/hooks/usePathTracer";
+import { PathTracerControls } from "@/components/Map/PathTracerControls";
+import { PathNameModal } from "@/components/Map/PathNameModal";
+import { AdminPathListScreen } from "@/screens/AdminPathListScreen";
+import { TransportModeMultiSelect } from '@/components/Routing/TransportModeMultiSelect';
+import { PathFeature } from '@/routing/buildGraph';
 
 // Cast through unknown since JSON imports don't preserve exact tuple types
 const graph = graphData as unknown as Graph;
@@ -101,11 +109,16 @@ export function MapScreen() {
     const { hasPermission, location } = useLocation();
     const pois = usePOIs();
 
+    const paths = usePaths();
+
     const filteredPOIs = useMemo(() => {
         if (activeFilters.length === 0) return pois;
         return pois.filter((poi) =>
             activeFilters.some(
-                (filter) => poi.activities.includes(filter as any) || poi.category === filter
+                (filter) =>
+                    poi.activities.includes(filter as any) ||
+                    poi.category === filter ||
+                    (filter === 'has_vending' && (poi.vendingLocations?.length ?? 0) > 0)
             )
         );
     }, [pois, activeFilters]);
@@ -120,10 +133,63 @@ export function MapScreen() {
     const [showAdminList, setShowAdminList] = useState(false);
     const [showAdminForm, setShowAdminForm] = useState(false);
     const [editingAdminPOI, setEditingAdminPOI] = useState<POI | null>(null);
-    const { saveEdit, markDeleted } = useAdminStore();
+    const { saveEdit, markDeleted, savePathEdit, markPathDeleted } = useAdminStore();
     const [pickingLocationForAdmin, setPickingLocationForAdmin] = useState(false);
     const [pickedCoordinate, setPickedCoordinate] = useState<[number, number] | null>(null);
     const [pendingModalAction, setPendingModalAction] = useState<(() => void) | null>(null);
+
+    const [showPathList, setShowPathList] = useState(false);
+    const [showPathNameModal, setShowPathNameModal] = useState(false);
+    const [pathEditTarget, setPathEditTarget] = useState<PathFeature | null>(null);
+    const [pathEditSelection, setPathEditSelection] = useState<number[]>([]);
+    const [pathEditModes, setPathEditModes] = useState<TransportMode[]>(['walking']);
+    const [pathEditHasStairs, setPathEditHasStairs] = useState(false);
+    const pathTracer = usePathTracer();
+
+    const handleEditPath = useCallback((feature: PathFeature) => {
+        setShowPathList(false);
+        setShowPOICard(false);
+        setSelectedPOI(null);
+        clearRoute();
+        setPathEditTarget(feature);
+        setPathEditSelection([]);
+        setPathEditModes((feature.properties?.transportModes as TransportMode[]) ?? ['walking']);
+        setPathEditHasStairs(Boolean(feature.properties?.hasStairs));
+
+        const coordinates = (feature.geometry.coordinates ?? []) as [number, number][];
+        if (coordinates.length > 0) {
+            const lngs = coordinates.map(([lng]) => lng);
+            const lats = coordinates.map(([, lat]) => lat);
+            const bounds = [
+                Math.min(...lngs),
+                Math.min(...lats),
+                Math.max(...lngs),
+                Math.max(...lats),
+            ] as [number, number, number, number];
+            const centerLng = (bounds[0] + bounds[2]) / 2;
+            const centerLat = (bounds[1] + bounds[3]) / 2;
+            mapRef.current?.flyToPOI([centerLng, centerLat]);
+        }
+
+        Alert.alert(
+            'Edit existing path',
+            'Tap two vertices on the selected path to define the edit range, then save.'
+        );
+    }, [clearRoute, setSelectedPOI]);
+
+    const totalTracePoints = useMemo(
+        () =>
+            pathTracer.committedSegments.reduce((sum, segment) => sum + segment.coordinates.length, 0) +
+            pathTracer.currentSegment.coordinates.length,
+        [pathTracer.committedSegments, pathTracer.currentSegment.coordinates]
+    );
+
+    const activeTraceSegments = useMemo(() => {
+        if (!pathTracer.isActive) return [];
+        return pathTracer.currentSegment.coordinates.length >= 1
+            ? [...pathTracer.committedSegments, pathTracer.currentSegment]
+            : pathTracer.committedSegments;
+    }, [pathTracer.isActive, pathTracer.committedSegments, pathTracer.currentSegment]);
 
     interface POIDraft {
         id?: string;
@@ -132,6 +198,7 @@ export function MapScreen() {
         description: string;
         activities: string[];
         amenitiesText: string;
+        vendingLocationsText: string;
         accessible: boolean;
         hasStairs: boolean;
         hours: string;
@@ -144,6 +211,7 @@ export function MapScreen() {
         description: '',
         activities: [],
         amenitiesText: '',
+        vendingLocationsText: '',
         accessible: false,
         hasStairs: false,
         hours: '',
@@ -164,7 +232,8 @@ export function MapScreen() {
     // Fallback start point if GPS isn't available — center of GLCC campus
     const FALLBACK_START: [number, number] = [-89.0165, 43.8158];
 
-    const { calculateRoute } = useRouting(graph, pois);
+    const liveGraph = useLiveGraph(graph, paths);
+    const { calculateRoute } = useRouting(liveGraph, pois);
 
     const isUserOutsideBounds = useMemo(() => {
         if (!location) return false;
@@ -208,10 +277,11 @@ export function MapScreen() {
 
     const handlePOIPress = useCallback(
         (poi: POI) => {
+            if (pathTracer.isActive) return;
             setSelectedPOI(poi);
             setShowPOICard(true);
         },
-        [setSelectedPOI]
+        [pathTracer.isActive, setSelectedPOI]
     );
 
     function handleSelectPOIFromSearch(poi: POI) {
@@ -235,6 +305,7 @@ export function MapScreen() {
             description: poi.description ?? '',
             activities: poi.activities ?? [],
             amenitiesText: (poi.amenities ?? []).join(', '),
+            vendingLocationsText: (poi.vendingLocations ?? []).join(', '),
             accessible: poi.accessible ?? false,
             hasStairs: poi.hasStairs ?? false,
             hours: poi.hours ?? '',
@@ -277,6 +348,10 @@ export function MapScreen() {
                 .split(',')
                 .map((a) => a.trim())
                 .filter(Boolean),
+            vendingLocations: draft.vendingLocationsText
+                .split(',')
+                .map((v) => v.trim())
+                .filter(Boolean),
             accessible: draft.accessible,
             hasStairs: draft.hasStairs,
             nearestNodeId:
@@ -307,39 +382,167 @@ export function MapScreen() {
         setPickingLocationForAdmin(true);
     }
 
+    function handleOpenPathTracer() {
+        setShowPOICard(false);
+        setShowPathList(false);
+        pathTracer.startTrace('off-campus', ['walking'], false);
+    }
+
+    function handleTraceMapPress(coords: [number, number]) {
+        if (pathEditTarget) {
+            const coordinates = (pathEditTarget.geometry.coordinates ?? []) as [number, number][];
+            if (coordinates.length === 0) return;
+
+            let nearestIndex = 0;
+            let nearestDistance = Number.POSITIVE_INFINITY;
+
+            coordinates.forEach((point, index) => {
+                const distance = haversineDistance(point, coords);
+                if (distance < nearestDistance) {
+                    nearestDistance = distance;
+                    nearestIndex = index;
+                }
+            });
+
+            if (nearestDistance > 30) {
+                Alert.alert('Select a nearby vertex', 'Tap closer to the path to choose a vertex for the edit range.');
+                return;
+            }
+
+            setPathEditSelection((prev) => {
+                if (prev.length === 0) return [nearestIndex];
+                if (prev.length === 1) {
+                    if (prev[0] === nearestIndex) return prev;
+                    return [...prev, nearestIndex];
+                }
+                return [nearestIndex];
+            });
+            return;
+        }
+
+        if (!pathTracer.isActive || pathTracer.traceMode !== 'off-campus') return;
+        pathTracer.placeNode(coords);
+    }
+
+    function handleSaveTrace(name: string) {
+        pathTracer.saveTrace(name);
+        setShowPathNameModal(false);
+    }
+
+    function handleCancelPathEdit() {
+        setPathEditTarget(null);
+        setPathEditSelection([]);
+        setPathEditModes(['walking']);
+        setPathEditHasStairs(false);
+    }
+
+    function handlePathEditModeToggle(mode: TransportMode) {
+        setPathEditModes((prev) => {
+            if (prev.includes(mode)) {
+                return prev.filter((item) => item !== mode);
+            }
+            return [...prev, mode];
+        });
+    }
+
+    function handleSavePathEdit() {
+        if (!pathEditTarget) return;
+        if (pathEditSelection.length < 2) {
+            Alert.alert('Choose a range', 'Tap two vertices on the selected path to define the edit range.');
+            return;
+        }
+
+        const originalId = pathEditTarget.properties?.id ?? `path-${Date.now()}`;
+        const originalProps = pathEditTarget.properties ?? {};
+        const coordinates = (pathEditTarget.geometry.coordinates ?? []) as [number, number][];
+
+        const [start, end] = [
+            Math.min(...pathEditSelection),
+            Math.max(...pathEditSelection),
+        ];
+
+        const before = coordinates.slice(0, start + 1);
+        const middle = coordinates.slice(start, end + 1);
+        const after = coordinates.slice(end);
+
+        const replacementSegments = [
+            before.length >= 2 ? { id: `${originalId}-edit-before`, coordinates: before } : null,
+            middle.length >= 2 ? { id: `${originalId}-edit-range`, coordinates: middle } : null,
+            after.length >= 2 ? { id: `${originalId}-edit-after`, coordinates: after } : null,
+        ].filter(Boolean) as Array<{ id: string; coordinates: [number, number][] }>;
+
+        if (replacementSegments.length === 0) {
+            Alert.alert('No editable segment', 'The selected range is too short to edit.');
+            return;
+        }
+
+        markPathDeleted(originalId);
+        replacementSegments.forEach((segment) => {
+            const isMiddle = segment.id.endsWith('-edit-range');
+            savePathEdit({
+                id: segment.id,
+                name: originalProps.name ?? originalId,
+                coordinates: segment.coordinates,
+                traceGroupId: originalProps.traceGroupId ?? originalId,
+                transportModes: isMiddle ? pathEditModes : (originalProps.transportModes ?? ['walking']),
+                hasStairs: isMiddle ? pathEditHasStairs : Boolean(originalProps.hasStairs),
+                bidirectional: originalProps.bidirectional ?? true,
+                surface: originalProps.surface ?? 'paved',
+                source: 'admin',
+            });
+        });
+
+        setPathEditTarget(null);
+        setPathEditSelection([]);
+        setPathEditModes(['walking']);
+        setPathEditHasStairs(false);
+        Alert.alert('Path updated', 'The edited path has been saved locally and will route immediately.');
+    }
+
     return (
         <View style={styles.container}>
-            {/* ── Full screen map ─────────────────────────── */}
+            {/* ── Full screen map  */}
             <GLCCMap
                 ref={mapRef}
                 pois={filteredPOIs}
                 onPOIPress={handlePOIPress}
                 forcePickerActive={pickingLocationForAdmin}
                 onCenterCordChange={setPickedCoordinate}
+                onMapPress={handleTraceMapPress}
+                traceSegments={activeTraceSegments}
+                traceRingCenter={pathTracer.lastPoint}
+                interactivePOIs={!pathTracer.isActive && !pathEditTarget}
+                hideCoordinatePicker={pathTracer.isActive || !!pathEditTarget}
+                highlightedPath={pathEditTarget}
+                selectedPathVertexIndexes={pathEditSelection}
             />
 
-            {/* ── Transport mode picker (floating top bar) w/ Filter Menu ── */}
-            <View style={styles.topBar}>
-                <SafeAreaView edges={['top']}>
-                    <View style={styles.topBarRow}>
-                        <TouchableOpacity
-                            style={styles.hamburgerButton}
-                            onPress={() => setShowFilterDrawer(true)}
-                        >
-                            <Ionicons name="menu-outline" size={20} color="#1a2e1a" />
-                        </TouchableOpacity>
-                        <TransportPicker />
+            {!pathTracer.isActive && !pathEditTarget && (
+                <>
+                    {/* ── Transport mode picker (floating top bar) w/ Filter Menu */}
+                    <View style={styles.topBar}>
+                        <SafeAreaView edges={['top']}>
+                            <View style={styles.topBarRow}>
+                                <TouchableOpacity
+                                    style={styles.hamburgerButton}
+                                    onPress={() => setShowFilterDrawer(true)}
+                                >
+                                    <Ionicons name="options-outline" size={20} color="#1a2e1a" />
+                                </TouchableOpacity>
+                                <TransportPicker />
+                            </View>
+                        </SafeAreaView>
                     </View>
-                </SafeAreaView>
-            </View>
-            <TouchableOpacity
-                style={styles.settingsButton}
-                onPress={() => setShowSettings(true)}
-            >
-                <Ionicons name="settings-outline" size={22} color="#1a4a2e" />
-            </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.settingsButton}
+                        onPress={() => setShowSettings(true)}
+                    >
+                        <Ionicons name="settings-outline" size={22} color="#1a4a2e" />
+                    </TouchableOpacity>
+                </>
+            )}
 
-            {/* ── No GPS warning ───────────────────────────  */}
+            {/* ── No GPS warning  */}
             {hasPermission === false && (
                 <View style={styles.noGPSBanner}>
                     <Ionicons name="location-outline" size={14} color="#ffffff" />
@@ -356,8 +559,7 @@ export function MapScreen() {
                 onDownload={downloadPack}
             />
 
-            {/* ── Outside GLCC warning ─────────────────────── */}
-            {isUserOutsideBounds && (
+            {!pathTracer.isActive && !pathEditTarget && isUserOutsideBounds && (
                 <View style={styles.outsideBoundsBanner}>
                     <Ionicons name="location-outline" size={14} color="#ffffff" />
                     <Text style={styles.outsideBoundsText}>
@@ -366,7 +568,7 @@ export function MapScreen() {
                 </View>
             )}
 
-            {pickingLocationForAdmin && (
+            {!pathTracer.isActive && pickingLocationForAdmin && (
                 <View style={styles.pickLocationBar}>
                     <Text style={styles.pickLocationText}>
                         Pan the map to position the crosshair, then confirm
@@ -391,7 +593,74 @@ export function MapScreen() {
                 </View>
             )}
 
-            {/* ── POI info card ────────────────────────────  */}
+            {pathTracer.isActive && (
+                <PathTracerControls
+                    traceMode={pathTracer.traceMode}
+                    onChangeTraceMode={(nextMode) => {
+                        if (pathTracer.currentSegment.coordinates.length === 0 && pathTracer.committedSegments.length === 0) {
+                            pathTracer.startTrace(nextMode, pathTracer.currentSegment.transportModes, pathTracer.currentSegment.hasStairs);
+                        }
+                    }}
+                    hasStartedPlacingPoints={totalTracePoints > 0}
+                    selectedModes={pathTracer.currentSegment.transportModes}
+                    onToggleMode={pathTracer.toggleTransportMode}
+                    hasStairs={pathTracer.currentSegment.hasStairs}
+                    onToggleStairs={pathTracer.toggleStairs}
+                    isRecording={pathTracer.isRecording}
+                    onStartRecording={async () => {
+                        if (pathTracer.traceMode === 'on-campus' && isUserOutsideBounds) {
+                            Alert.alert('Not on campus', 'You must be on campus before starting GPS tracing.');
+                            return;
+                        }
+
+                        const result = await pathTracer.startRecording();
+                        if (!result.success) {
+                            Alert.alert('Location access required', result.error ?? 'Unable to start GPS tracing.');
+                        }
+                    }}
+                    onPauseRecording={pathTracer.pauseRecording}
+                    canUndo={pathTracer.canUndo}
+                    onUndo={pathTracer.undoLastPoint}
+                    onDiscard={pathTracer.discardTrace}
+                    onEndPath={() => setShowPathNameModal(true)}
+                    outOfRangeWarning={pathTracer.outOfRangeWarning}
+                    totalPointCount={totalTracePoints}
+                    isStartDisabled={pathTracer.traceMode === 'on-campus' && isUserOutsideBounds}
+                />
+            )}
+
+            {pathEditTarget && (
+                <View style={styles.pathEditBar}>
+                    <Text style={styles.pathEditTitle}>Editing: {pathEditTarget.properties?.name ?? 'Unnamed Path'}</Text>
+                    <Text style={styles.pathEditSubtitle}>
+                        {pathEditSelection.length === 0
+                            ? '0 of 2 vertices selected'
+                            : `${pathEditSelection.length} of 2 vertices selected`}
+                    </Text>
+
+                    <TransportModeMultiSelect
+                        selectedModes={pathEditModes}
+                        onToggleMode={handlePathEditModeToggle}
+                        hasStairs={pathEditHasStairs}
+                        onToggleStairs={setPathEditHasStairs}
+                    />
+
+                    <View style={styles.pathEditActions}>
+                        <TouchableOpacity style={styles.pathEditSecondary} onPress={handleCancelPathEdit}>
+                            <Text style={styles.pathEditSecondaryText}>Cancel</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[styles.pathEditPrimary, pathEditSelection.length < 2 && styles.pathEditPrimaryDisabled]}
+                            onPress={handleSavePathEdit}
+                            disabled={pathEditSelection.length < 2}
+                        >
+                            <Text style={styles.pathEditPrimaryText}>Save Edit</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )}
+
+            {/* ── POI info card */}
             {showPOICard && selectedPOI && (
                 <View style={styles.poiCard}>
                     <TouchableOpacity
@@ -462,6 +731,32 @@ export function MapScreen() {
                         </ScrollView>
                     )}
 
+                    {(selectedPOI.vendingLocations?.length ?? 0) > 0 && (
+                        <View style={styles.vendingSection}>
+                            <Text style={styles.vendingTitle}>Vending machine locations</Text>
+
+                            {selectedPOI.vendingLocations!.map((location, index) => (
+                                <View
+                                    key={`${selectedPOI.id}-vending-${index}`}
+                                    style={styles.vendingRow}
+                                >
+                                    <Ionicons
+                                        name={
+                                            location.startsWith("Snack Vending")
+                                                ? "nutrition-outline"
+                                                : location.startsWith("Drink Vending")
+                                                    ? "beer-outline"
+                                                    : "nutrition-outline"
+                                        }
+                                        size={14}
+                                        color="#2d7a4f"
+                                    />
+
+                                    <Text style={styles.vendingText}>{location}</Text>
+                                </View>
+                            ))}
+                        </View>
+                    )}
                     {finalApproachRoute && (
                         <View style={styles.approachNotice}>
                             <Ionicons name="walk-outline" size={14} color="#6ba888" />
@@ -518,6 +813,10 @@ export function MapScreen() {
                         setShowSettings(false);
                         setShowAdminList(true);
                     }}
+                   onOpenPathList={() => {
+                       setShowSettings(false);
+                       setShowPathList(true);
+                   }}
                 />
             </Modal>
             <Modal visible={showAdminList}
@@ -529,13 +828,29 @@ export function MapScreen() {
                    onRequestClose={() => setShowAdminList(false)}
             >
                 <AdminPOIListScreen
-                    pois={pois}
-                    onClose={() => setShowAdminList(false)}
-                    onEditPOI={handleAdminEditPOI}
-                    onAddNew={handleAdminAddNew}
-                    onDeletePOI={handleAdminDeletePOI}
+                   pois={pois}
+                   onClose={() => setShowAdminList(false)}
+                   onEditPOI={handleAdminEditPOI}
+                   onAddNew={handleAdminAddNew}
+                   onDeletePOI={handleAdminDeletePOI}
                 />
             </Modal>
+            <Modal visible={showPathList} animationType="slide" onRequestClose={() => setShowPathList(false)}>
+                <AdminPathListScreen
+                   onClose={() => setShowPathList(false)}
+                   onTraceNew={() => {
+                       setShowPathList(false);
+                       handleOpenPathTracer();
+                   }}
+                   onEditPath={handleEditPath}
+                />
+            </Modal>
+            <PathNameModal
+                visible={showPathNameModal}
+                onCancel={() => setShowPathNameModal(false)}
+                onConfirm={handleSaveTrace}
+                segmentCount={pathTracer.getFinalSegments().length}
+            />
 
             <Modal
                 visible={showAdminForm && !pickingLocationForAdmin}
@@ -630,6 +945,60 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 13,
         textAlign: 'center',
+    },
+    pathEditBar: {
+        position: 'absolute',
+        bottom: 24,
+        left: 16,
+        right: 16,
+        backgroundColor: 'rgba(255,255,255,0.96)',
+        borderRadius: 16,
+        padding: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 10,
+        elevation: 4,
+    },
+    pathEditTitle: {
+        color: '#1a2e1a',
+        fontSize: 15,
+        fontWeight: '700',
+        marginBottom: 4,
+    },
+    pathEditSubtitle: {
+        color: '#666',
+        fontSize: 12,
+        marginBottom: 12,
+    },
+    pathEditActions: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        gap: 8,
+        marginTop: 12,
+    },
+    pathEditSecondary: {
+        backgroundColor: '#f0f0f0',
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        borderRadius: 10,
+    },
+    pathEditSecondaryText: {
+        color: '#1a2e1a',
+        fontWeight: '600',
+    },
+    pathEditPrimary: {
+        backgroundColor: '#1a4a2e',
+        paddingHorizontal: 14,
+        paddingVertical: 10,
+        borderRadius: 10,
+    },
+    pathEditPrimaryDisabled: {
+        opacity: 0.5,
+    },
+    pathEditPrimaryText: {
+        color: '#ffffff',
+        fontWeight: '700',
     },
     poiCard: {
         position: 'absolute',
@@ -730,6 +1099,32 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textTransform: 'capitalize',
     },
+    vendingSection: {
+        backgroundColor: '#f7fbf8',
+        borderRadius: 12,
+        padding: 10,
+        marginBottom: 12,
+    },
+    vendingTitle: {
+        fontSize: 12,
+        fontWeight: '700',
+        color: '#1a2e1a',
+        marginBottom: 6,
+        textTransform: 'uppercase',
+        letterSpacing: 0.5,
+    },
+    vendingRow: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        gap: 6,
+        marginBottom: 4,
+    },
+    vendingText: {
+        flex: 1,
+        fontSize: 13,
+        color: '#335',
+        lineHeight: 18,
+    },
     directionsButton: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -760,7 +1155,7 @@ const styles = StyleSheet.create({
     },
     outsideBoundsBanner: {
         position: 'absolute',
-        bottom: 120,
+        bottom: 80,
         left: 16,
         right: 16,
         backgroundColor: 'rgba(230, 126, 34, 0.95)', // orange, distinct from the gray no-GPS banner

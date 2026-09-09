@@ -69,7 +69,8 @@ export function ReadySlide({ onFinish }: ReadySlideProps) {
                             mode={transportMode as TransportMode}
                             size={18}
                             color="rgba(255,255,255,0.7)"
-                        />                        <Text style={styles.summaryLabel}>Transport</Text>
+                        />
+                        <Text style={styles.summaryLabel}>Transport</Text>
                     </View>
                     <Text style={styles.summaryValue}>{TRANSPORT_LABEL[transportMode]}</Text>
                 </View>

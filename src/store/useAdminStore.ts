@@ -33,17 +33,39 @@ export interface AdminPOIEntry {
     [key: string]: any;
 }
 
+// A single traced/edited path segment. Mirrors the shape of a
+// GeoJSON LineString Feature's properties plus its own
+// coordinates, since paths (unlike POIs) need geometry stored
+// alongside their properties.
+export interface AdminPathEntry {
+    id: string;
+    deleted?: boolean;
+    coordinates?: number[][];
+    name?: string;
+    traceGroupId?: string;
+    transportModes?: string[];
+    hasStairs?: boolean;
+    bidirectional?: boolean;
+    surface?: string;
+    source?: string;
+    [key: string]: any;
+}
+
 interface AdminState {
     isAdminUnlocked: boolean;
     adminEdits: Record<string, AdminPOIEntry>;
+    adminPathEdits: Record<string, AdminPathEntry>;
 
     unlockAdmin: () => void;
     lockAdmin: () => void;
     saveEdit: (entry: AdminPOIEntry) => void;
     markDeleted: (id: string) => void;
     clearAllEdits: () => void;
-}
 
+    savePathEdit: (entry: AdminPathEntry) => void;
+    markPathDeleted: (id: string) => void;
+    clearAllPathEdits: () => void;
+}
 export const useAdminStore = create<AdminState>()(
     persist(
         (set) => ({
@@ -64,6 +86,20 @@ export const useAdminStore = create<AdminState>()(
                 })),
 
             clearAllEdits: () => set({ adminEdits: {} }),
+
+            adminPathEdits: {},
+
+            savePathEdit: (entry) =>
+                set((state) => ({
+                    adminPathEdits: { ...state.adminPathEdits, [entry.id]: entry },
+                })),
+
+            markPathDeleted: (id) =>
+                set((state) => ({
+                    adminPathEdits: { ...state.adminPathEdits, [id]: { id, deleted: true } },
+                })),
+
+            clearAllPathEdits: () => set({ adminPathEdits: {} }),
         }),
         {
             name: 'glcc-admin-storage',

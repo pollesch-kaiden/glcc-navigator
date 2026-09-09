@@ -14,10 +14,11 @@ An offline-first mobile navigation app for the Green Lake Conference Center's 90
 8. [Search and Filter Drawer](#search-and-filter-drawer)
 9. [Offline Map Support](#offline-map-support)
 10. [In-App Admin Editor](#in-app-admin-editor)
-11. [Map Attribution](#map-attribution)
-12. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
-13. [Known Issues](#known-issues)
-14. [Development Workflow](#development-workflow)
+11. [Managing and Exporting Paths](#managing-and-exporting-paths)
+12. [Map Attribution](#map-attribution)
+13. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
+14. [Known Issues](#known-issues)
+15. [Development Workflow](#development-workflow)
 
 ---
 
@@ -40,14 +41,14 @@ An offline-first mobile navigation app for the Green Lake Conference Center's 90
 assets/map/
   glcc-pois-osm.json        — auto-generated from OSM; do not hand-edit
   glcc-pois-custom.json     — your edits: enrichments and brand-new POIs
-  glcc-paths.geojson        — auto-generated from OSM; do not hand-edit
+  glcc-paths.json        — auto-generated from OSM; do not hand-edit
   graph.json                — auto-generated routing graph; do not hand-edit
   osm-import/               — raw Overpass exports live here
 
 scripts/
   importOsmPois.ts          — converts raw OSM export to glcc-pois-osm.json
-  importOsmPaths.ts         — converts raw OSM export to glcc-paths.geojson
-  generateGraph.ts          — builds graph.json from glcc-paths.geojson
+  importOsmPaths.ts         — converts raw OSM export to glcc-paths.json
+  generateGraph.ts          — builds graph.json from glcc-paths.json
   linkPoisToGraph.ts        — calculates nearestNodeId for every POI
   checkGraphConnectivity.ts — diagnostic that finds disconnected path islands
 
@@ -184,8 +185,8 @@ Paths currently come from OSM. A manually maintained custom-path file is planned
 
 | File | Purpose |
 |---|---|
-| `glcc-paths.geojson` | Auto-imported from OSM highway ways |
-| `glcc-paths-custom.geojson` | Future file for manually traced paths |
+| `glcc-paths.json` | Auto-imported from OSM highway ways |
+| `glcc-paths-custom.json` | Future file for manually traced paths |
 
 ### Path Properties
 
@@ -510,6 +511,54 @@ Use the export option on the admin list screen to:
 3. Manually replace `glcc-pois-custom.json` in the codebase with the exported file, then commit the change.
 
 > **Note:** This manual export/import workflow was chosen deliberately over a cloud backend, since a full backend is unnecessary infrastructure for a single-admin, non-profit project at this stage.
+
+---
+
+## Managing and Exporting Paths
+
+Once admin mode is unlocked, the app includes a dedicated path-management flow for tracing and editing campus paths directly from the map.
+
+### Open the Path Manager
+
+From the Settings screen, tap the version number seven times to unlock admin mode. Then open the admin section and select:
+
+- **Manage Paths** to view existing traced or bundled paths
+- **Export Path Data** to create a shareable `glcc-paths-custom.json` export from the live in-app edits
+
+### Trace a New Path
+
+1. In the **Manage Paths** screen, tap the plus button in the top-right.
+2. Choose the tracing mode:
+   - **Off-Campus** for tap-to-place segments while standing away from the campus
+   - **On-Campus** for GPS-based tracing while physically on-site
+3. Tap the map to place nodes, or let GPS record points while walking.
+4. Use the transport-mode chips to enable or disable walk, bike, golf cart, and car access for the current segment.
+5. Toggle **Has Stairs** when the segment contains stairs that should be avoided by accessible routing.
+6. Use **Undo Point**, **Discard**, and **End Path** to complete the session.
+7. Give the path a name before saving. The app stores it in the local admin path store and makes it test-routable immediately without a rebuild.
+
+### Edit an Existing Path
+
+1. Open **Manage Paths** and select a path from the list.
+2. The map automatically flies to that path so unnamed or difficult-to-locate segments are easy to find.
+3. Tap the path to choose a vertex, then tap a second vertex to define the edit range.
+4. The selected path is highlighted on the map and the chosen vertices are marked visually.
+5. Update the transport modes and stairs flag for the selected range.
+6. Tap **Save Edit** to tombstone the original path and replace the selected segment range with the updated values.
+
+This makes it easy to repair a path, tighten a route, or mark a short segment as stair-only or accessible-only without editing raw JSON by hand.
+
+### Exporting Path Data
+
+The export workflow mirrors the POI export process:
+
+1. Open **Settings** while admin mode is unlocked.
+2. Tap **Export Path Data**.
+3. The app merges bundled path data, custom path changes, and local admin path edits.
+4. A `glcc-paths-custom.json` file is written to the app cache and opened in the native Share sheet.
+5. Save or send that file to a workstation, then replace the real bundled file in the repo before committing.
+
+> **Important:** Path edits are local to the device until exported. The app routes against them immediately in memory, but a repo export is still required before the change is preserved in the codebase for future builds.
 
 ---
 

@@ -83,7 +83,7 @@ for (const feature of raw.features) {
         continue;
     }
 
-    //Skip Roads & Paths POIs - those blong in glcc-paths.geojson not POIs
+    //Skip Roads & Paths POIs - those blong in glcc-paths.json not POIs
     if (isRoadOrPath(tags)) {
         skipped++;
         continue;

@@ -30,6 +30,7 @@ import { POI, POICategory } from '@/types';
 interface POIMarkersProps {
     pois: POI[];
     onPOIPress: (poi: POI) => void;
+    interactive?: boolean;
 }
 
 const CATEGORY_COLORS: Record<POICategory, string> = {
@@ -58,7 +59,7 @@ const CATEGORY_ICONS: Record<POICategory, string> = {
     other:         '📌',
 };
 
-export function POIMarkers({ pois, onPOIPress }: POIMarkersProps) {
+export function POIMarkers({ pois, onPOIPress, interactive = true }: POIMarkersProps) {
     if (!pois || pois.length === 0) return null;
 
     return (
@@ -69,14 +70,19 @@ export function POIMarkers({ pois, onPOIPress }: POIMarkersProps) {
                     id={poi.id}
                     lngLat={poi.coordinates}
                     anchor="center"
-                    onPress={(_event: NativeSyntheticEvent<MarkerEvent>) => {
-                        onPOIPress(poi);
-                    }}
+                    onPress={
+                        interactive
+                            ? (_event: NativeSyntheticEvent<MarkerEvent>) => {
+                                onPOIPress(poi);
+                            }
+                            : undefined
+                    }
                 >
                     <TouchableOpacity
                         style={styles.markerWrapper}
-                        onPress={() => onPOIPress(poi)}
-                        activeOpacity={0.8}
+                        onPress={interactive ? () => onPOIPress(poi) : undefined}
+                        activeOpacity={interactive ? 0.8 : 1}
+                        disabled={!interactive}
                     >
                         <View
                             style={[

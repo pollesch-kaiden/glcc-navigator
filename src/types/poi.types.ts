@@ -55,6 +55,7 @@ export interface POI {
     description: string;
     activities: ActivityTag[];
     amenities: string[];
+    vendingLocations?: string[];
     accessible: boolean;
     hasStairs: boolean;
     nearestNodeId: string;

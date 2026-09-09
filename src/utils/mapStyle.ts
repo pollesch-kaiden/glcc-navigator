@@ -70,7 +70,7 @@ export const MAX_PAN_BOUNDS: [number, number, number, number] = [
 
 export const MAP_CONFIG = {
     // centerCoordinate: [-89.  0004, 43.8445] as [number, number],
-    zoomLevel: 13, //Default at 16
-    minZoom: 1,    //Default is 14 but 1 lets me zoom all the way out
+    zoomLevel: 14, //Default at 16
+    minZoom: 13,    //Default is 14 but 1 lets me zoom all the way out
     maxZoom: 19,
 };

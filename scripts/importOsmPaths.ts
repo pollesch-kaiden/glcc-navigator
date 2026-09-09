@@ -9,7 +9,7 @@
  *   2. Export as GeoJSON with "out geom;" (full line geometry)
  *   3. Save to assets/map/osm-import/glcc-paths-raw.geojson
  *   4. Run: npx ts-node scripts/importOsmPaths.ts
- *   5. Output written to assets/map/glcc-paths.geojson
+ *   5. Output written to assets/map/glcc-paths.json
  *
  * Maps OSM highway tags to our transport mode rules:
  *   footway/path/pedestrian → walking only
@@ -31,7 +31,7 @@ const inputFile = path.resolve(
 );
 const outputFile = path.resolve(
     __dirname,
-    '../assets/map/glcc-paths.geojson'
+    '../assets/map/glcc-paths.json'
 );
 
 if (!fs.existsSync(inputFile)) {
