@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ACTIVITY_OPTIONS, CATEGORY_OPTIONS } from './filterOptions';
+import { ACTIVITY_OPTIONS, CATEGORY_OPTIONS } from '../../src/utils/filterOptions';
 
 describe('filter options', () => {
   it('includes the expected core activities', () => {

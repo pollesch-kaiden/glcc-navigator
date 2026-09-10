@@ -24,7 +24,7 @@ vi.mock('expo-network', () => ({
   NetworkStateType: { WIFI: 'WIFI' },
 }));
 
-import { checkForRemoteContentUpdate } from './remoteContent';
+import { checkForRemoteContentUpdate } from '../../src/utils/remoteContent';
 
 describe('remote content fail-safe behavior', () => {
   beforeEach(() => {

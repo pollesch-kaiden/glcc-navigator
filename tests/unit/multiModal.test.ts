@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { findGatewayNode, findParkingGatewayNode } from './multiModal';
-import { Graph } from '../types/route.types';
+import { findGatewayNode, findParkingGatewayNode } from '../../src/routing/multiModal';
+import { Graph } from '../../src/types/route.types';
 
 describe('multi-modal routing gateway logic', () => {
   const graph: Graph = {

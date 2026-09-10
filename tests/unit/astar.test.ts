@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { findRoute } from './astar';
-import { Graph } from '../types/route.types';
+import { findRoute } from '../../src/routing/astar';
+import { Graph } from '../../src/types/route.types';
 
 describe('A* routing', () => {
   const graph: Graph = {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { hasValidRemoteManifest, isRemoteVersionNewer } from './remoteContentVersion';
+import { hasValidRemoteManifest, isRemoteVersionNewer } from '../../src/utils/remoteContentVersion';
 
 describe('remote content version checks', () => {
   it('accepts a newer remote version', () => {

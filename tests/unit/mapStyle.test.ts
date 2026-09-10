@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { GLCC_BOUNDS, MAP_STYLE, PROTOMAPS_STYLE_URL } from './mapStyle';
+import { GLCC_BOUNDS, MAP_STYLE, PROTOMAPS_STYLE_URL } from '../../src/utils/mapStyle';
 
 describe('map style config', () => {
   it('exposes a valid Protomaps style and map bounds', () => {

@@ -32,9 +32,9 @@ vi.mock('expo-sharing', () => ({
   isAvailableAsync,
 }));
 
-import { exportPOIData } from './exportPOIData';
-import { exportPathData } from './exportPathData';
-import { useAdminStore } from '../store/useAdminStore';
+import { exportPOIData } from '../../src/utils/exportPOIData';
+import { exportPathData } from '../../src/utils/exportPathData';
+import { useAdminStore } from '../../src/store/useAdminStore';
 
 describe('export logic', () => {
   beforeEach(() => {

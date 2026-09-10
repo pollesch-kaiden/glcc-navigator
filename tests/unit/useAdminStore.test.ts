@@ -8,7 +8,7 @@ vi.mock('@react-native-async-storage/async-storage', () => ({
   },
 }));
 
-import { useAdminStore } from './useAdminStore';
+import { useAdminStore } from '../../src/store/useAdminStore';
 
 describe('admin store edits', () => {
   beforeEach(() => {

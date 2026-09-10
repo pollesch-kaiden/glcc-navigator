@@ -47,7 +47,7 @@
     "web": "expo start --web",
     "generate-graph": "ts-node scripts/generateGraph.ts",
     "test": "vitest run --config vitest.config.mjs",
-    "lint": "eslint src/utils/**/*.ts src/**/*.test.ts --ext .ts"
+    "lint": "eslint src/utils/**/*.ts tests/**/*.test.ts --ext .ts --max-warnings 0"
   },
   "private": true
 }

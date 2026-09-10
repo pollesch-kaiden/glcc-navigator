@@ -15,7 +15,7 @@ export default defineConfig([
       'src/navigation/**',
       'scripts/**',
     ],
-    files: ['src/utils/**/*.ts', 'src/**/*.test.ts'],
+    files: ['src/utils/**/*.ts', 'tests/**/*.test.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

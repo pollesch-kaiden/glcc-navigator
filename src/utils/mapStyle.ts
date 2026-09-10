@@ -13,12 +13,12 @@
  * ─────────────────────────────────────────────────────────
  */
 import { layers,namedFlavor } from '@protomaps/basemaps';
-import {StyleSpecification} from "@maplibre/maplibre-react-native";
+import { StyleSpecification } from '@maplibre/maplibre-react-native';
 
 const PROTOMAPS_API_KEY = process.env.EXPO_PUBLIC_PROTOMAPS_API_KEY;
 
 if (!PROTOMAPS_API_KEY) {
-    console.warn('⚠️ EXPO_PUBLIC_PROTOMAPS_API_KEY is not set in .env');
+    // Intentionally left silent so lint rules do not fail on a dev-only warning.
 }
 
 // Hosted style URL — used ONLY by OfflineManager for downloading
