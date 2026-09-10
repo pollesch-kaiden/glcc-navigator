@@ -23,10 +23,13 @@ import { useMemo } from 'react';
 import osmPaths from '../../assets/map/glcc-paths.json';
 import customPaths from '../../assets/map/glcc-paths-custom.json';
 import { useAdminStore } from '@/store/useAdminStore';
+import { useRemoteContentStore } from '@/store/useRemoteContentStore';
 import { PathFeature } from '@/routing/buildGraph';
 
 export function usePaths(): PathFeature[] {
     const adminPathEdits = useAdminStore((state) => state.adminPathEdits);
+    const remotePathData = useRemoteContentStore((state) => state.pathData);
+    const activeCustomPaths = remotePathData ?? customPaths;
 
     return useMemo(() => {
         const merged = new Map<string, PathFeature>();
@@ -38,7 +41,7 @@ export function usePaths(): PathFeature[] {
         }
 
         // 2. Custom layer — overrides/adds on top of OSM
-        for (const feature of (customPaths as any).features as PathFeature[]) {
+        for (const feature of (activeCustomPaths as any).features as PathFeature[]) {
             const id = feature.properties?.id;
             if (id) merged.set(id, feature);
         }
@@ -65,5 +68,5 @@ export function usePaths(): PathFeature[] {
         }
 
         return Array.from(merged.values());
-    }, [adminPathEdits]);
+    }, [activeCustomPaths, adminPathEdits]);
 }

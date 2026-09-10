@@ -22,6 +22,7 @@ import { useMemo } from 'react';
 import osmData from '../../assets/map/glcc-pois-osm.json';
 import customData from '../../assets/map/glcc-pois-custom.json';
 import { useAdminStore } from '@/store/useAdminStore';
+import { useRemoteContentStore } from '@/store/useRemoteContentStore';
 import { POI } from '@/types';
 
 function featureToPOI(feature: any): Partial<POI> & { id: string } {
@@ -33,10 +34,12 @@ function featureToPOI(feature: any): Partial<POI> & { id: string } {
 
 export function usePOIs(): POI[] {
     const adminEdits = useAdminStore((state) => state.adminEdits);
+    const remotePoiData = useRemoteContentStore((state) => state.poiData);
+    const activeCustomData = remotePoiData ?? customData;
 
     return useMemo(() => {
         const osmFeatures = (osmData as any)?.features ?? [];
-        const customFeatures = (customData as any)?.features ?? [];
+        const customFeatures = (activeCustomData as any)?.features ?? [];
 
         const osmPois = osmFeatures.map(featureToPOI);
         const customEntries = customFeatures.map(featureToPOI);
@@ -77,5 +80,5 @@ export function usePOIs(): POI[] {
         // that were baked directly into glcc-pois-custom.json by a
         // previous export, even with no admin overlay active
         return Array.from(merged.values()).filter((p) => !p.deleted) as POI[];
-    }, [adminEdits]);
+    }, [activeCustomData, adminEdits]);
 }
