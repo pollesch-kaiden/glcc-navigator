@@ -1,6 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Network from 'expo-network';
 
+import { hasValidRemoteManifest, isRemoteVersionNewer } from './remoteContentVersion';
+
 export type RemoteContentManifest = {
     version: string;
     updatedAt?: string;
@@ -80,11 +82,12 @@ export async function checkForRemoteContentUpdate(): Promise<{
 
     const manifestUrl = `${REMOTE_CONTENT_BASE_URL}${REMOTE_CONTENT_MANIFEST_PATH}`;
     const manifest = await fetchJson<RemoteContentManifest>(manifestUrl);
-    if (!manifest?.version) return null;
+    if (!hasValidRemoteManifest(manifest)) return null;
 
     const cached = await readCachedRemoteContent();
     const cachedVersion = cached.version ?? '';
-    if (cachedVersion && manifest.version === cachedVersion) {
+
+    if (cachedVersion && !isRemoteVersionNewer(cachedVersion, manifest.version)) {
         return cached.poiData || cached.pathData ? cached : null;
     }
 

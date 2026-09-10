@@ -13,12 +13,13 @@ An offline-first mobile navigation app for the Green Lake Conference Center's 90
 7. [Multi-Modal Routing](#multi-modal-routing)
 8. [Search and Filter Drawer](#search-and-filter-drawer)
 9. [Offline Map Support](#offline-map-support)
-10. [In-App Admin Editor](#in-app-admin-editor)
-11. [Managing and Exporting Paths](#managing-and-exporting-paths)
-12. [Map Attribution](#map-attribution)
-13. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
-14. [Known Issues](#known-issues)
-15. [Development Workflow](#development-workflow)
+10. [Dynamic Content Updates](#dynamic-content-updates)
+11. [In-App Admin Editor](#in-app-admin-editor)
+12. [Managing and Exporting Paths](#managing-and-exporting-paths)
+13. [Map Attribution](#map-attribution)
+14. [MapLibre v11 API Reference](#maplibre-v11-api-reference)
+15. [Known Issues](#known-issues)
+16. [Development Workflow](#development-workflow)
 
 ---
 
@@ -711,6 +712,78 @@ During development, if the phone switches from WiFi to cellular data, it can no 
 | Changed `app.json` settings such as icon, splash screen, or permissions | `npx expo prebuild --clean`, then rebuild |
 | Re-imported OSM data | Run import scripts, generate the graph, then re-link POIs |
 | Added or changed paths | `npm run generate-graph`, then `npx ts-node scripts/linkPoisToGraph.ts` |
+
+### Dynamic Content Updates
+
+The app supports Wi‑Fi-only remote updates for POI and path content using GitHub Pages as a static data host. The app is still offline-first: bundled POIs/paths remain the fallback, and the live remote data is only used when Wi‑Fi is available and the remote version is newer.
+
+The app reaches out to these URLs:
+
+- `https://pollesch-kaiden.github.io/glcc-navigator/content-manifest.json`
+- `https://pollesch-kaiden.github.io/glcc-navigator/assets/map/glcc-pois-custom.json`
+- `https://pollesch-kaiden.github.io/glcc-navigator/assets/map/glcc-paths-custom.json`
+
+Required files on the Pages site:
+
+```text
+content-manifest.json
+assets/map/glcc-pois-custom.json
+assets/map/glcc-paths-custom.json
+```
+
+Example manifest:
+
+```json
+{
+  "version": "2026-09-10-1",
+  "updatedAt": "2026-09-10T23:00:00Z",
+  "poiFile": "assets/map/glcc-pois-custom.json",
+  "pathFile": "assets/map/glcc-paths-custom.json"
+}
+```
+
+The app fetches the manifest first, compares the version string with the cached version, and only replaces local cache after the new JSON has been downloaded and validated. If Wi‑Fi is lost, the remote fetch fails, or the data is invalid, the last known-good local data remains active.
+
+### Required Validation and GitHub Rules
+
+The development workflow requires a passing validation gate before merge to `main`.
+
+```bash
+npm ci
+npx tsc --noEmit
+npm run lint
+npm test
+```
+
+The GitHub branch protection rule for `main` should require:
+
+- a pull request before merge
+- required status checks to pass
+- branch to be up to date
+- linear history
+- block force pushes
+
+The required status check is the `Test & Lint` workflow from `.github/workflows/test.yml`.
+
+### Testing Workflow
+
+The test suite covers the core logic that this app depends on:
+
+- remote content version checks and fail-safe cache behavior
+- filter option coverage
+- A* route generation and stairs exclusion
+- multi-modal gateway routing logic
+- admin POI/path edit storage and export behavior
+- map style configuration and export pipeline integrity
+
+Run locally with:
+
+```bash
+npm test
+npm run lint
+```
+
+This is the minimum dev validation gate before a PR can be merged into `main`.
 
 ### Re-Linking POIs After Path Changes
 
