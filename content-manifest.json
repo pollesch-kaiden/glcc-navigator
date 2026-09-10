@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-09-08T00:00:00Z",
+  "poiFile": "assets/map/glcc-pois-custom.json",
+  "pathFile": "assets/map/glcc-paths-custom.json"
+}
